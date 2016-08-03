@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="zw.co.ncmp" >
+
+    <application
+        android:name=".business.NCMP"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="zw.co.ncmp.StartActivity"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityViewActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityChallengeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityChallengeReviewActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityChallengeReviewListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.FacilityChallengeListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.VisitReportActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.VisitReportListActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.MentorActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.MentorListActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.MenteeActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.MenteeListActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.SettingsActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.LoginActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.CaseFileActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.CaseFileViewActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.CaseFileListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.CaseMenteeListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.CaseMentorListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name="zw.co.ncmp.ChangePasswordActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ARTFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".StatFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ScreenFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ARTFormListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ScreenFormListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".StatFormListActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".TBSelectionActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".DSDSSelectionActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".ODSVSelectionActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <service android:name="zw.co.ncmp.network.PushPullService" />
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+</manifest>
