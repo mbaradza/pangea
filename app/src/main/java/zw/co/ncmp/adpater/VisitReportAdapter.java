@@ -48,7 +48,7 @@ public class VisitReportAdapter extends ArrayAdapter<MentorVisitReport> {
         ViewHolder holder = (ViewHolder) rowView.getTag();
         MentorVisitReport item = list.get(position);
         holder.name.setText((position + 1) + ". Created On: " + AppUtil.getStringDate(item.caseFile.dateCreated));
-        holder.more.setText(item.mentorShipFocusArea + " - hrs: " + item.hours + " minutes " + item.minutes);
+        holder.more.setText(item.hours + " minutes " + item.minutes);
         return rowView;
     }
 

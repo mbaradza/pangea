@@ -1,5 +1,6 @@
 package zw.co.ncmp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,18 +31,22 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        Intent intent = null;
         if (v.getId() == btn_option_one.getId()) {
-
+            intent = new Intent(this, ARTFormActivity.class);
         }
 
         if (v.getId() == btn_option_two.getId()) {
-
+            intent = new Intent(this, ScreenFormActivity.class);
         }
 
         if (v.getId() == btn_option_three.getId()) {
-
+            intent = new Intent(this, StatFormActivity.class);
         }
 
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 
     @Override

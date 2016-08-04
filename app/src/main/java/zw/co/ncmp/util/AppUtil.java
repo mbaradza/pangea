@@ -66,8 +66,8 @@ public class AppUtil {
     public static String MENTOR_ID = "MENTOR_ID";
     public static String DATE_FORMAT = "dd/MM/yyyy";
     public static String SQL_DATE_FORMAT = "yyyy-MM-dd";
-    public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
-    //public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
+    //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
+    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";

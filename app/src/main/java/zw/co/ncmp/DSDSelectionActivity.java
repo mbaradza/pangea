@@ -1,10 +1,11 @@
 package zw.co.ncmp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class DSDSSelectionActivity extends MenuBar implements View.OnClickListener {
+public class DSDSelectionActivity extends MenuBar implements View.OnClickListener {
 
     Button btn_option_one;
     Button btn_option_two;
@@ -26,15 +27,22 @@ public class DSDSSelectionActivity extends MenuBar implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == btn_option_one.getId()) {
+        Intent intent = null;
 
+        if (v.getId() == btn_option_one.getId()) {
+            intent = new Intent(this, DSDIndividualFormActivity.class);
         }
 
         if (v.getId() == btn_option_two.getId()) {
+            intent = new Intent(this, DSDCoupleFormActivity.class);
+        }
 
+        if (intent != null) {
+            startActivity(intent);
         }
 
     }
+
     @Override
     public void onBackPressed() {
         finish();

@@ -176,12 +176,32 @@
         </activity>
 
         <activity
-            android:name=".DSDSSelectionActivity"
+            android:name=".DSDSelectionActivity"
             android:label="@string/app_name">
         </activity>
 
         <activity
             android:name=".ODSVSelectionActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".DSDIndividualFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".DSDCoupleFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".MonthFormActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".TXTNewFormActivity"
             android:label="@string/app_name">
         </activity>
 

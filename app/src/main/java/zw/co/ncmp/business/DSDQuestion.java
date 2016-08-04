@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -89,8 +88,12 @@ public class DSDQuestion extends Model {
     public Long femaleTwentyFiveToFortyNine;
 
     @Expose
-    @Column(name = "fiftyPlus")
-    public Long fiftyPlus;
+    @Column(name = "malefiftyPlus")
+    public Long malefiftyPlus;
+
+    @Expose
+    @Column(name = "femalefiftyPlus")
+    public Long femalefiftyPlus;
 
     public DSDQuestion() {
         super();
@@ -143,7 +146,7 @@ public class DSDQuestion extends Model {
 
     public static ArrayList<DSDQuestion> fromJson(JSONArray jsonArray) {
         ArrayList<DSDQuestion> list = new ArrayList<DSDQuestion>(jsonArray.length());
-        for (int i=0; i < jsonArray.length(); i++) {
+        for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject item = null;
             try {
                 item = jsonArray.getJSONObject(i);
@@ -170,4 +173,29 @@ public class DSDQuestion extends Model {
     public String toString() {
         return name;
     }
+
+    public Long getTotalNumberOfClients() {
+        return getMaleTotalNumberOfClients() + getFemaleTotalNumberOfClients();
+    }
+
+    public Long getMaleTotalNumberOfClients() {
+        return maleLessThanOne + maleOneToFour + maleFiveToNine
+                + maleTenToFourteen + maleFifteenToNineteen + maleTwentyToTwentyFour + maleTwentyFiveToFortyNine +
+                maleTwentyFiveToFortyNine + malefiftyPlus;
+    }
+
+    public Long getFemaleTotalNumberOfClients() {
+        return femaleLessThanOne + femaleOneToFour + femaleFiveToNine
+                + femaleTenToFourteen + femaleFifteenToNineteen + femaleTwentyToTwentyFour + femaleTwentyFiveToFortyNine +
+                femaleTwentyFiveToFortyNine + femalefiftyPlus;
+    }
+
+    public String getMaleTotal() {
+        return "Males: " + getMaleTotalNumberOfClients() + " Sub-Total";
+    }
+
+    public String getFemaleTotal() {
+        return "Females: " + getFemaleTotalNumberOfClients() + " Sub-Total";
+    }
+
 }
