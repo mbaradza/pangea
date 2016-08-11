@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -10,7 +11,6 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
-
 
         <TextView
             android:id="@+id/txt_name"
@@ -288,24 +288,17 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_question_nine"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
+                android:text="PMTCT_EID" />
 
-                <Button
-                    android:id="@+id/btn_question_nine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PMTCT_EID" />
-
-                <Button
-                    android:id="@+id/btn_question_ten"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PMTCT_STAT" />
-
-            </TableRow>
+            <Button
+                android:id="@+id/btn_question_ten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PMTCT_STAT" />
 
             <Button
                 android:id="@+id/btn_question_five"
