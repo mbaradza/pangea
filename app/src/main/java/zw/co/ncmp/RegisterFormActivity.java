@@ -319,9 +319,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (validate()) {
-                            finish();
-                        }
+                        finish();
                     }
                 })
                 .setNegativeButton("No", null)

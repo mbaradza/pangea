@@ -16,14 +16,12 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = null;
-//        if (AppUtil.isUserLoggedIn(StartActivity.this)) {
-//            intent = new Intent(this, MainActivity.class);
-//        } else {
-//            intent = new Intent(this, LoginActivity.class);
-//        }
-        intent = new Intent(this, ODSVSelectionActivity.class);
+        if (AppUtil.isUserLoggedIn(StartActivity.this)) {
+            intent = new Intent(this, MainActivity.class);
+        } else {
+            intent = new Intent(this, LoginActivity.class);
+        }
         startActivity(intent);
         finish();
-
     }
 }

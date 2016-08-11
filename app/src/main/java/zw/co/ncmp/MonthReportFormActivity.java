@@ -320,9 +320,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (validate()) {
-                            finish();
-                        }
+                        finish();
                     }
                 })
                 .setNegativeButton("No", null)

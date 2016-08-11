@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import zw.co.ncmp.R;
+
 /**
  * Created by tdhlakama on 2/6/2016.
  */
@@ -735,4 +737,60 @@ public class RegisterForm extends Model {
             new TypeToken<List<RegisterForm>>() {
             };
 
+
+    public String Question1() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne1 + maleOneToFour1 + maleOneToFour2 +
+                maleFiveToNine1 + maleTenToFourteen1 + maleFifteenToNineteen1 +
+                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + malefiftyPlus1;
+    }
+
+    public String Question2() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne2 + maleOneToFour2 + maleOneToFour2 +
+                maleFiveToNine2 + maleTenToFourteen2 + maleFifteenToNineteen2 +
+                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + malefiftyPlus2;
+    }
+
+    public String Question3() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne3 + maleOneToFour3 + maleOneToFour3 +
+                maleFiveToNine3 + maleTenToFourteen3 + maleFifteenToNineteen3 +
+                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + malefiftyPlus3;
+    }
+
+    public String Question4() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne4 + maleOneToFour4 + maleOneToFour4 +
+                maleFiveToNine4 + maleTenToFourteen4 + maleFifteenToNineteen4 +
+                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + malefiftyPlus4;
+    }
+
+    public String Question5() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne5 + maleOneToFour5 + maleOneToFour5 +
+                maleFiveToNine5 + maleTenToFourteen5 + maleFifteenToNineteen5 +
+                maleTwentyToTwentyFour5 + maleTwentyFiveToFortyNine5 + malefiftyPlus5;
+    }
+
+    public String Question6() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne6 + maleOneToFour6 + maleOneToFour6 +
+                maleFiveToNine6 + maleTenToFourteen6 + maleFifteenToNineteen6 +
+                maleTwentyToTwentyFour6 + maleTwentyFiveToFortyNine6 + malefiftyPlus6;
+    }
+
+    public String Question7() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne7 + maleOneToFour7 + maleOneToFour7 +
+                maleFiveToNine7 + maleTenToFourteen7 + maleFifteenToNineteen7 +
+                maleTwentyToTwentyFour7 + maleTwentyFiveToFortyNine7 + malefiftyPlus7;
+    }
+
+    public String Question8() {
+        return R.string.register_question_one + " " +
+                maleLessThanOne8 + maleOneToFour8 + maleOneToFour8 +
+                maleFiveToNine8 + maleTenToFourteen8 + maleFifteenToNineteen8 +
+                maleTwentyToTwentyFour8 + maleTwentyFiveToFortyNine8 + malefiftyPlus8;
+    }
 }

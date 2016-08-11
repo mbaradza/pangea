@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import zw.co.ncmp.R;
+
 /**
  * Created by tdhlakama on 2/6/2016.
  */
@@ -346,5 +348,25 @@ public class DSDCouple extends Model {
             new TypeToken<List<DSDCouple>>() {
             };
 
+    public String Question1() {
+        return R.string.dsd_couple_question_one + " " +
+                maleLessThanOne1 + maleOneToFour1 + maleOneToFour2 +
+                maleFiveToNine1 + maleTenToFourteen1 + maleFifteenToNineteen1 +
+                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + malefiftyPlus1;
+    }
+
+    public String Question2() {
+        return R.string.dsd_couple_question_one + " " +
+                maleLessThanOne2 + maleOneToFour2 + maleOneToFour2 +
+                maleFiveToNine2 + maleTenToFourteen2 + maleFifteenToNineteen2 +
+                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + malefiftyPlus2;
+    }
+
+    public String Question3() {
+        return R.string.dsd_couple_question_one + " " +
+                maleLessThanOne3 + maleOneToFour3 + maleOneToFour3 +
+                maleFiveToNine3 + maleTenToFourteen3 + maleFifteenToNineteen3 +
+                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + malefiftyPlus3;
+    }
 
 }
