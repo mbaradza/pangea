@@ -186,22 +186,46 @@
         </activity>
 
         <activity
-            android:name=".DSDIndividualFormActivity"
+            android:name=".DSDIndividualActivity"
             android:label="@string/app_name">
         </activity>
 
         <activity
-            android:name=".DSDCoupleFormActivity"
+            android:name=".DSDCoupleActivity"
             android:label="@string/app_name">
         </activity>
 
         <activity
-            android:name=".MonthFormActivity"
+            android:name=".MonthReportFormActivity"
             android:label="@string/app_name">
         </activity>
 
         <activity
-            android:name=".TXTNewFormActivity"
+            android:name=".RegisterFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXTNewActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".DSDCoupleListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".DSDIndiviudalListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".MonthReportFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".RegisterFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXTNewListActivity"
             android:label="@string/app_name">
         </activity>
 

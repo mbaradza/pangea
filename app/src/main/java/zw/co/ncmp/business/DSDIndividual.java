@@ -7,7 +7,13 @@ import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +32,10 @@ public class DSDIndividual extends Model {
     @Column(name = "facility_id")
     public Facility facility;
 
+    @Expose
+    @Column(name = "period_id")
+    public Period period;
+
     @Column(name = "date_created")
     public Date dateCreated;
 
@@ -34,42 +44,518 @@ public class DSDIndividual extends Model {
     public String serverCreatedDate;
 
     @Expose
-    @Column(name = "question1")
-    public DSDQuestion question1;
+    @Column(name = "maleLessThanOne1")
+    public Long maleLessThanOne1;
 
     @Expose
-    @Column(name = "question2")
-    public DSDQuestion question2;
+    @Column(name = "femaleLessThanOne1")
+    public Long femaleLessThanOne1;
 
     @Expose
-    @Column(name = "question3")
-    public DSDQuestion question3;
+    @Column(name = "maleOneToFour1")
+    public Long maleOneToFour1;
 
     @Expose
-    @Column(name = "question4")
-    public DSDQuestion question4;
+    @Column(name = "femaleOneToFour1")
+    public Long femaleOneToFour1;
 
     @Expose
-    @Column(name = "question5")
-    public DSDQuestion question5;
-    @Expose
-    @Column(name = "question6")
-    public DSDQuestion question6;
+    @Column(name = "maleFiveToNine1")
+    public Long maleFiveToNine1;
 
     @Expose
-    @Column(name = "question7")
-    public DSDQuestion question7;
-    @Expose
-    @Column(name = "question8")
-    public DSDQuestion question8;
+    @Column(name = "femaleFiveToNine1")
+    public Long femaleFiveToNine1;
 
     @Expose
-    @Column(name = "question9")
-    public DSDQuestion question9;
+    @Column(name = "maleTenToFourteen1")
+    public Long maleTenToFourteen1;
 
     @Expose
-    @Column(name = "question10")
-    public DSDQuestion question10;
+    @Column(name = "femaleTenToFourteen1")
+    public Long femaleTenToFourteen1;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen1")
+    public Long maleFifteenToNineteen1;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen1")
+    public Long femaleFifteenToNineteen1;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour1")
+    public Long maleTwentyToTwentyFour1;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour1")
+    public Long femaleTwentyToTwentyFour1;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine1")
+    public Long maleTwentyFiveToFortyNine1;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine1")
+    public Long femaleTwentyFiveToFortyNine1;
+
+    @Expose
+    @Column(name = "malefiftyPlus1")
+    public Long malefiftyPlus1;
+
+    @Expose
+    @Column(name = "femalefiftyPlus1")
+    public Long femalefiftyPlus1;
+
+    @Expose
+    @Column(name = "maleLessThanOne2")
+    public Long maleLessThanOne2;
+
+    @Expose
+    @Column(name = "femaleLessThanOne2")
+    public Long femaleLessThanOne2;
+
+    @Expose
+    @Column(name = "maleOneToFour2")
+    public Long maleOneToFour2;
+
+    @Expose
+    @Column(name = "femaleOneToFour2")
+    public Long femaleOneToFour2;
+
+    @Expose
+    @Column(name = "maleFiveToNine2")
+    public Long maleFiveToNine2;
+
+    @Expose
+    @Column(name = "femaleFiveToNine2")
+    public Long femaleFiveToNine2;
+
+    @Expose
+    @Column(name = "maleTenToFourteen2")
+    public Long maleTenToFourteen2;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen2")
+    public Long femaleTenToFourteen2;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen2")
+    public Long maleFifteenToNineteen2;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen2")
+    public Long femaleFifteenToNineteen2;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour2")
+    public Long maleTwentyToTwentyFour2;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour2")
+    public Long femaleTwentyToTwentyFour2;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine2")
+    public Long maleTwentyFiveToFortyNine2;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine2")
+    public Long femaleTwentyFiveToFortyNine2;
+
+    @Expose
+    @Column(name = "malefiftyPlus2")
+    public Long malefiftyPlus2;
+
+    @Expose
+    @Column(name = "femalefiftyPlus2")
+    public Long femalefiftyPlus2;
+
+    @Expose
+    @Column(name = "maleLessThanOne3")
+    public Long maleLessThanOne3;
+
+    @Expose
+    @Column(name = "femaleLessThanOne3")
+    public Long femaleLessThanOne3;
+
+    @Expose
+    @Column(name = "maleOneToFour3")
+    public Long maleOneToFour3;
+
+    @Expose
+    @Column(name = "femaleOneToFour3")
+    public Long femaleOneToFour3;
+
+    @Expose
+    @Column(name = "maleFiveToNine3")
+    public Long maleFiveToNine3;
+
+    @Expose
+    @Column(name = "femaleFiveToNine3")
+    public Long femaleFiveToNine3;
+
+    @Expose
+    @Column(name = "maleTenToFourteen3")
+    public Long maleTenToFourteen3;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen3")
+    public Long femaleTenToFourteen3;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen3")
+    public Long maleFifteenToNineteen3;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen3")
+    public Long femaleFifteenToNineteen3;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour3")
+    public Long maleTwentyToTwentyFour3;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour3")
+    public Long femaleTwentyToTwentyFour3;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine3")
+    public Long maleTwentyFiveToFortyNine3;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine3")
+    public Long femaleTwentyFiveToFortyNine3;
+
+    @Expose
+    @Column(name = "malefiftyPlus3")
+    public Long malefiftyPlus3;
+
+    @Expose
+    @Column(name = "femalefiftyPlus3")
+    public Long femalefiftyPlus3;
+
+    @Expose
+    @Column(name = "maleLessThanOne4")
+    public Long maleLessThanOne4;
+
+    @Expose
+    @Column(name = "femaleLessThanOne4")
+    public Long femaleLessThanOne4;
+
+    @Expose
+    @Column(name = "maleOneToFour4")
+    public Long maleOneToFour4;
+
+    @Expose
+    @Column(name = "femaleOneToFour4")
+    public Long femaleOneToFour4;
+
+    @Expose
+    @Column(name = "maleFiveToNine4")
+    public Long maleFiveToNine4;
+
+    @Expose
+    @Column(name = "femaleFiveToNine4")
+    public Long femaleFiveToNine4;
+
+    @Expose
+    @Column(name = "maleTenToFourteen4")
+    public Long maleTenToFourteen4;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen4")
+    public Long femaleTenToFourteen4;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen4")
+    public Long maleFifteenToNineteen4;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen4")
+    public Long femaleFifteenToNineteen4;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour4")
+    public Long maleTwentyToTwentyFour4;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour4")
+    public Long femaleTwentyToTwentyFour4;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine4")
+    public Long maleTwentyFiveToFortyNine4;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine4")
+    public Long femaleTwentyFiveToFortyNine4;
+
+    @Expose
+    @Column(name = "malefiftyPlus4")
+    public Long malefiftyPlus4;
+
+    @Expose
+    @Column(name = "femalefiftyPlus4")
+    public Long femalefiftyPlus4;
+
+    @Expose
+    @Column(name = "maleLessThanOne5")
+    public Long maleLessThanOne5;
+
+    @Expose
+    @Column(name = "femaleLessThanOne5")
+    public Long femaleLessThanOne5;
+
+    @Expose
+    @Column(name = "maleOneToFour5")
+    public Long maleOneToFour5;
+
+    @Expose
+    @Column(name = "femaleOneToFour5")
+    public Long femaleOneToFour5;
+
+    @Expose
+    @Column(name = "maleFiveToNine5")
+    public Long maleFiveToNine5;
+
+    @Expose
+    @Column(name = "femaleFiveToNine5")
+    public Long femaleFiveToNine5;
+
+    @Expose
+    @Column(name = "maleTenToFourteen5")
+    public Long maleTenToFourteen5;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen5")
+    public Long femaleTenToFourteen5;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen5")
+    public Long maleFifteenToNineteen5;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen5")
+    public Long femaleFifteenToNineteen5;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour5")
+    public Long maleTwentyToTwentyFour5;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour5")
+    public Long femaleTwentyToTwentyFour5;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine5")
+    public Long maleTwentyFiveToFortyNine5;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine5")
+    public Long femaleTwentyFiveToFortyNine5;
+
+    @Expose
+    @Column(name = "malefiftyPlus5")
+    public Long malefiftyPlus5;
+
+    @Expose
+    @Column(name = "femalefiftyPlus5")
+    public Long femalefiftyPlus5;
+
+    @Expose
+    @Column(name = "maleLessThanOne6")
+    public Long maleLessThanOne6;
+
+    @Expose
+    @Column(name = "femaleLessThanOne6")
+    public Long femaleLessThanOne6;
+
+    @Expose
+    @Column(name = "maleOneToFour6")
+    public Long maleOneToFour6;
+
+    @Expose
+    @Column(name = "femaleOneToFour6")
+    public Long femaleOneToFour6;
+
+    @Expose
+    @Column(name = "maleFiveToNine6")
+    public Long maleFiveToNine6;
+
+    @Expose
+    @Column(name = "femaleFiveToNine6")
+    public Long femaleFiveToNine6;
+
+    @Expose
+    @Column(name = "maleTenToFourteen6")
+    public Long maleTenToFourteen6;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen6")
+    public Long femaleTenToFourteen6;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen6")
+    public Long maleFifteenToNineteen6;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen6")
+    public Long femaleFifteenToNineteen6;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour6")
+    public Long maleTwentyToTwentyFour6;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour6")
+    public Long femaleTwentyToTwentyFour6;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine6")
+    public Long maleTwentyFiveToFortyNine6;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine6")
+    public Long femaleTwentyFiveToFortyNine6;
+
+    @Expose
+    @Column(name = "malefiftyPlus6")
+    public Long malefiftyPlus6;
+
+    @Expose
+    @Column(name = "femalefiftyPlus6")
+    public Long femalefiftyPlus6;
+
+
+    @Expose
+    @Column(name = "maleLessThanOne7")
+    public Long maleLessThanOne7;
+
+    @Expose
+    @Column(name = "femaleLessThanOne7")
+    public Long femaleLessThanOne7;
+
+    @Expose
+    @Column(name = "maleOneToFour7")
+    public Long maleOneToFour7;
+
+    @Expose
+    @Column(name = "femaleOneToFour7")
+    public Long femaleOneToFour7;
+
+    @Expose
+    @Column(name = "maleFiveToNine7")
+    public Long maleFiveToNine7;
+
+    @Expose
+    @Column(name = "femaleFiveToNine7")
+    public Long femaleFiveToNine7;
+
+    @Expose
+    @Column(name = "maleTenToFourteen7")
+    public Long maleTenToFourteen7;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen7")
+    public Long femaleTenToFourteen7;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen7")
+    public Long maleFifteenToNineteen7;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen7")
+    public Long femaleFifteenToNineteen7;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour7")
+    public Long maleTwentyToTwentyFour7;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour7")
+    public Long femaleTwentyToTwentyFour7;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine7")
+    public Long maleTwentyFiveToFortyNine7;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine7")
+    public Long femaleTwentyFiveToFortyNine7;
+
+    @Expose
+    @Column(name = "malefiftyPlus7")
+    public Long malefiftyPlus7;
+
+    @Expose
+    @Column(name = "femalefiftyPlus7")
+    public Long femalefiftyPlus7;
+
+    @Expose
+    @Column(name = "maleLessThanOne8")
+    public Long maleLessThanOne8;
+
+    @Expose
+    @Column(name = "femaleLessThanOne8")
+    public Long femaleLessThanOne8;
+
+    @Expose
+    @Column(name = "maleOneToFour8")
+    public Long maleOneToFour8;
+
+    @Expose
+    @Column(name = "femaleOneToFour8")
+    public Long femaleOneToFour8;
+
+    @Expose
+    @Column(name = "maleFiveToNine8")
+    public Long maleFiveToNine8;
+
+    @Expose
+    @Column(name = "femaleFiveToNine8")
+    public Long femaleFiveToNine8;
+
+    @Expose
+    @Column(name = "maleTenToFourteen8")
+    public Long maleTenToFourteen8;
+
+    @Expose
+    @Column(name = "femaleTenToFourteen8")
+    public Long femaleTenToFourteen8;
+
+    @Expose
+    @Column(name = "maleFifteenToNineteen8")
+    public Long maleFifteenToNineteen8;
+
+    @Expose
+    @Column(name = "femaleFifteenToNineteen8")
+    public Long femaleFifteenToNineteen8;
+
+    @Expose
+    @Column(name = "maleTwentyToTwentyFour8")
+    public Long maleTwentyToTwentyFour8;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour8")
+    public Long femaleTwentyToTwentyFour8;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine8")
+    public Long maleTwentyFiveToFortyNine8;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine8")
+    public Long femaleTwentyFiveToFortyNine8;
+
+    @Expose
+    @Column(name = "malefiftyPlus8")
+    public Long malefiftyPlus8;
+
+    @Expose
+    @Column(name = "femalefiftyPlus8")
+    public Long femalefiftyPlus8;
+
 
     @Expose
     @Column(name = "testedFHS")
@@ -111,6 +597,9 @@ public class DSDIndividual extends Model {
     @Column(name = "positiveTestedANC")
     public Long positiveTestedANC;
 
+    @Column(name = "date_submitted", notNull = false)
+    public Date dateSubmitted;
+
     public static DSDIndividual get(Long id) {
         return new Select().from(DSDIndividual.class).where("Id = ?", id).executeSingle();
     }
@@ -126,6 +615,16 @@ public class DSDIndividual extends Model {
                 .execute();
     }
 
+
+    public static List<DSDIndividual> getFilesToUpload(Long id) {
+        return new Select()
+                .from(DSDIndividual.class)
+                .where("facility_id = ?", id)
+                .where("serverId is null")
+                .where("date_submitted is not null")
+                .execute();
+    }
+
     public static void deleteAll() {
         new Delete().from(DSDIndividual.class).execute();
     }
@@ -135,5 +634,39 @@ public class DSDIndividual extends Model {
         return "HTC_TST: DSD- Couples";
     }
 
+    public static DSDIndividual fromJson(JSONObject jsonObject) {
+        DSDIndividual i = new DSDIndividual();
+        try {
+            i.serverId = jsonObject.getLong("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return i;
+    }
+
+    public static ArrayList<DSDIndividual> fromJson(JSONArray jsonArray) {
+        ArrayList<DSDIndividual> list = new ArrayList<DSDIndividual>(jsonArray.length());
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject item = null;
+            try {
+                item = jsonArray.getJSONObject(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+                continue;
+            }
+
+            DSDIndividual business = DSDIndividual.fromJson(item);
+            if (business != null) {
+                list.add(business);
+            }
+        }
+
+        return list;
+    }
+
+    public static final TypeToken<List<DSDIndividual>> LIST =
+            new TypeToken<List<DSDIndividual>>() {
+            };
 
 }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,6 +23,8 @@ import zw.co.ncmp.business.CaseFileMentee;
 import zw.co.ncmp.business.CaseFileMentor;
 import zw.co.ncmp.business.Challenge;
 import zw.co.ncmp.business.ChallengeStatus;
+import zw.co.ncmp.business.DSDCouple;
+import zw.co.ncmp.business.DSDIndividual;
 import zw.co.ncmp.business.Designation;
 import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.FacilityChallenge;
@@ -31,11 +32,14 @@ import zw.co.ncmp.business.Mentee;
 import zw.co.ncmp.business.Mentor;
 import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.MentorVisitReport;
+import zw.co.ncmp.business.MonthReportForm;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.business.Qualification;
+import zw.co.ncmp.business.RegisterForm;
 import zw.co.ncmp.business.ScreenForm;
 import zw.co.ncmp.business.StatForm;
 import zw.co.ncmp.business.StaticData;
+import zw.co.ncmp.business.TXTNew;
 import zw.co.ncmp.util.AppUtil;
 
 /**
@@ -211,10 +215,73 @@ public class PushPullService extends IntentService {
 
             result = Activity.RESULT_CANCELED;
         }
+
         try {
             for (Facility facility : facilities) {
                 for (StatForm m : StatForm.getFilesToUpload(facility.getId())) {
                     save(run(AppUtil.getPushStatFormReportUrl(context, facility.serverId), m), m);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (Facility facility : facilities) {
+                for (DSDCouple m : DSDCouple.getFilesToUpload(facility.getId())) {
+                    save(run(AppUtil.getPushDSDCoupleFormUrl(context, facility.serverId), m), m);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (Facility facility : facilities) {
+                for (DSDIndividual m : DSDIndividual.getFilesToUpload(facility.getId())) {
+                    save(run(AppUtil.getPushDSDIndividualUrl(context, facility.serverId), m), m);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+
+        try {
+            for (Facility facility : facilities) {
+                for (MonthReportForm m : MonthReportForm.getFilesToUpload(facility.getId())) {
+                    save(run(AppUtil.getPushMonthFormReportUrl(context, facility.serverId), m), m);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+
+        try {
+            for (Facility facility : facilities) {
+                for (RegisterForm m : RegisterForm.getFilesToUpload(facility.getId())) {
+                    save(run(AppUtil.getPushRegisterFormReportUrl(context, facility.serverId), m), m);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (Facility facility : facilities) {
+                for (TXTNew m : TXTNew.getFilesToUpload(facility.getId())) {
+                    save(run(AppUtil.getPushTXTNewUrl(context, facility.serverId), m), m);
                 }
             }
 
@@ -601,6 +668,69 @@ public class PushPullService extends IntentService {
 
     }
 
+    private String run(HttpUrl httpUrl, DSDIndividual form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, DSDCouple form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+
+    private String run(HttpUrl httpUrl, MonthReportForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+
+    private String run(HttpUrl httpUrl, RegisterForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+
+    private String run(HttpUrl httpUrl, TXTNew form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
     private String run(HttpUrl httpUrl, ScreenForm form) {
         OkHttpClient client = new OkHttpClient();
         client = AppUtil.connectionSettings(client);
@@ -608,7 +738,7 @@ public class PushPullService extends IntentService {
         client = AppUtil.createAuthenticationData(client, context);
         form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
         String json = gson.toJson(form);
-       return AppUtil.getResponeBody(client, httpUrl, json);
+        return AppUtil.getResponeBody(client, httpUrl, json);
 
     }
 
@@ -719,6 +849,66 @@ public class PushPullService extends IntentService {
     }
 
     public StatForm save(String data, StatForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public DSDCouple save(String data, DSDCouple item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public DSDIndividual save(String data, DSDIndividual item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public MonthReportForm save(String data, MonthReportForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public RegisterForm save(String data, RegisterForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public TXTNew save(String data, TXTNew item) {
         try {
             Long id = Long.valueOf(data);
             item.serverId = id;

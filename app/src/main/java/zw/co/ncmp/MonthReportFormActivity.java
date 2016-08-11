@@ -18,13 +18,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 import zw.co.ncmp.business.Facility;
+import zw.co.ncmp.business.MonthReportForm;
 import zw.co.ncmp.business.Period;
-import zw.co.ncmp.business.RegisterForm;
 import zw.co.ncmp.util.AppUtil;
 
-public class RegisterFormActivity extends MenuBar implements View.OnClickListener {
+public class MonthReportFormActivity extends MenuBar implements View.OnClickListener {
 
-    private RegisterForm registerForm;
+    private MonthReportForm registerForm;
 
     Spinner facility;
     Spinner period;
@@ -99,7 +99,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         dateCreated.setOnClickListener(this);
 
         if (registerForm_id != 0) {
-            registerForm = RegisterForm.get(registerForm_id);
+            registerForm = MonthReportForm.get(registerForm_id);
 
             testedOPD.setText(AppUtil.getLongValue(registerForm.testedOPD));
             positiveTestedOPD.setText(AppUtil.getLongValue(registerForm.positiveTestedOPD));
@@ -134,10 +134,10 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 i++;
             }
 
-            setSupportActionBar(createToolBar("Registers"));
+            setSupportActionBar(createToolBar("Month Report Form"));
         } else {
-            registerForm = new RegisterForm();
-            setSupportActionBar(createToolBar("Registers"));
+            registerForm = new MonthReportForm();
+            setSupportActionBar(createToolBar("Month Report Form"));
         }
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
@@ -278,7 +278,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                                 btn_completed.setVisibility(View.VISIBLE);
                                 btn_submit.setVisibility(View.GONE);
                                 btn_save.setVisibility(View.GONE);
-                                AppUtil.createLongNotification(RegisterFormActivity.this, "Submitted for Upload to Server");
+                                AppUtil.createLongNotification(MonthReportFormActivity.this, "Submitted for Upload to Server");
                             }
                         }
                     })
@@ -311,6 +311,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
 
         return valid;
     }
+
 
     @Override
     public void onBackPressed() {

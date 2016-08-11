@@ -1,8 +1,10 @@
 package zw.co.ncmp;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -95,24 +97,24 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
             statForm = StatForm.get(statForm_id);
             name.setText(statForm.name);
 
-            numerator.setText(String.valueOf(statForm.numerator));
-            denominator.setText(String.valueOf(statForm.denominator));
-            knownHIV.setText(String.valueOf(statForm.knownHIV));
-            positiveHIV.setText(String.valueOf(statForm.positiveHIV));
-            negativeHIV.setText(String.valueOf(statForm.negativeHIV));
+            numerator.setText(AppUtil.getLongValue(statForm.numerator));
+            denominator.setText(AppUtil.getLongValue(statForm.denominator));
+            knownHIV.setText(AppUtil.getLongValue(statForm.knownHIV));
+            positiveHIV.setText(AppUtil.getLongValue(statForm.positiveHIV));
+            negativeHIV.setText(AppUtil.getLongValue(statForm.negativeHIV));
 
-            maleLessThanOne.setText(String.valueOf(statForm.maleLessThanOne));
-            femaleLessThanOne.setText(String.valueOf(statForm.femaleLessThanOne));
-            maleOneToFour.setText(String.valueOf(statForm.maleOneToFour));
-            femaleOneToFour.setText(String.valueOf(statForm.femaleOneToFour));
-            maleFiveToNine.setText(String.valueOf(statForm.maleFiveToNine));
-            femaleFiveToNine.setText(String.valueOf(statForm.femaleFiveToNine));
-            maleTenToFourteen.setText(String.valueOf(statForm.maleTenToFourteen));
-            femaleTenToFourteen.setText(String.valueOf(statForm.femaleTenToFourteen));
-            maleFifteenToNineteen.setText(String.valueOf(statForm.maleFifteenToNineteen));
-            femaleFifteenToNineteen.setText(String.valueOf(statForm.femaleFifteenToNineteen));
-            maleTwentyPlus.setText(String.valueOf(statForm.maleTwentyPlus));
-            femaleTwentyPlus.setText(String.valueOf(statForm.femaleTwentyPlus));
+            maleLessThanOne.setText(AppUtil.getLongValue(statForm.maleLessThanOne));
+            femaleLessThanOne.setText(AppUtil.getLongValue(statForm.femaleLessThanOne));
+            maleOneToFour.setText(AppUtil.getLongValue(statForm.maleOneToFour));
+            femaleOneToFour.setText(AppUtil.getLongValue(statForm.femaleOneToFour));
+            maleFiveToNine.setText(AppUtil.getLongValue(statForm.maleFiveToNine));
+            femaleFiveToNine.setText(AppUtil.getLongValue(statForm.femaleFiveToNine));
+            maleTenToFourteen.setText(AppUtil.getLongValue(statForm.maleTenToFourteen));
+            femaleTenToFourteen.setText(AppUtil.getLongValue(statForm.femaleTenToFourteen));
+            maleFifteenToNineteen.setText(AppUtil.getLongValue(statForm.maleFifteenToNineteen));
+            femaleFifteenToNineteen.setText(AppUtil.getLongValue(statForm.femaleFifteenToNineteen));
+            maleTwentyPlus.setText(AppUtil.getLongValue(statForm.maleTwentyPlus));
+            femaleTwentyPlus.setText(AppUtil.getLongValue(statForm.femaleTwentyPlus));
 
             updateLabel(statForm.dateCreated);
 
@@ -244,7 +246,18 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        finish();
+        new AlertDialog.Builder(context)
+                .setMessage("Are you sure you want to cancel?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (validate()) {
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
 

@@ -67,7 +67,7 @@ public class AppUtil {
     public static String DATE_FORMAT = "dd/MM/yyyy";
     public static String SQL_DATE_FORMAT = "yyyy-MM-dd";
     //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
-    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
+    public static String APP_URL = "http://pzat.org:8080/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";
@@ -153,6 +153,38 @@ public class AppUtil {
 
     public static HttpUrl getPushStatFormReportUrl(Context context, Long id) {
         return HttpUrl.parse(getWebService(context).concat("form/tb-stat")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushDSDCoupleFormUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-couple")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushDSDIndividualUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-individual")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushMonthFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-stat")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+
+    public static HttpUrl getPushRegisterFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-stat")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+
+    public static HttpUrl getPushTXTNewUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-stat")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
@@ -468,6 +500,18 @@ public class AppUtil {
                 return 0L;
             } else {
                 return Long.valueOf(value);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static String getLongValue(Long value) {
+        try {
+            if (value == null) {
+                return "";
+            } else {
+                return String.valueOf(value);
             }
         } catch (Exception e) {
             return null;

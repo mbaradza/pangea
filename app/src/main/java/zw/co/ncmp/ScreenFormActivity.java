@@ -1,9 +1,10 @@
 package zw.co.ncmp;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,13 +12,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.business.ScreenForm;
-import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.util.AppUtil;
 
 public class ScreenFormActivity extends MenuBar implements View.OnClickListener {
@@ -98,24 +98,24 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
             screenForm = ScreenForm.get(screenForm_id);
             numerator.setText(String.valueOf(screenForm.numerator));
             name.setText(String.valueOf(screenForm.name));
-            specimentSent.setText(String.valueOf(screenForm.specimentSent));
-            tbStatus.setText(String.valueOf(screenForm.tbStatus));
-            smear.setText(String.valueOf(screenForm.smear));
-            xpert.setText(String.valueOf(screenForm.xpert));
-            others.setText(String.valueOf(screenForm.others));
+            specimentSent.setText(AppUtil.getLongValue(screenForm.specimentSent));
+            tbStatus.setText(AppUtil.getLongValue(screenForm.tbStatus));
+            smear.setText(AppUtil.getLongValue(screenForm.smear));
+            xpert.setText(AppUtil.getLongValue(screenForm.xpert));
+            others.setText(AppUtil.getLongValue(screenForm.others));
 
-            maleLessThanOne.setText(String.valueOf(screenForm.maleLessThanOne));
-            femaleLessThanOne.setText(String.valueOf(screenForm.femaleLessThanOne));
-            maleOneToFour.setText(String.valueOf(screenForm.maleOneToFour));
-            femaleOneToFour.setText(String.valueOf(screenForm.femaleOneToFour));
-            maleFiveToNine.setText(String.valueOf(screenForm.maleFiveToNine));
-            femaleFiveToNine.setText(String.valueOf(screenForm.femaleFiveToNine));
-            maleTenToFourteen.setText(String.valueOf(screenForm.maleTenToFourteen));
-            femaleTenToFourteen.setText(String.valueOf(screenForm.femaleTenToFourteen));
-            maleFifteenToNineteen.setText(String.valueOf(screenForm.maleFifteenToNineteen));
-            femaleFifteenToNineteen.setText(String.valueOf(screenForm.femaleFifteenToNineteen));
-            maleTwentyPlus.setText(String.valueOf(screenForm.maleTwentyPlus));
-            femaleTwentyPlus.setText(String.valueOf(screenForm.femaleTwentyPlus));
+            maleLessThanOne.setText(AppUtil.getLongValue(screenForm.maleLessThanOne));
+            femaleLessThanOne.setText(AppUtil.getLongValue(screenForm.femaleLessThanOne));
+            maleOneToFour.setText(AppUtil.getLongValue(screenForm.maleOneToFour));
+            femaleOneToFour.setText(AppUtil.getLongValue(screenForm.femaleOneToFour));
+            maleFiveToNine.setText(AppUtil.getLongValue(screenForm.maleFiveToNine));
+            femaleFiveToNine.setText(AppUtil.getLongValue(screenForm.femaleFiveToNine));
+            maleTenToFourteen.setText(AppUtil.getLongValue(screenForm.maleTenToFourteen));
+            femaleTenToFourteen.setText(AppUtil.getLongValue(screenForm.femaleTenToFourteen));
+            maleFifteenToNineteen.setText(AppUtil.getLongValue(screenForm.maleFifteenToNineteen));
+            femaleFifteenToNineteen.setText(AppUtil.getLongValue(screenForm.femaleFifteenToNineteen));
+            maleTwentyPlus.setText(AppUtil.getLongValue(screenForm.maleTwentyPlus));
+            femaleTwentyPlus.setText(AppUtil.getLongValue(screenForm.femaleTwentyPlus));
 
             dateCreated = (EditText) findViewById(R.id.dateCreated);
 
@@ -173,8 +173,8 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
                 screenForm.facility = (Facility) facility.getSelectedItem();
                 screenForm.name = name.getText().toString();
                 screenForm.period = (Period) period.getSelectedItem();
-                screenForm.numerator=AppUtil.getLongValue(numerator.getText().toString());
-                screenForm.specimentSent=AppUtil.getLongValue(specimentSent.getText().toString());
+                screenForm.numerator = AppUtil.getLongValue(numerator.getText().toString());
+                screenForm.specimentSent = AppUtil.getLongValue(specimentSent.getText().toString());
                 screenForm.tbStatus = AppUtil.getLongValue(tbStatus.getText().toString());
                 screenForm.smear = AppUtil.getLongValue(smear.getText().toString());
                 screenForm.xpert = AppUtil.getLongValue(xpert.getText().toString());
@@ -249,7 +249,18 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
 
     @Override
     public void onBackPressed() {
-        finish();
+        new AlertDialog.Builder(context)
+                .setMessage("Are you sure you want to cancel?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (validate()) {
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
 

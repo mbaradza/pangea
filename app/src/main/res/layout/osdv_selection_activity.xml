@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+    <!--<include layout="@layout/toolbar" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +34,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registers" />
+
+        <Button
+            android:id="@+id/btn_option_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TXTNew" />
 
     </LinearLayout>
 </LinearLayout>

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import zw.co.ncmp.business.RegisterForm;
+import zw.co.ncmp.business.TXTNew;
 
 public class ODSVSelectionActivity extends MenuBar implements View.OnClickListener {
 
     Button btn_option_one;
     Button btn_option_two;
+    Button btn_option_three;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,10 @@ public class ODSVSelectionActivity extends MenuBar implements View.OnClickListen
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        btn_option_three = (Button) findViewById(R.id.btn_option_three);
+        btn_option_three.setOnClickListener(this);
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -32,11 +36,15 @@ public class ODSVSelectionActivity extends MenuBar implements View.OnClickListen
         Intent intent = null;
 
         if (v.getId() == btn_option_one.getId()) {
-            intent = new Intent(this, MonthFormActivity.class);
+            intent = new Intent(this, MonthReportFormListActivity.class);
         }
 
         if (v.getId() == btn_option_two.getId()) {
-            intent = new Intent(this, RegisterFormActivity.class);
+            intent = new Intent(this, RegisterFormListActivity.class);
+        }
+
+        if (v.getId() == btn_option_three.getId()) {
+            intent = new Intent(this, TXTNewListActivity.class);
         }
 
         if (intent != null) {

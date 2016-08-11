@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_name"
+                style="@style/TextViewStyle"></TextView>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_span="2"
+                        android:text="3. PMTCT_EID"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="P30: Infants ≤ 2 months) with DNA PCR sample collected"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP30"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="P31: Infants > 2 months with DNA PCR sample collected for the first time:" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP31"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="P4: Pregnant Women testing HIV positive in ANC" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="P5: Pregnant women booking for first ANC visit with known HIV positive result" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP5"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="P14: Women testing HIV positive at first test in L and D" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP14"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="P17: Women testing HIV positive at first test in L and D" />
+
+                    <EditText
+                        android:id="@+id/pmtctEIDP17"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+
+                    <Button
+                        android:id="@+id/btn_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Next" />
+
+                    <Button
+                        android:id="@+id/btn_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Back" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import zw.co.ncmp.business.DSDIndividual;
+
 public class DSDSelectionActivity extends MenuBar implements View.OnClickListener {
 
     Button btn_option_one;
@@ -22,7 +24,7 @@ public class DSDSelectionActivity extends MenuBar implements View.OnClickListene
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -30,11 +32,11 @@ public class DSDSelectionActivity extends MenuBar implements View.OnClickListene
         Intent intent = null;
 
         if (v.getId() == btn_option_one.getId()) {
-            intent = new Intent(this, DSDIndividualFormActivity.class);
+            intent = new Intent(this, DSDIndiviudalListActivity.class);
         }
 
         if (v.getId() == btn_option_two.getId()) {
-            intent = new Intent(this, DSDCoupleFormActivity.class);
+            intent = new Intent(this, DSDCoupleListActivity.class);
         }
 
         if (intent != null) {

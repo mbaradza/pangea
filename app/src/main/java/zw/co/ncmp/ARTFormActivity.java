@@ -1,8 +1,10 @@
 package zw.co.ncmp;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -96,23 +98,23 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
         if (artForm_id != 0) {
             artForm = ARTForm.get(artForm_id);
             name.setText(artForm.name);
-            numerator.setText(String.valueOf(artForm.numerator));
-            denominator.setText(String.valueOf(artForm.denominator));
-            alreadyOnART.setText(String.valueOf(artForm.alreadyOnART));
-            newOnART.setText(String.valueOf(artForm.newOnART));
+            numerator.setText(AppUtil.getLongValue(artForm.numerator));
+            denominator.setText(AppUtil.getLongValue(artForm.denominator));
+            alreadyOnART.setText(AppUtil.getLongValue(artForm.alreadyOnART));
+            newOnART.setText(AppUtil.getLongValue(artForm.newOnART));
 
-            maleLessThanOne.setText(String.valueOf(artForm.maleLessThanOne));
-            femaleLessThanOne.setText(String.valueOf(artForm.femaleLessThanOne));
-            maleOneToFour.setText(String.valueOf(artForm.maleOneToFour));
-            femaleOneToFour.setText(String.valueOf(artForm.femaleOneToFour));
-            maleFiveToNine.setText(String.valueOf(artForm.maleFiveToNine));
-            femaleFiveToNine.setText(String.valueOf(artForm.femaleFiveToNine));
-            maleTenToFourteen.setText(String.valueOf(artForm.maleTenToFourteen));
-            femaleTenToFourteen.setText(String.valueOf(artForm.femaleTenToFourteen));
-            maleFifteenToNineteen.setText(String.valueOf(artForm.maleFifteenToNineteen));
-            femaleFifteenToNineteen.setText(String.valueOf(artForm.femaleFifteenToNineteen));
-            maleTwentyPlus.setText(String.valueOf(artForm.maleTwentyPlus));
-            femaleTwentyPlus.setText(String.valueOf(artForm.femaleTwentyPlus));
+            maleLessThanOne.setText(AppUtil.getLongValue(artForm.maleLessThanOne));
+            femaleLessThanOne.setText(AppUtil.getLongValue(artForm.femaleLessThanOne));
+            maleOneToFour.setText(AppUtil.getLongValue(artForm.maleOneToFour));
+            femaleOneToFour.setText(AppUtil.getLongValue(artForm.femaleOneToFour));
+            maleFiveToNine.setText(AppUtil.getLongValue(artForm.maleFiveToNine));
+            femaleFiveToNine.setText(AppUtil.getLongValue(artForm.femaleFiveToNine));
+            maleTenToFourteen.setText(AppUtil.getLongValue(artForm.maleTenToFourteen));
+            femaleTenToFourteen.setText(AppUtil.getLongValue(artForm.femaleTenToFourteen));
+            maleFifteenToNineteen.setText(AppUtil.getLongValue(artForm.maleFifteenToNineteen));
+            femaleFifteenToNineteen.setText(AppUtil.getLongValue(artForm.femaleFifteenToNineteen));
+            maleTwentyPlus.setText(AppUtil.getLongValue(artForm.maleTwentyPlus));
+            femaleTwentyPlus.setText(AppUtil.getLongValue(artForm.femaleTwentyPlus));
 
             updateLabel(artForm.dateCreated);
 
@@ -241,9 +243,19 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        finish();
+        new AlertDialog.Builder(context)
+                .setMessage("Are you sure you want to cancel?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        if (validate()) {
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
-
 
 }
 
