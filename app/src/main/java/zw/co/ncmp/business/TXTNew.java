@@ -102,12 +102,12 @@ public class TXTNew extends Model {
     public Long femaleTwentyFiveToFortyNine1;
 
     @Expose
-    @Column(name = "malefiftyPlus1")
-    public Long malefiftyPlus1;
+    @Column(name = "maleFiftyPlus1")
+    public Long maleFiftyPlus1;
 
     @Expose
-    @Column(name = "femalefiftyPlus1")
-    public Long femalefiftyPlus1;
+    @Column(name = "femaleFiftyPlus1")
+    public Long femaleFiftyPlus1;
 
     @Expose
     @Column(name = "maleLessThanOne2")
@@ -166,12 +166,12 @@ public class TXTNew extends Model {
     public Long femaleTwentyFiveToFortyNine2;
 
     @Expose
-    @Column(name = "malefiftyPlus2")
-    public Long malefiftyPlus2;
+    @Column(name = "maleFiftyPlus2")
+    public Long maleFiftyPlus2;
 
     @Expose
-    @Column(name = "femalefiftyPlus2")
-    public Long femalefiftyPlus2;
+    @Column(name = "femaleFiftyPlus2")
+    public Long femaleFiftyPlus2;
 
     @Expose
     @Column(name = "maleLessThanOne3")
@@ -230,12 +230,12 @@ public class TXTNew extends Model {
     public Long femaleTwentyFiveToFortyNine3;
 
     @Expose
-    @Column(name = "malefiftyPlus3")
-    public Long malefiftyPlus3;
+    @Column(name = "maleFiftyPlus3")
+    public Long maleFiftyPlus3;
 
     @Expose
-    @Column(name = "femalefiftyPlus3")
-    public Long femalefiftyPlus3;
+    @Column(name = "femaleFiftyPlus3")
+    public Long femaleFiftyPlus3;
 
     @Expose
     @Column(name = "maleLessThanOne4")
@@ -294,12 +294,12 @@ public class TXTNew extends Model {
     public Long femaleTwentyFiveToFortyNine4;
 
     @Expose
-    @Column(name = "malefiftyPlus4")
-    public Long malefiftyPlus4;
+    @Column(name = "maleFiftyPlus4")
+    public Long maleFiftyPlus4;
 
     @Expose
-    @Column(name = "femalefiftyPlus4")
-    public Long femalefiftyPlus4;
+    @Column(name = "femaleFiftyPlus4")
+    public Long femaleFiftyPlus4;
 
     @Column(name = "date_submitted", notNull = false)
     public Date dateSubmitted;
@@ -378,28 +378,28 @@ public class TXTNew extends Model {
         return R.string.txt_new_question_one + " " +
                 maleLessThanOne1 + maleOneToFour1 + maleOneToFour2 +
                 maleFiveToNine1 + maleTenToFourteen1 + maleFifteenToNineteen1 +
-                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + malefiftyPlus1;
+                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + maleFiftyPlus1;
     }
 
     public String Question2() {
         return R.string.txt_new_question_one + " " +
                 maleLessThanOne2 + maleOneToFour2 + maleOneToFour2 +
                 maleFiveToNine2 + maleTenToFourteen2 + maleFifteenToNineteen2 +
-                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + malefiftyPlus2;
+                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + maleFiftyPlus2;
     }
 
     public String Question3() {
         return R.string.txt_new_question_one + " " +
                 maleLessThanOne3 + maleOneToFour3 + maleOneToFour3 +
                 maleFiveToNine3 + maleTenToFourteen3 + maleFifteenToNineteen3 +
-                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + malefiftyPlus3;
+                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + maleFiftyPlus3;
     }
 
     public String Question4() {
         return R.string.txt_new_question_four + " " +
                 maleLessThanOne4 + maleOneToFour4 + maleOneToFour4 +
                 maleFiveToNine4 + maleTenToFourteen4 + maleFifteenToNineteen4 +
-                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + malefiftyPlus4;
+                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + maleFiftyPlus4;
     }
 
 }

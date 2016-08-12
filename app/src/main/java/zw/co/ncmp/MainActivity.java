@@ -108,7 +108,7 @@ public class MainActivity extends MenuBar implements View.OnClickListener, Adapt
             intent = new Intent(this, DSDSelectionActivity.class);
         }
 
-        if (v.getId() == btn_option_two.getId()) {
+        if (v.getId() == btn_option_three.getId()) {
             intent = new Intent(this, ODSVSelectionActivity.class);
         }
 

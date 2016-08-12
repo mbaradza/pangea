@@ -52,6 +52,12 @@ public class MentorVisitReport extends Model {
     @Column(name = "action_taken")
     public String action_taken;
 
+
+    @SerializedName("action_taken_category")
+    @Expose
+    @Column(name = "action_taken_category")
+    public ActionTakenCategory action_taken_category;
+
     @Expose
     @Column(name = "observation")
     public String observation;

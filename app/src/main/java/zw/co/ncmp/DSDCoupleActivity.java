@@ -295,8 +295,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdCouple != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdCouple.maleLessThanOne1));
@@ -313,8 +313,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyToTwentyFour1));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.maleTwentyFiveToFortyNine1));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyFiveToFortyNine1));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.malefiftyPlus1));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femalefiftyPlus1));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.maleFiftyPlus1));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus1));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -343,8 +343,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleTwentyFiveToFortyNine1 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdCouple.femaleTwentyFiveToFortyNine1 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdCouple.malefiftyPlus1 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdCouple.femalefiftyPlus1 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdCouple.maleFiftyPlus1 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdCouple.femaleFiftyPlus1 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -385,8 +385,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdCouple != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdCouple.maleLessThanOne2));
@@ -403,8 +403,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyToTwentyFour2));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.maleTwentyFiveToFortyNine2));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyFiveToFortyNine2));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.malefiftyPlus2));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femalefiftyPlus2));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.maleFiftyPlus2));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus2));
         }
 
 
@@ -434,8 +434,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdCouple.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdCouple.malefiftyPlus2 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdCouple.femalefiftyPlus2 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdCouple.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdCouple.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -477,8 +477,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdCouple != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdCouple.maleLessThanOne3));
@@ -495,8 +495,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyToTwentyFour3));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.maleTwentyFiveToFortyNine3));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdCouple.femaleTwentyFiveToFortyNine3));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.malefiftyPlus3));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femalefiftyPlus3));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.maleFiftyPlus3));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus3));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -525,8 +525,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdCouple.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdCouple.malefiftyPlus3 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdCouple.femalefiftyPlus3 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdCouple.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdCouple.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }

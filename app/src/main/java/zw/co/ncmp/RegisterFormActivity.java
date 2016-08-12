@@ -348,8 +348,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne1));
@@ -366,8 +366,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour1));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine1));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine1));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus1));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus1));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus1));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus1));
         }
 
 
@@ -397,8 +397,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine1 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine1 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus1 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus1 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus1 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus1 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -439,8 +439,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne2));
@@ -457,8 +457,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour2));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine2));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine2));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus2));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus2));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus2));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus2));
         }
 
 
@@ -488,8 +488,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus2 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus2 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -530,8 +530,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne3));
@@ -548,8 +548,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour3));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine3));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine3));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus3));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus3));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus3));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus3));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -578,8 +578,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus3 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus3 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -620,8 +620,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne4));
@@ -638,8 +638,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine4));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine4));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine4));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus4));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus4));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus4));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus4));
         }
 
 
@@ -669,8 +669,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine4 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine4 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus4 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus4 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus4 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus4 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -712,8 +712,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne5));
@@ -730,8 +730,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour5));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine5));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine5));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus5));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus5));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus5));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus5));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -760,8 +760,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine5 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine5 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus5 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus5 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus5 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus5 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -802,8 +802,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne6));
@@ -820,8 +820,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour6));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine6));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine6));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus6));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus6));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus6));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus6));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -850,8 +850,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine6 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine6 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus6 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus6 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus6 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus6 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -892,8 +892,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne7));
@@ -910,8 +910,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour7));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine7));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine7));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus7));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus7));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus7));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus7));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -940,8 +940,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine7 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine7 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus7 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus7 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus7 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus7 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }
@@ -982,8 +982,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (registerForm != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(registerForm.maleLessThanOne8));
@@ -1000,8 +1000,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(registerForm.femaleTwentyToTwentyFour8));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.maleTwentyFiveToFortyNine8));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(registerForm.femaleTwentyFiveToFortyNine8));
-            malefiftyPlus.setText(AppUtil.getLongValue(registerForm.malefiftyPlus8));
-            femalefiftyPlus.setText(AppUtil.getLongValue(registerForm.femalefiftyPlus8));
+            maleFiftyPlus.setText(AppUtil.getLongValue(registerForm.maleFiftyPlus8));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(registerForm.femaleFiftyPlus8));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -1030,8 +1030,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.maleTwentyFiveToFortyNine8 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 registerForm.femaleTwentyFiveToFortyNine8 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                registerForm.malefiftyPlus8 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                registerForm.femalefiftyPlus8 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                registerForm.maleFiftyPlus8 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                registerForm.femaleFiftyPlus8 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 dialog.dismiss();
             }

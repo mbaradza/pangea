@@ -339,8 +339,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne1));
@@ -357,8 +357,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour1));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine1));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine1));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus1));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus1));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus1));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus1));
         }
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -386,9 +386,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine1 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine1 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus1 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus1 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus1 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus1 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -427,8 +428,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne2));
@@ -445,8 +446,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour2));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine2));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine2));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus2));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus2));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus2));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus2));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -475,9 +476,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus2 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus2 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -516,8 +518,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
 
         if (dsdIndividual != null) {
@@ -535,8 +537,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour3));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine3));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine3));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus3));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus3));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus3));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus3));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -565,9 +567,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus3 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus3 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -606,8 +609,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne4));
@@ -624,8 +627,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine4));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine4));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine4));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus4));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus4));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus4));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus4));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -654,9 +657,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine4 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine4 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus4 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus4 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus4 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus4 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -695,8 +699,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne5));
@@ -713,8 +717,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour5));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine5));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine5));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus5));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus5));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus5));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus5));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -743,9 +747,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine5 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine5 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus5 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus5 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus5 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus5 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -784,8 +789,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne6));
@@ -802,8 +807,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour6));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine6));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine6));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus6));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus6));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus6));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus6));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -832,9 +837,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine6 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine6 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus6 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus6 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus6 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus6 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -873,8 +879,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne7));
@@ -891,8 +897,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour7));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine7));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine7));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus7));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus7));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus7));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus7));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -921,9 +927,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine7 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine7 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus7 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus7 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus7 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus7 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 
@@ -962,8 +969,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
         final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
         final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText malefiftyPlus = (EditText) dialog.findViewById(R.id.malefiftyPlus);
-        final EditText femalefiftyPlus = (EditText) dialog.findViewById(R.id.femalefiftyPlus);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
 
         if (dsdIndividual != null) {
             maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne8));
@@ -980,8 +987,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour8));
             maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine8));
             femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine8));
-            malefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.malefiftyPlus8));
-            femalefiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femalefiftyPlus8));
+            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus8));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus8));
         }
 
         Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
@@ -1010,9 +1017,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.maleTwentyFiveToFortyNine8 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
                 dsdIndividual.femaleTwentyFiveToFortyNine8 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
 
-                dsdIndividual.malefiftyPlus8 = AppUtil.getLongValue(malefiftyPlus.getText().toString());
-                dsdIndividual.femalefiftyPlus8 = AppUtil.getLongValue(femalefiftyPlus.getText().toString());
+                dsdIndividual.maleFiftyPlus8 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFiftyPlus8 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
+                dialog.dismiss();
             }
         });
 

@@ -26,7 +26,7 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
         btn_option_three = (Button) findViewById(R.id.btn_option_three);
         btn_option_three.setOnClickListener(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

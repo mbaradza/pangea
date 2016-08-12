@@ -102,12 +102,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine1;
 
     @Expose
-    @Column(name = "malefiftyPlus1")
-    public Long malefiftyPlus1;
+    @Column(name = "maleFiftyPlus1")
+    public Long maleFiftyPlus1;
 
     @Expose
-    @Column(name = "femalefiftyPlus1")
-    public Long femalefiftyPlus1;
+    @Column(name = "femaleFiftyPlus1")
+    public Long femaleFiftyPlus1;
 
     @Expose
     @Column(name = "maleLessThanOne2")
@@ -166,12 +166,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine2;
 
     @Expose
-    @Column(name = "malefiftyPlus2")
-    public Long malefiftyPlus2;
+    @Column(name = "maleFiftyPlus2")
+    public Long maleFiftyPlus2;
 
     @Expose
-    @Column(name = "femalefiftyPlus2")
-    public Long femalefiftyPlus2;
+    @Column(name = "femaleFiftyPlus2")
+    public Long femaleFiftyPlus2;
 
     @Expose
     @Column(name = "maleLessThanOne3")
@@ -230,12 +230,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine3;
 
     @Expose
-    @Column(name = "malefiftyPlus3")
-    public Long malefiftyPlus3;
+    @Column(name = "maleFiftyPlus3")
+    public Long maleFiftyPlus3;
 
     @Expose
-    @Column(name = "femalefiftyPlus3")
-    public Long femalefiftyPlus3;
+    @Column(name = "femaleFiftyPlus3")
+    public Long femaleFiftyPlus3;
 
     @Expose
     @Column(name = "maleLessThanOne4")
@@ -294,12 +294,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine4;
 
     @Expose
-    @Column(name = "malefiftyPlus4")
-    public Long malefiftyPlus4;
+    @Column(name = "maleFiftyPlus4")
+    public Long maleFiftyPlus4;
 
     @Expose
-    @Column(name = "femalefiftyPlus4")
-    public Long femalefiftyPlus4;
+    @Column(name = "femaleFiftyPlus4")
+    public Long femaleFiftyPlus4;
 
     @Expose
     @Column(name = "maleLessThanOne5")
@@ -358,12 +358,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine5;
 
     @Expose
-    @Column(name = "malefiftyPlus5")
-    public Long malefiftyPlus5;
+    @Column(name = "maleFiftyPlus5")
+    public Long maleFiftyPlus5;
 
     @Expose
-    @Column(name = "femalefiftyPlus5")
-    public Long femalefiftyPlus5;
+    @Column(name = "femaleFiftyPlus5")
+    public Long femaleFiftyPlus5;
 
     @Expose
     @Column(name = "maleLessThanOne6")
@@ -422,12 +422,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine6;
 
     @Expose
-    @Column(name = "malefiftyPlus6")
-    public Long malefiftyPlus6;
+    @Column(name = "maleFiftyPlus6")
+    public Long maleFiftyPlus6;
 
     @Expose
-    @Column(name = "femalefiftyPlus6")
-    public Long femalefiftyPlus6;
+    @Column(name = "femaleFiftyPlus6")
+    public Long femaleFiftyPlus6;
 
 
     @Expose
@@ -487,12 +487,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine7;
 
     @Expose
-    @Column(name = "malefiftyPlus7")
-    public Long malefiftyPlus7;
+    @Column(name = "maleFiftyPlus7")
+    public Long maleFiftyPlus7;
 
     @Expose
-    @Column(name = "femalefiftyPlus7")
-    public Long femalefiftyPlus7;
+    @Column(name = "femaleFiftyPlus7")
+    public Long femaleFiftyPlus7;
 
     @Expose
     @Column(name = "maleLessThanOne8")
@@ -551,12 +551,12 @@ public class RegisterForm extends Model {
     public Long femaleTwentyFiveToFortyNine8;
 
     @Expose
-    @Column(name = "malefiftyPlus8")
-    public Long malefiftyPlus8;
+    @Column(name = "maleFiftyPlus8")
+    public Long maleFiftyPlus8;
 
     @Expose
-    @Column(name = "femalefiftyPlus8")
-    public Long femalefiftyPlus8;
+    @Column(name = "femaleFiftyPlus8")
+    public Long femaleFiftyPlus8;
 
     @Expose
     @Column(name = "testedOPD")
@@ -742,55 +742,55 @@ public class RegisterForm extends Model {
         return R.string.register_question_one + " " +
                 maleLessThanOne1 + maleOneToFour1 + maleOneToFour2 +
                 maleFiveToNine1 + maleTenToFourteen1 + maleFifteenToNineteen1 +
-                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + malefiftyPlus1;
+                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + maleFiftyPlus1;
     }
 
     public String Question2() {
         return R.string.register_question_one + " " +
                 maleLessThanOne2 + maleOneToFour2 + maleOneToFour2 +
                 maleFiveToNine2 + maleTenToFourteen2 + maleFifteenToNineteen2 +
-                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + malefiftyPlus2;
+                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + maleFiftyPlus2;
     }
 
     public String Question3() {
         return R.string.register_question_one + " " +
                 maleLessThanOne3 + maleOneToFour3 + maleOneToFour3 +
                 maleFiveToNine3 + maleTenToFourteen3 + maleFifteenToNineteen3 +
-                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + malefiftyPlus3;
+                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + maleFiftyPlus3;
     }
 
     public String Question4() {
         return R.string.register_question_one + " " +
                 maleLessThanOne4 + maleOneToFour4 + maleOneToFour4 +
                 maleFiveToNine4 + maleTenToFourteen4 + maleFifteenToNineteen4 +
-                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + malefiftyPlus4;
+                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + maleFiftyPlus4;
     }
 
     public String Question5() {
         return R.string.register_question_one + " " +
                 maleLessThanOne5 + maleOneToFour5 + maleOneToFour5 +
                 maleFiveToNine5 + maleTenToFourteen5 + maleFifteenToNineteen5 +
-                maleTwentyToTwentyFour5 + maleTwentyFiveToFortyNine5 + malefiftyPlus5;
+                maleTwentyToTwentyFour5 + maleTwentyFiveToFortyNine5 + maleFiftyPlus5;
     }
 
     public String Question6() {
         return R.string.register_question_one + " " +
                 maleLessThanOne6 + maleOneToFour6 + maleOneToFour6 +
                 maleFiveToNine6 + maleTenToFourteen6 + maleFifteenToNineteen6 +
-                maleTwentyToTwentyFour6 + maleTwentyFiveToFortyNine6 + malefiftyPlus6;
+                maleTwentyToTwentyFour6 + maleTwentyFiveToFortyNine6 + maleFiftyPlus6;
     }
 
     public String Question7() {
         return R.string.register_question_one + " " +
                 maleLessThanOne7 + maleOneToFour7 + maleOneToFour7 +
                 maleFiveToNine7 + maleTenToFourteen7 + maleFifteenToNineteen7 +
-                maleTwentyToTwentyFour7 + maleTwentyFiveToFortyNine7 + malefiftyPlus7;
+                maleTwentyToTwentyFour7 + maleTwentyFiveToFortyNine7 + maleFiftyPlus7;
     }
 
     public String Question8() {
         return R.string.register_question_one + " " +
                 maleLessThanOne8 + maleOneToFour8 + maleOneToFour8 +
                 maleFiveToNine8 + maleTenToFourteen8 + maleFifteenToNineteen8 +
-                maleTwentyToTwentyFour8 + maleTwentyFiveToFortyNine8 + malefiftyPlus8;
+                maleTwentyToTwentyFour8 + maleTwentyFiveToFortyNine8 + maleFiftyPlus8;
     }
 }

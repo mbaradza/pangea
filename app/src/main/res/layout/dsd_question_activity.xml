@@ -240,14 +240,14 @@
                         android:text="@string/fiftyPlus" />
 
                     <EditText
-                        android:id="@+id/malefiftyPlus"
+                        android:id="@+id/maleFiftyPlus"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="F"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/femalefiftyPlus"
+                        android:id="@+id/femaleFiftyPlus"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="M"
