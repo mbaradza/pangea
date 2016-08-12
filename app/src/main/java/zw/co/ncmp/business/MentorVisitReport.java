@@ -28,6 +28,7 @@ public class MentorVisitReport extends Model {
     @Column(name = "case_file_id")
     public CaseFile caseFile;
 
+    @SerializedName("mentorShipFocusAreas")
     @Expose
     public List<MentorShipFocusArea> focusAreas = new ArrayList<>();
 
