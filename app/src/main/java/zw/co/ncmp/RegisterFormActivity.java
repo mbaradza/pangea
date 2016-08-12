@@ -261,6 +261,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
                 registerForm.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
                 registerForm.save();
                 btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(RegisterFormActivity.this, "Saved");
             } else {
                 return;
             }

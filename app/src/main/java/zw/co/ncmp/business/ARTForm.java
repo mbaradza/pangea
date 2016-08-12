@@ -111,6 +111,9 @@ public class ARTForm  extends Model {
     @Column(name = "newOnART")
     public Long newOnART;
 
+    @Column(name = "date_submitted", notNull = false)
+    public Date dateSubmitted;
+
     public ARTForm() {
         super();
     }
@@ -142,6 +145,7 @@ public class ARTForm  extends Model {
                 .from(ARTForm.class)
                 .where("facility_id = ?", id)
                 .where("serverId is null")
+                .where("date_submitted is not null")
                 .execute();
     }
 

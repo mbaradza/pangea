@@ -47,6 +47,9 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
     EditText femaleTwentyPlus;
 
     Button btn_save;
+    Button btn_completed;
+    Button btn_submit;
+
     private ScreenForm screenForm;
     private DatePickerDialog datePickerDialog;
 
@@ -158,8 +161,21 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
 
-        if (screenForm.serverId != null) {
+        btn_completed = (Button) findViewById(R.id.btn_completed);
+        btn_completed.setVisibility(View.GONE);
+
+        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_submit.setOnClickListener(this);
+        btn_submit.setVisibility(View.GONE);
+
+        if (screenForm.dateCreated != null) {
+            btn_submit.setVisibility(View.VISIBLE);
+        }
+
+        if (screenForm.dateSubmitted != null) {
+            btn_submit.setVisibility(View.GONE);
             btn_save.setVisibility(View.GONE);
+            btn_completed.setVisibility(View.VISIBLE);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -167,7 +183,7 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        Intent intent;
+
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 screenForm.facility = (Facility) facility.getSelectedItem();
@@ -195,12 +211,32 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
 
                 screenForm.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
                 screenForm.save();
-                intent = new Intent(this, ScreenFormListActivity.class);
-                startActivity(intent);
-                finish();
+                btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(ScreenFormActivity.this, "Saved");
             } else {
                 return;
             }
+        }
+
+        if (v.getId() == btn_submit.getId()) {
+            new AlertDialog.Builder(context)
+                    .setMessage("Are you sure you want to submit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            if (validate()) {
+                                screenForm.dateSubmitted = new Date();
+                                screenForm.save();
+                                btn_completed.setVisibility(View.VISIBLE);
+                                btn_submit.setVisibility(View.GONE);
+                                btn_save.setVisibility(View.GONE);
+                                AppUtil.createLongNotification(ScreenFormActivity.this, "Submitted for Upload to Server");
+                            }
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         if (v.getId() == dateCreated.getId()) {
@@ -254,9 +290,7 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (validate()) {
-                            finish();
-                        }
+                        finish();
                     }
                 })
                 .setNegativeButton("No", null)

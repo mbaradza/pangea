@@ -9,22 +9,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import zw.co.ncmp.business.ActionTakenCategory;
 import zw.co.ncmp.business.CaseFile;
 import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.MentorVisitReport;
+import zw.co.ncmp.business.VisitReportFocusArea;
 import zw.co.ncmp.util.AppUtil;
 
 public class VisitReportActivity extends MenuBar implements View.OnClickListener {
 
     TextView txt_caseFile_name;
-    ListView focusAreas;
-    Spinner action_category;
     EditText hours;
     EditText minutes;
     EditText comments;
@@ -49,8 +46,6 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
         Long id = intent.getLongExtra(AppUtil.ID, 0);
         Long caseFile_id = intent.getLongExtra(AppUtil.CASE_ID, 0);
 
-        action_category = (Spinner) findViewById(R.id.action_category);
-
         txt_caseFile_name = (TextView) findViewById(R.id.txt_name);
 
         hours = (EditText) findViewById(R.id.hours);
@@ -67,6 +62,8 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
 
         if (id != 0) {
             mentorVisitReport = MentorVisitReport.get(id);
+            mentorVisitReport.focusAreas = VisitReportFocusArea.getMentorShipFocusAreas(mentorVisitReport.getId());
+
             caseFile = CaseFile.get(mentorVisitReport.caseFile.getId());
             hours.setText(String.valueOf(mentorVisitReport.hours));
             minutes.setText(String.valueOf(mentorVisitReport.minutes));
@@ -76,30 +73,13 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
             recommendations.setText(mentorVisitReport.recommendations);
             observation.setText(mentorVisitReport.observation);
 
-            int i = 0;
-            for (ActionTakenCategory s : ActionTakenCategory.getAll()) {
-                if (mentorVisitReport.action_taken_category.equals(action_category.getItemAtPosition(i))) {
-                    action_category.setSelection(i);
+            for (MentorShipFocusArea s : mentorVisitReport.focusAreas) {
+                if (s.name == "Other") {
+                    others.setVisibility(View.VISIBLE);
+                    txt_other.setVisibility(View.VISIBLE);
                     break;
                 }
-                i++;
             }
-
-//            for (MentorShipFocusArea s : MentorShipFocusArea.getAll()) {
-//                if (mentorVisitReport.focusAreas.equals(focusAreas.getItemAtPosition(i))) {
-//                    focusAreas.setSelection(i);
-//                    break;
-//                }
-//                i++;
-//            }
-//
-//            for (MentorShipFocusArea s : MentorShipFocusArea.getAll()) {
-//                if (s.name == "Other") {
-//                    others.setVisibility(View.VISIBLE);
-//                    txt_other.setVisibility(View.VISIBLE);
-//                    break;
-//                }
-//            }
 
             txt_caseFile_name.setText("SITE SUPPORT REPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + caseFile.facility.name);
             setSupportActionBar(createToolBar("Update Activity"));
@@ -111,19 +91,12 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
             setSupportActionBar(createToolBar("Add New Activity"));
         }
 
-        ArrayAdapter<ActionTakenCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ActionTakenCategory.getAll());
-        actionTakenCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        action_category.setAdapter(actionTakenCategoryArrayAdapter);
-
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
 
         btn_load = (Button) findViewById(R.id.btn_load);
         btn_load.setOnClickListener(this);
-        if (mentorVisitReport.focusAreas == null) {
-            mentorVisitReport.focusAreas = new ArrayList<>();
-        }
+
         btn_load.setText("Focus Areas (" + mentorVisitReport.focusAreas + ")");
 
         if (caseFile.dateSubmitted != null) {
@@ -141,12 +114,23 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
                 mentorVisitReport.hours = AppUtil.getInputValue(hours.getText().toString());
                 mentorVisitReport.minutes = AppUtil.getInputValue(minutes.getText().toString());
                 mentorVisitReport.comments = comments.getText().toString();
-                mentorVisitReport.action_taken_category = (ActionTakenCategory) action_category.getSelectedItem();
                 mentorVisitReport.others = others.getText().toString();
                 mentorVisitReport.action_taken = action_taken.getText().toString();
                 mentorVisitReport.recommendations = recommendations.getText().toString();
                 mentorVisitReport.observation = observation.getText().toString();
                 mentorVisitReport.save();
+
+                if (mentorVisitReport.getId() != null) {
+                    VisitReportFocusArea.deleteAll(mentorVisitReport.getId());
+                }
+
+                for (MentorShipFocusArea s : mentorVisitReport.focusAreas) {
+                    VisitReportFocusArea focusArea = new VisitReportFocusArea();
+                    focusArea.mentorShipFocusArea = s;
+                    focusArea.mentorVisitReport = mentorVisitReport;
+                    focusArea.save();
+                }
+
                 Intent intent = new Intent(this, CaseFileViewActivity.class);
                 intent.putExtra(AppUtil.CASE_ID, caseFile.getId());
                 startActivity(intent);
@@ -221,12 +205,20 @@ public class VisitReportActivity extends MenuBar implements View.OnClickListener
 
                 long[] outputStrArr = new long[selectedItems.size()];
 
-                mentorVisitReport.focusAreas = new ArrayList<MentorShipFocusArea>();
                 for (int i = 0; i < selectedItems.size(); i++) {
                     outputStrArr[i] = selectedItems.get(i).getId();
                     mentorVisitReport.focusAreas.add(selectedItems.get(i));
                 }
                 btn_load.setText("Focus Areas (" + mentorVisitReport.focusAreas + ")");
+
+                for (MentorShipFocusArea s : mentorVisitReport.focusAreas) {
+                    if (s.name == "Other") {
+                        others.setVisibility(View.VISIBLE);
+                        txt_other.setVisibility(View.VISIBLE);
+                        break;
+                    }
+                }
+
                 dialog.dismiss();
             }
         });

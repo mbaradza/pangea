@@ -40,6 +40,7 @@ import zw.co.ncmp.business.ScreenForm;
 import zw.co.ncmp.business.StatForm;
 import zw.co.ncmp.business.StaticData;
 import zw.co.ncmp.business.TXTNew;
+import zw.co.ncmp.business.VisitReportFocusArea;
 import zw.co.ncmp.util.AppUtil;
 
 /**
@@ -637,8 +638,8 @@ public class PushPullService extends IntentService {
         client = AppUtil.connectionSettings(client);
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
+        mentorVisitReport.focusAreas = VisitReportFocusArea.getMentorShipFocusAreas(mentorVisitReport.getId());
         String json = gson.toJson(mentorVisitReport);
-
         return AppUtil.getResponeBody(client, httpUrl, json);
 
     }

@@ -261,6 +261,8 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 registerForm.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
                 registerForm.save();
                 btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(MonthReportFormActivity.this, "Saved");
+
             } else {
                 return;
             }

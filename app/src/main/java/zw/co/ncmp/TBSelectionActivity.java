@@ -26,22 +26,23 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
         btn_option_three = (Button) findViewById(R.id.btn_option_three);
         btn_option_three.setOnClickListener(this);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(createToolBar("TB Selection"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = null;
         if (v.getId() == btn_option_one.getId()) {
-            intent = new Intent(this, ARTFormActivity.class);
+            intent = new Intent(this, ARTFormListActivity.class);
         }
 
         if (v.getId() == btn_option_two.getId()) {
-            intent = new Intent(this, ScreenFormActivity.class);
+            intent = new Intent(this, ScreenFormListActivity.class);
         }
 
         if (v.getId() == btn_option_three.getId()) {
-            intent = new Intent(this, StatFormActivity.class);
+            intent = new Intent(this, ScreenFormListActivity.class);
         }
 
         if (intent != null) {

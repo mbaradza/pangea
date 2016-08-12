@@ -251,6 +251,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
                 dsdIndividual.save();
                 btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(DSDIndividualActivity.this, "Saved");
             } else {
                 return;
             }

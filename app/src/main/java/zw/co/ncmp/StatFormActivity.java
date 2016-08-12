@@ -12,13 +12,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.business.StatForm;
-import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.util.AppUtil;
 
 public class StatFormActivity extends MenuBar implements View.OnClickListener {
@@ -45,6 +44,9 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
     EditText femaleFifteenToNineteen;
     EditText maleTwentyPlus;
     EditText femaleTwentyPlus;
+
+    Button btn_completed;
+    Button btn_submit;
 
     Button btn_save;
     private StatForm statForm;
@@ -155,8 +157,21 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
 
-        if (statForm.serverId != null) {
+        btn_completed = (Button) findViewById(R.id.btn_completed);
+        btn_completed.setVisibility(View.GONE);
+
+        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_submit.setOnClickListener(this);
+        btn_submit.setVisibility(View.GONE);
+
+        if (statForm.dateCreated != null) {
+            btn_submit.setVisibility(View.VISIBLE);
+        }
+
+        if (statForm.dateSubmitted != null) {
+            btn_submit.setVisibility(View.GONE);
             btn_save.setVisibility(View.GONE);
+            btn_completed.setVisibility(View.VISIBLE);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -164,15 +179,14 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent;
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 statForm.facility = (Facility) facility.getSelectedItem();
                 statForm.name = name.getText().toString();
                 statForm.period = (Period) period.getSelectedItem();
-                statForm.numerator=AppUtil.getLongValue(numerator.getText().toString());
-                statForm.denominator=AppUtil.getLongValue(denominator.getText().toString());
-               
+                statForm.numerator = AppUtil.getLongValue(numerator.getText().toString());
+                statForm.denominator = AppUtil.getLongValue(denominator.getText().toString());
+
                 statForm.knownHIV = AppUtil.getLongValue(knownHIV.getText().toString());
                 statForm.positiveHIV = AppUtil.getLongValue(positiveHIV.getText().toString());
                 statForm.negativeHIV = AppUtil.getLongValue(negativeHIV.getText().toString());
@@ -193,12 +207,32 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
 
                 statForm.save();
-                intent = new Intent(this, StatFormListActivity.class);
-                startActivity(intent);
-                finish();
+                btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(StatFormActivity.this, "Saved");
             } else {
                 return;
             }
+        }
+
+        if (v.getId() == btn_submit.getId()) {
+            new AlertDialog.Builder(context)
+                    .setMessage("Are you sure you want to submit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            if (validate()) {
+                                statForm.dateSubmitted = new Date();
+                                statForm.save();
+                                btn_completed.setVisibility(View.VISIBLE);
+                                btn_submit.setVisibility(View.GONE);
+                                btn_save.setVisibility(View.GONE);
+                                AppUtil.createLongNotification(StatFormActivity.this, "Submitted for Upload to Server");
+                            }
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         if (v.getId() == dateCreated.getId()) {
@@ -251,15 +285,12 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (validate()) {
-                            finish();
-                        }
+                        finish();
                     }
                 })
                 .setNegativeButton("No", null)
                 .show();
     }
-
 
 
 }

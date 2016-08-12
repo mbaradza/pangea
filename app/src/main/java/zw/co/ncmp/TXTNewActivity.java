@@ -169,6 +169,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
 
                 txtNew.save();
                 btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(TXTNewActivity.this, "Saved");
             } else {
                 return;
             }

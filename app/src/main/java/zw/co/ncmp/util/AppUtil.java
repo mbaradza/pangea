@@ -171,21 +171,20 @@ public class AppUtil {
                 .build();
     }
 
+    public static HttpUrl getPushTXTNewUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-new")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
     public static HttpUrl getPushMonthFormReportUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/tb-stat")).newBuilder()
+        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-month-report")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
 
     public static HttpUrl getPushRegisterFormReportUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/tb-stat")).newBuilder()
-                .setQueryParameter("id", String.valueOf(id))
-                .build();
-    }
-
-
-    public static HttpUrl getPushTXTNewUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/tb-new")).newBuilder()
+        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-register")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
@@ -199,7 +198,7 @@ public class AppUtil {
     }
 
     public static HttpUrl getActionTakenCategoryUrl(Context context) {
-        return HttpUrl.parse(getWebService(context).concat("static/action-taken-category"));
+        return HttpUrl.parse(getWebService(context).concat("static/action-category"));
     }
 
     public static HttpUrl getChallengeStatusUrl(Context context) {

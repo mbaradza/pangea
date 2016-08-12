@@ -402,19 +402,30 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
+                android:text="Save" />
 
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_span="2"
-                    android:text="Save" />
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit" />
 
-            </TableRow>
+            <Button
+                android:id="@+id/btn_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:drawablePadding="16dp"
+                android:drawableTop="@mipmap/ic_check"
+                android:text="Submitted"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
         </TableLayout>
 

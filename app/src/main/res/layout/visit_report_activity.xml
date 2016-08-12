@@ -31,15 +31,6 @@
                 android:text="Select Focus Areas" />
 
             <TextView
-                style="@style/TextViewInputStyle"
-                android:text="Action Category"></TextView>
-
-            <Spinner
-                android:id="@+id/action_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:id="@+id/txt_other"
                 style="@style/TextViewInputStyle"
                 android:text="Please Specify/Describe Focus Area"></TextView>

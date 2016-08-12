@@ -29,7 +29,7 @@ public class MentorVisitReport extends Model {
     public CaseFile caseFile;
 
     @Expose
-    public List<MentorShipFocusArea> focusAreas;
+    public List<MentorShipFocusArea> focusAreas = new ArrayList<>();
 
     @Expose
     @Column(name = "hours")
@@ -51,12 +51,6 @@ public class MentorVisitReport extends Model {
     @Expose
     @Column(name = "action_taken")
     public String action_taken;
-
-
-    @SerializedName("action_taken_category")
-    @Expose
-    @Column(name = "action_taken_category")
-    public ActionTakenCategory action_taken_category;
 
     @Expose
     @Column(name = "observation")

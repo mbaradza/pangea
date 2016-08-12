@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,14 +12,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import zw.co.ncmp.business.ARTForm;
-import zw.co.ncmp.business.ChallengeStatus;
 import zw.co.ncmp.business.Facility;
-import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.util.AppUtil;
 
@@ -48,7 +44,10 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
     EditText maleTwentyPlus;
     EditText femaleTwentyPlus;
 
+    Button btn_completed;
+    Button btn_submit;
     Button btn_save;
+
     private ARTForm artForm;
     private DatePickerDialog datePickerDialog;
 
@@ -155,16 +154,30 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
 
-        if (artForm.serverId != null) {
-            btn_save.setVisibility(View.GONE);
+        btn_completed = (Button) findViewById(R.id.btn_completed);
+        btn_completed.setVisibility(View.GONE);
+
+        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_submit.setOnClickListener(this);
+        btn_submit.setVisibility(View.GONE);
+
+        if (artForm.dateCreated != null) {
+            btn_submit.setVisibility(View.VISIBLE);
         }
+
+        if (artForm.dateSubmitted != null) {
+            btn_submit.setVisibility(View.GONE);
+            btn_save.setVisibility(View.GONE);
+            btn_completed.setVisibility(View.VISIBLE);
+        }
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent;
+
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 artForm.facility = (Facility) facility.getSelectedItem();
@@ -190,12 +203,33 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
                 artForm.femaleTwentyPlus = AppUtil.getLongValue(femaleTwentyPlus.getText().toString());
 
                 artForm.save();
-                intent = new Intent(this, ARTFormListActivity.class);
-                startActivity(intent);
-                finish();
+                btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(ARTFormActivity.this, "Saved");
+
             } else {
                 return;
             }
+        }
+
+        if (v.getId() == btn_submit.getId()) {
+            new AlertDialog.Builder(context)
+                    .setMessage("Are you sure you want to submit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            if (validate()) {
+                                artForm.dateSubmitted = new Date();
+                                artForm.save();
+                                btn_completed.setVisibility(View.VISIBLE);
+                                btn_submit.setVisibility(View.GONE);
+                                btn_save.setVisibility(View.GONE);
+                                AppUtil.createLongNotification(ARTFormActivity.this, "Submitted for Upload to Server");
+                            }
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         if (v.getId() == dateCreated.getId()) {
@@ -248,9 +282,7 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if (validate()) {
-                            finish();
-                        }
+                        finish();
                     }
                 })
                 .setNegativeButton("No", null)

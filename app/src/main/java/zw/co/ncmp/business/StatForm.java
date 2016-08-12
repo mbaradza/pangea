@@ -115,6 +115,9 @@ public class StatForm  extends Model {
     @Column(name = "negativeHIV")
     public Long negativeHIV;
 
+    @Column(name = "date_submitted", notNull = false)
+    public Date dateSubmitted;
+
     public StatForm() {
         super();
     }
@@ -146,6 +149,7 @@ public class StatForm  extends Model {
                 .from(StatForm.class)
                 .where("facility_id = ?", id)
                 .where("serverId is null")
+                .where("date_submitted is not null")
                 .execute();
     }
 

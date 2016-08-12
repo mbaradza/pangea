@@ -24,7 +24,8 @@ public class DSDSelectionActivity extends MenuBar implements View.OnClickListene
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(createToolBar("DSD Selection"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

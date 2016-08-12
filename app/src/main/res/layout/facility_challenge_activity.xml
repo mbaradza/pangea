@@ -148,7 +148,7 @@
                 android:inputType="textMultiLine"
                 android:lines="5"
                 android:scrollHorizontally="false"
-                android:text="Detail" />
+                android:text="" />
 
             <TextView
                 style="@style/TextViewInputStyle"

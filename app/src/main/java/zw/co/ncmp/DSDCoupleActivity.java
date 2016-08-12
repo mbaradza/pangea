@@ -204,8 +204,8 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
 
                 dsdCouple.save();
-
                 btn_submit.setVisibility(View.VISIBLE);
+                AppUtil.createShortNotification(DSDCoupleActivity.this, "Saved");
             } else {
                 return;
             }

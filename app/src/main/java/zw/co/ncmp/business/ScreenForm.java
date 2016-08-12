@@ -119,6 +119,9 @@ public class ScreenForm  extends Model {
     @Column(name = "femaleTwentyPlus")
     public Long femaleTwentyPlus;
 
+    @Column(name = "date_submitted", notNull = false)
+    public Date dateSubmitted;
+
     public ScreenForm() {
         super();
     }
@@ -150,6 +153,7 @@ public class ScreenForm  extends Model {
                 .from(ScreenForm.class)
                 .where("facility_id = ?", id)
                 .where("serverId is null")
+                .where("date_submitted is not null")
                 .execute();
     }
 
