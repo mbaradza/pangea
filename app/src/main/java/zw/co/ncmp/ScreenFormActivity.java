@@ -160,6 +160,7 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
+        btn_save.setBackgroundResource(R.drawable.finish_background);
 
         btn_completed = (Button) findViewById(R.id.btn_completed);
         btn_completed.setVisibility(View.GONE);
@@ -167,6 +168,7 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
         btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_submit.setOnClickListener(this);
         btn_submit.setVisibility(View.GONE);
+        btn_submit.setBackgroundResource(R.drawable.finish_background);
 
         if (screenForm.dateCreated != null) {
             btn_submit.setVisibility(View.VISIBLE);

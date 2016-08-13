@@ -34,6 +34,7 @@ public class ScreenFormListActivity extends MenuBar implements AdapterView.OnIte
             public void onClick(View view) {
                 Intent intent = new Intent(ScreenFormListActivity.this, ScreenFormActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

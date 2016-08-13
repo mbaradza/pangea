@@ -53,7 +53,7 @@ public class CaseMentorListActivity extends MenuBar implements View.OnClickListe
         btn_load.setText("ADD ALL");
         btn_load.setVisibility(View.GONE);
 
-        setSupportActionBar(createToolBar("Select Mentors List"));
+        setSupportActionBar(createToolBar("Select Team Members"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

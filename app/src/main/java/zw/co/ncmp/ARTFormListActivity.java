@@ -34,6 +34,7 @@ public class ARTFormListActivity extends MenuBar implements AdapterView.OnItemCl
             public void onClick(View view) {
                 Intent intent = new Intent(ARTFormListActivity.this, ARTFormActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

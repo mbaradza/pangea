@@ -15,16 +15,22 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tb_selection_activity);
+        setContentView(R.layout.selection_activity);
 
         btn_option_one = (Button) findViewById(R.id.btn_option_one);
         btn_option_one.setOnClickListener(this);
+        btn_option_one.setBackgroundResource(R.drawable.finish_background);
+        btn_option_one.setText("TB ART");
 
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
+        btn_option_two.setBackgroundResource(R.drawable.finish_background);
+        btn_option_two.setText("TB SCREENDX");
 
         btn_option_three = (Button) findViewById(R.id.btn_option_three);
         btn_option_three.setOnClickListener(this);
+        btn_option_three.setBackgroundResource(R.drawable.finish_background);
+        btn_option_three.setText("TB STAT");
 
         setSupportActionBar(createToolBar("TB Selection"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

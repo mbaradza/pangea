@@ -58,6 +58,8 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
     Button btn_question_nine;
     Button btn_question_ten;
 
+    TextView title;
+
     private DatePickerDialog datePickerDialog;
 
     @Override
@@ -69,8 +71,9 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
         Long registerForm_id = intent.getLongExtra(AppUtil.ID, 0);
 
         facility = (Spinner) findViewById(R.id.facility);
-
         period = (Spinner) findViewById(R.id.period);
+        title = (TextView) findViewById(R.id.txt_name);
+
 
         testedOPD = (EditText) findViewById(R.id.testedOPD);
         positiveTestedOPD = (EditText) findViewById(R.id.positiveTestedOPD);
@@ -139,6 +142,8 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             registerForm = new MonthReportForm();
             setSupportActionBar(createToolBar("Month Report Form"));
         }
+
+        title.setText("Month Report Form");
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Facility.getAll());

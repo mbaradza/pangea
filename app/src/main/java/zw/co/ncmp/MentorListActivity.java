@@ -30,11 +30,11 @@ public class MentorListActivity extends MenuBar implements AdapterView.OnItemCli
         caseFile = CaseFile.get(case_file_id);
         if (caseFile != null) {
             mentorAdapter = new MentorAdapter(this, new ArrayList<>(CaseFileMentor.getMentors(case_file_id)));
-            setSupportActionBar(createToolBar(AppUtil.getStringDate(caseFile.dateCreated) + " - Mentor List"));
+            setSupportActionBar(createToolBar(AppUtil.getStringDate(caseFile.dateCreated) + " - Team Members"));
         } else {
             mentorAdapter = new MentorAdapter(this, new ArrayList<>(Mentor.getAll()));
             listView.setOnItemClickListener(this);
-            setSupportActionBar(createToolBar("Mentor List"));
+            setSupportActionBar(createToolBar("Team Members"));
         }
         listView.setAdapter(mentorAdapter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

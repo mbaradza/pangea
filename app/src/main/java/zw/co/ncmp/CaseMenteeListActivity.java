@@ -46,9 +46,9 @@ public class CaseMenteeListActivity extends MenuBar implements View.OnClickListe
 
         btn_load = (Button) findViewById(R.id.btn_load);
         btn_load.setOnClickListener(this);
-        btn_load.setText("ADD NEW FACILITY MENTEE");
+        btn_load.setText("ADD NEW FACILITY STAFF");
 
-        setSupportActionBar(createToolBar("Select Mentees List"));
+        setSupportActionBar(createToolBar("Select Facility Staff"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

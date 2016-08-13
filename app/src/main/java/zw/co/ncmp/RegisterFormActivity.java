@@ -60,6 +60,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
 
     private DatePickerDialog datePickerDialog;
 
+    TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +71,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         Long registerForm_id = intent.getLongExtra(AppUtil.ID, 0);
 
         facility = (Spinner) findViewById(R.id.facility);
-
         period = (Spinner) findViewById(R.id.period);
+        title = (TextView) findViewById(R.id.txt_name);
 
         testedOPD = (EditText) findViewById(R.id.testedOPD);
         positiveTestedOPD = (EditText) findViewById(R.id.positiveTestedOPD);
@@ -140,6 +142,8 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
             setSupportActionBar(createToolBar("Registers"));
         }
 
+        title.setText("Registers");
+
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -190,6 +194,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
+        btn_save.setBackgroundResource(R.drawable.finish_background);
 
         btn_completed = (Button) findViewById(R.id.btn_completed);
         btn_completed.setVisibility(View.GONE);
@@ -197,6 +202,7 @@ public class RegisterFormActivity extends MenuBar implements View.OnClickListene
         btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_submit.setOnClickListener(this);
         btn_submit.setVisibility(View.GONE);
+        btn_submit.setBackgroundResource(R.drawable.finish_background);
 
         if (registerForm.dateCreated != null) {
             btn_submit.setVisibility(View.VISIBLE);

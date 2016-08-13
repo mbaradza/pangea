@@ -10,19 +10,27 @@ import zw.co.ncmp.business.DSDIndividual;
 public class DSDSelectionActivity extends MenuBar implements View.OnClickListener {
 
     Button btn_option_one;
+    Button btn_option_three;
     Button btn_option_two;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dsd_selection_activity);
+        setContentView(R.layout.selection_activity);
 
         btn_option_one = (Button) findViewById(R.id.btn_option_one);
         btn_option_one.setOnClickListener(this);
+        btn_option_one.setBackgroundResource(R.drawable.finish_background);
+        btn_option_one.setText("Individual Form");
 
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
+        btn_option_two.setBackgroundResource(R.drawable.finish_background);
+        btn_option_two.setText("Couple Form");
+
+        btn_option_three = (Button) findViewById(R.id.btn_option_three);
+        btn_option_three.setVisibility(View.GONE);
 
         setSupportActionBar(createToolBar("DSD Selection"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

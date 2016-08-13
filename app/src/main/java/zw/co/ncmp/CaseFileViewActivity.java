@@ -91,14 +91,14 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
 
         txt_view_mentees = (TextView) findViewById(R.id.txt_view_mentees);
         txt_view_mentees.setOnClickListener(this);
-        txt_view_mentees.setText("MENTEES (" + CaseFileMentee.getCount(caseFile.getId()) + ")");
+        txt_view_mentees.setText("Facility Staff (" + CaseFileMentee.getCount(caseFile.getId()) + ")");
 
         btn_add_mentor = (Button) findViewById(R.id.btn_add_mentor);
         btn_add_mentor.setOnClickListener(this);
 
         txt_view_mentors = (TextView) findViewById(R.id.txt_view_mentors);
         txt_view_mentors.setOnClickListener(this);
-        txt_view_mentors.setText("Mentors (" + CaseFileMentor.getCount(caseFile.getId()) + ")");
+        txt_view_mentors.setText("Team Members (" + CaseFileMentor.getCount(caseFile.getId()) + ")");
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);

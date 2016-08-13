@@ -24,8 +24,25 @@
 
         <Spinner
             android:id="@+id/facility"
+            style="@style/SpinnerStyle" />
+
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Select Period"></TextView>
+
+        <Spinner
+            android:id="@+id/period"
+            style="@style/SpinnerStyle" />
+
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Date Completed" />
+
+        <EditText
+            android:id="@+id/dateCreated"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Date Completed" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -37,43 +54,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Period" />
-
-                <Spinner
-                    android:id="@+id/period"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Date Completed" />
-
-                <EditText
-                    android:id="@+id/dateCreated"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Date Completed" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewInputStyle"
                     android:text="Name" />
 
                 <EditText
@@ -104,8 +85,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewInputStyle"
                     android:text="Numerator" />
 
                 <EditText
@@ -137,8 +117,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewInputStyle"
                     android:text="Denominator" />
 
                 <EditText
@@ -369,8 +348,7 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewInputStyle"
                     android:text="Already On ART" />
 
                 <EditText
@@ -388,10 +366,8 @@
                 android:padding="5dip">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    style="@style/TextViewInputStyle"
                     android:text="New On ART" />
-
 
                 <EditText
                     android:id="@+id/newOnART"
@@ -404,15 +380,28 @@
 
             <Button
                 android:id="@+id/btn_save"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:layout_weight="1"
+                android:background="@drawable/selectable_item_background"
+                android:text="Save"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/dividerHorizontal" />
 
             <Button
                 android:id="@+id/btn_submit"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Submit" />
+                android:layout_weight="1"
+                android:background="@drawable/selectable_item_background"
+                android:text="Submit"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btn_completed"

@@ -30,8 +30,7 @@
 
             <Spinner
                 android:id="@+id/challenge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 android:id="@+id/txt_other"
@@ -82,8 +81,7 @@
 
             <Spinner
                 android:id="@+id/specific"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 style="@style/TextViewInputStyle"
@@ -105,8 +103,7 @@
 
             <Spinner
                 android:id="@+id/achievable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 style="@style/TextViewInputStyle"
@@ -114,8 +111,7 @@
 
             <Spinner
                 android:id="@+id/realistic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 style="@style/TextViewInputStyle"
@@ -132,8 +128,7 @@
 
             <Spinner
                 android:id="@+id/action_taken_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 style="@style/TextViewInputStyle"
@@ -156,8 +151,7 @@
 
             <Spinner
                 android:id="@+id/challenge_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/SpinnerStyle" />
 
             <TextView
                 android:id="@+id/txt_follow_up_date"

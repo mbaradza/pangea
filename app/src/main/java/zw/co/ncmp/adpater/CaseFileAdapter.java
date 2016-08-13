@@ -48,7 +48,7 @@ public class CaseFileAdapter extends ArrayAdapter<CaseFile>  {
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
         CaseFile item = list.get(position);
-        holder.name.setText((position + 1) + " . " + item);
+        holder.name.setText((position + 1) + " . " + item.facility);
         holder.more.setText("Date Created: " + AppUtil.getStringDate(item.dateCreated));
         return rowView;
     }

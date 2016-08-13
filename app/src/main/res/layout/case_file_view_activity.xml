@@ -80,7 +80,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:onClick="onDrawSelectorOnTop"
-                    android:text="Select Mentees" />
+                    android:text="Select Facility Staff" />
 
                 <Button
                     android:id="@+id/btn_add_mentor"
@@ -89,7 +89,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:onClick="onDrawSelectorOnTop"
-                    android:text="Select Mentors" />
+                    android:text="Select Team Members" />
 
             </LinearLayout>
 

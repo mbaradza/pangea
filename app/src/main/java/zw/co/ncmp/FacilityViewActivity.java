@@ -64,7 +64,7 @@ public class FacilityViewActivity extends MenuBar implements View.OnClickListene
 
         btn_view_case_files = (Button) findViewById(R.id.btn_view_case_files);
         btn_view_case_files.setOnClickListener(this);
-        btn_view_case_files.setText("MENTOR SUPPORT REPORTS (" + CaseFile.getTotalCaseFilesForFacility(facility.getId()) + ")");
+        btn_view_case_files.setText("SITE SUPPORT REPORTS (" + CaseFile.getTotalCaseFilesForFacility(facility.getId()) + ")");
 
         if (CaseFile.caseFileOpen(facility.getId())) {
             btn_add_case_file.setVisibility(View.GONE);
@@ -72,7 +72,7 @@ public class FacilityViewActivity extends MenuBar implements View.OnClickListene
 
         btn_view_mentees = (Button) findViewById(R.id.btn_view_mentees);
         btn_view_mentees.setOnClickListener(this);
-        btn_view_mentees.setText("Facility Mentees (" + Mentee.getMenteeCount(facility.getId()) + ")");
+        btn_view_mentees.setText("Facility Staff (" + Mentee.getMenteeCount(facility.getId()) + ")");
 
 
         btn_load = (Button) findViewById(R.id.btn_load);

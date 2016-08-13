@@ -17,38 +17,44 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_height_3">
 
-        <TableLayout
+        <LinearLayout
             android:id="@+id/tbl_national"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dip">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_option_one"
-                android:layout_width="match_parent"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textColor="@color/white"
+                android:background="@drawable/selectable_item_background"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="TB"
-                />
+                android:text="TB" />
 
             <Button
                 android:id="@+id/btn_option_two"
-                android:layout_width="match_parent"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textColor="@color/white"
+                android:background="@drawable/selectable_item_background"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="DSD" />
 
             <Button
                 android:id="@+id/btn_option_three"
-                android:layout_width="match_parent"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textColor="@color/white"
+                android:background="@drawable/selectable_item_background"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="OSDV" />
 
-        </TableRow>
-
-        </TableLayout>
+        </LinearLayout>
 
         <ListView
             android:id="@+id/facility_list_view"

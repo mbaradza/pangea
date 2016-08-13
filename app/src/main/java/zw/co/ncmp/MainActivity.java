@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -34,7 +35,7 @@ public class MainActivity extends MenuBar implements View.OnClickListener, Adapt
     Button btn_option_one;
     Button btn_option_two;
     Button btn_option_three;
-    TableLayout tbl_national;
+    LinearLayout tbl_national;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class MainActivity extends MenuBar implements View.OnClickListener, Adapt
 
         setSupportActionBar(createToolBar("Facilities"));
 
-        tbl_national = (TableLayout) findViewById(R.id.tbl_national);
+        tbl_national = (LinearLayout) findViewById(R.id.tbl_national);
         tbl_national.setVisibility(View.GONE);
 
         if (AppUtil.isNational(mentor.mentorRole)) {
@@ -58,12 +59,15 @@ public class MainActivity extends MenuBar implements View.OnClickListener, Adapt
 
         btn_option_one = (Button) findViewById(R.id.btn_option_one);
         btn_option_one.setOnClickListener(this);
+        btn_option_one.setBackgroundResource(R.drawable.finish_background);
 
         btn_option_two = (Button) findViewById(R.id.btn_option_two);
         btn_option_two.setOnClickListener(this);
+        btn_option_two.setBackgroundResource(R.drawable.finish_background);
 
         btn_option_three = (Button) findViewById(R.id.btn_option_three);
         btn_option_three.setOnClickListener(this);
+        btn_option_three.setBackgroundResource(R.drawable.finish_background);
 
         facility_list_view = (ListView) findViewById(R.id.facility_list_view);
         facility_list_view.setEmptyView(findViewById(R.id.empty));
@@ -73,7 +77,7 @@ public class MainActivity extends MenuBar implements View.OnClickListener, Adapt
         facility_list_view.setOnItemClickListener(this);
 
         txt_mentor = (TextView) findViewById(R.id.txt_more);
-        txt_mentor.setText("Mentor ID: " + AppUtil.getWebUserId(context) + " - Facilities(" + Facility.getCount() + ")");
+        txt_mentor.setText("Member ID: " + AppUtil.getWebUserId(context) + " - Facilities(" + Facility.getCount() + ")");
 
         txt_user_name = (TextView) findViewById(R.id.txt_name);
         txt_user_name.setText(AppUtil.getUsername(MainActivity.this));

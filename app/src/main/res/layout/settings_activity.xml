@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="12dp"
-                        android:text="Mentor"/>
+                        android:text="Team Member" />
 
                     <TextView
                         android:id="@+id/txt_name"

@@ -33,12 +33,12 @@ public class MenteeListActivity extends MenuBar implements AdapterView.OnItemCli
         if (id !=0) {
             facility = Facility.get(id);
             menteeAdapter = (new MenteeAdapter(this, new ArrayList<Mentee>(Mentee.getMentees(facility.getId()))));
-            setSupportActionBar(createToolBar(facility + " - Mentee List"));
+            setSupportActionBar(createToolBar(facility + " - Facility Staff"));
             listView.setOnItemClickListener(this);
         } else if (case_file_id != 0) {
             caseFile = CaseFile.get(case_file_id);
             menteeAdapter = (new MenteeAdapter(this, new ArrayList<Mentee>(CaseFileMentee.getMentees(caseFile.getId()))));
-            setSupportActionBar(createToolBar("SITE SUPPORT - Mentee List : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + caseFile.facility));
+            setSupportActionBar(createToolBar("SITE SUPPORT - Facility Staff : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + caseFile.facility));
         } else {
             finish();
         }

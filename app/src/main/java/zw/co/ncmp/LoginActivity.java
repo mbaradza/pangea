@@ -50,8 +50,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         server_url.setText(AppUtil.getWebService(context));
 
         login = ((Button) findViewById(R.id.login));
-
         login.setOnClickListener(this);
+        login.setBackgroundResource(R.drawable.finish_background);
 
         server_url.setVisibility(View.GONE);
     }

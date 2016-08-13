@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"
-                android:text="Mentor" />
+                android:text="Team Member" />
 
             <TextView
                 android:id="@+id/txt_name"
