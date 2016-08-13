@@ -45,10 +45,6 @@
             android:layout_height="wrap_content"
             android:text="FACILITY STAFF" />
 
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="VIEW SITE SUPPORT REPORT"></TextView>
-
         <ListView
             android:id="@+id/case_file_list_View"
             android:layout_width="match_parent"

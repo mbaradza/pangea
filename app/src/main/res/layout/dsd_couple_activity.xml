@@ -16,6 +16,11 @@
             style="@style/TextViewStyle"
             android:text="@string/dsd_couple_title"></TextView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/dividerHorizontal" />
+
         <Button
             android:id="@+id/btn_submit"
             style="?android:attr/buttonBarButtonStyle"
@@ -94,20 +99,13 @@
                 android:layout_span="2"
                 android:text="Question_3" />
 
-            <TableRow
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_span="2"
-                    android:text="Disaggregated by Facility Delivery Point Number tested and number tested positive."
-                    android:textStyle="bold" />
-
-            </TableRow>
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="Disaggregated by Facility Delivery Point Number tested and number tested positive."
+                android:textStyle="bold" />
 
             <TableRow
                 android:layout_width="wrap_content"

@@ -792,7 +792,7 @@ public class MonthReportForm extends Model {
     }
 
     public Long femaleQuestion4() {
-        return AppUtil.getLong(femaleLessThanOne5) + AppUtil.getLong(femaleOneToFour4) +
+        return AppUtil.getLong(femaleLessThanOne4) + AppUtil.getLong(femaleOneToFour4) +
                 AppUtil.getLong(femaleFiveToNine4) + AppUtil.getLong(femaleTenToFourteen4) +
                 AppUtil.getLong(femaleFifteenToNineteen4) + AppUtil.getLong(femaleTwentyToTwentyFour4) +
                 AppUtil.getLong(femaleTwentyFiveToFortyNine4) + AppUtil.getLong(femaleFiftyPlus4);

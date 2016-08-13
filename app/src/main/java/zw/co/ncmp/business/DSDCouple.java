@@ -46,7 +46,7 @@ public class DSDCouple extends Model {
     public String serverCreatedDate;
 
     @Expose
-    //@Column(name = "name")
+    @Column(name = "name")
     public String name;
 
     @Expose
@@ -360,42 +360,42 @@ public class DSDCouple extends Model {
             };
 
     public Long maleQuestion1() {
-        return AppUtil.getLong(maleOneToFour1) + AppUtil.getLong(maleOneToFour1) +
+        return AppUtil.getLong(maleLessThanOne1) + AppUtil.getLong(maleOneToFour1) +
                 AppUtil.getLong(maleFiveToNine1) + AppUtil.getLong(maleTenToFourteen1) +
                 AppUtil.getLong(maleFifteenToNineteen1) + AppUtil.getLong(maleTwentyToTwentyFour1) +
                 AppUtil.getLong(maleTwentyFiveToFortyNine1) + AppUtil.getLong(maleFiftyPlus1);
     }
 
     public Long femaleQuestion1() {
-        return AppUtil.getLong(femaleOneToFour1) + AppUtil.getLong(femaleOneToFour1) +
+        return AppUtil.getLong(femaleLessThanOne1) + AppUtil.getLong(femaleOneToFour1) +
                 AppUtil.getLong(femaleFiveToNine1) + AppUtil.getLong(femaleTenToFourteen1) +
                 AppUtil.getLong(femaleFifteenToNineteen1) + AppUtil.getLong(femaleTwentyToTwentyFour1) +
                 AppUtil.getLong(femaleTwentyFiveToFortyNine1) + AppUtil.getLong(femaleFiftyPlus1);
     }
 
     public Long maleQuestion2() {
-        return AppUtil.getLong(maleOneToFour2) + AppUtil.getLong(maleOneToFour2) +
+        return AppUtil.getLong(maleLessThanOne2) + AppUtil.getLong(maleOneToFour2) +
                 AppUtil.getLong(maleFiveToNine2) + AppUtil.getLong(maleTenToFourteen2) +
                 AppUtil.getLong(maleFifteenToNineteen2) + AppUtil.getLong(maleTwentyToTwentyFour2) +
                 AppUtil.getLong(maleTwentyFiveToFortyNine2) + AppUtil.getLong(maleFiftyPlus2);
     }
 
     public Long femaleQuestion2() {
-        return AppUtil.getLong(femaleOneToFour2) + AppUtil.getLong(femaleOneToFour2) +
+        return AppUtil.getLong(femaleLessThanOne2) + AppUtil.getLong(femaleOneToFour2) +
                 AppUtil.getLong(femaleFiveToNine2) + AppUtil.getLong(femaleTenToFourteen2) +
                 AppUtil.getLong(femaleFifteenToNineteen2) + AppUtil.getLong(femaleTwentyToTwentyFour2) +
                 AppUtil.getLong(femaleTwentyFiveToFortyNine2) + AppUtil.getLong(femaleFiftyPlus2);
     }
 
     public Long maleQuestion3() {
-        return AppUtil.getLong(maleOneToFour3) + AppUtil.getLong(maleOneToFour3) +
+        return AppUtil.getLong(maleLessThanOne3) + AppUtil.getLong(maleOneToFour3) +
                 AppUtil.getLong(maleFiveToNine3) + AppUtil.getLong(maleTenToFourteen3) +
                 AppUtil.getLong(maleFifteenToNineteen3) + AppUtil.getLong(maleTwentyToTwentyFour3) +
                 AppUtil.getLong(maleTwentyFiveToFortyNine3) + AppUtil.getLong(maleFiftyPlus3);
     }
 
     public Long femaleQuestion3() {
-        return AppUtil.getLong(femaleOneToFour3) + AppUtil.getLong(femaleOneToFour3) +
+        return AppUtil.getLong(femaleLessThanOne3) + AppUtil.getLong(femaleOneToFour3) +
                 AppUtil.getLong(femaleFiveToNine3) + AppUtil.getLong(femaleTenToFourteen3) +
                 AppUtil.getLong(femaleFifteenToNineteen3) + AppUtil.getLong(femaleTwentyToTwentyFour3) +
                 AppUtil.getLong(femaleTwentyFiveToFortyNine3) + AppUtil.getLong(femaleFiftyPlus3);

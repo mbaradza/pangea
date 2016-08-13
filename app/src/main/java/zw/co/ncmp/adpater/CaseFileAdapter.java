@@ -2,6 +2,8 @@ package zw.co.ncmp.adpater;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +50,9 @@ public class CaseFileAdapter extends ArrayAdapter<CaseFile>  {
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
         CaseFile item = list.get(position);
-        holder.name.setText((position + 1) + " . " + item.facility);
-        holder.more.setText("Date Created: " + AppUtil.getStringDate(item.dateCreated));
+        holder.name.setText((position + 1) + " . " + item.facility + " : " + AppUtil.getStringDate(item.dateCreated));
+        holder.more.setText("View Detail");
+        holder.more.setTypeface(null, Typeface.BOLD_ITALIC);
         return rowView;
     }
 

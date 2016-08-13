@@ -126,20 +126,13 @@
                 android:layout_height="wrap_content"
                 android:text="Question_8" />
 
-            <TableRow
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_span="2"
-                    android:text="Disaggregated by Facility Delivery Point Number tested and number tested positive."
-                    android:textStyle="bold" />
-
-            </TableRow>
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="Disaggregated by Facility Delivery Point Number tested and number tested positive."
+                android:textStyle="bold" />
 
             <TableRow
                 android:layout_width="wrap_content"

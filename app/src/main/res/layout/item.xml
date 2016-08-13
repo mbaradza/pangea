@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_margin="1dp"
         card_view:cardBackgroundColor="@color/review_green"
-        card_view:cardCornerRadius="2dp"
+        card_view:cardCornerRadius="10dp"
         card_view:contentPadding="10dp">
 
         <RelativeLayout
@@ -22,20 +22,23 @@
 
             <TextView
                 android:id="@+id/txt_name"
-                style="@style/TextViewStyle"
+                style="@style/TextViewStyle2"
                 android:layout_alignParentTop="true"
                 android:text="VIEW SITE SUPPORT REPORT"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_more"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txt_name"
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
-                android:text="More...." />
+                android:text="More."
+                android:gravity="right"
+                android:layout_marginRight="@dimen/activity_height"
+                android:textAlignment="gravity" />
 
         </RelativeLayout>
 

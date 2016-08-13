@@ -54,40 +54,27 @@
             android:layout_height="wrap_content"
             android:hint="Date Completed" />
 
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    style="@style/TextViewInputStyle"
-                    android:text="Name" />
-
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_span="2"
-                    android:text="1. The number of PLHIV who were screened for TB symptoms at the last clinical visit to an HIV care facility during the reporting period."
-                    android:textStyle="bold" />
-
-            </TableRow>
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="1. The number of PLHIV who were screened for TB symptoms at the last clinical visit to an HIV care facility during the reporting period."
+                android:textStyle="bold" />
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -138,20 +125,13 @@
 
             </TableRow>
 
-            <TableRow
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_span="2"
-                    android:text="3. The number of patients that had a specimen sent for bacteriologic diagnosis of active TB"
-                    android:textStyle="bold" />
-
-            </TableRow>
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="3. The number of patients that had a specimen sent for bacteriologic diagnosis of active TB"
+                android:textStyle="bold" />
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -240,21 +220,13 @@
 
             </TableRow>
 
-
-            <TableRow
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_span="2"
-                    android:text="5. Fine Disaggregation by Age Male and Female"
-                    android:textStyle="bold" />
-
-            </TableRow>
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="5. Fine Disaggregation by Age Male and Female"
+                android:textStyle="bold" />
 
             <TableRow
                 android:layout_width="wrap_content"
