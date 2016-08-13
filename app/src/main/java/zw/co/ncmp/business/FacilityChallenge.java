@@ -66,6 +66,7 @@ public class FacilityChallenge extends Model {
     @Column(name = "realistic")
     public String realistic;
 
+    @SerializedName("specify")
     @Expose
     @Column(name = "specific")
     public String specific;
@@ -96,7 +97,7 @@ public class FacilityChallenge extends Model {
 
     @Expose
     @Column(name = "action_category_id")
-    public ActionTakenCategory actionCategory;
+    public ActionCategory actionCategory;
 
     @Column(name = "facility_challenge_id", notNull = false)
     public FacilityChallenge previousChallenge;
@@ -242,11 +243,11 @@ public class FacilityChallenge extends Model {
             i.measurementMethod = jsonObject.getString("measurementMethod");
             i.achievable = jsonObject.getString("achievable");
             i.realistic = jsonObject.getString("realistic");
-            i.specific = jsonObject.getString("specific");
+            i.specific = jsonObject.getString("specify");
             i.specificDetail = jsonObject.getString("specificDetail");
             //action taken category
-            JSONObject item = jsonObject.getJSONObject("actionTakenCategory");
-            i.actionCategory = ActionTakenCategory.getActionTakenCategory(Long.valueOf(item.getString("id")));
+            JSONObject item = jsonObject.getJSONObject("actionCategory");
+            i.actionCategory = ActionCategory.getActionTakenCategory(Long.valueOf(item.getString("id")));
 
             //challenge
             item = jsonObject.getJSONObject("challenge");

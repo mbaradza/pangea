@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import zw.co.ncmp.R;
+import zw.co.ncmp.util.AppUtil;
 
 /**
  * Created by tdhlakama on 2/6/2016.
@@ -44,6 +45,10 @@ public class MonthReportForm extends Model {
     @SerializedName("datec")
     @Expose
     public String serverCreatedDate;
+
+    @Expose
+    @Column(name = "name")
+    public String name;
 
     @Expose
     @Column(name = "maleLessThanOne1")
@@ -677,13 +682,6 @@ public class MonthReportForm extends Model {
         return new Select().from(MonthReportForm.class).where("serverId = ?", id).executeSingle();
     }
 
-    public static List<MonthReportForm> getAll() {
-        return new Select()
-                .from(MonthReportForm.class)
-                .orderBy("date_created ASC")
-                .execute();
-    }
-
     public static List<MonthReportForm> getFilesToUpload(Long id) {
         return new Select()
                 .from(MonthReportForm.class)
@@ -693,13 +691,20 @@ public class MonthReportForm extends Model {
                 .execute();
     }
 
+    public static List<MonthReportForm> getAll() {
+        return new Select()
+                .from(MonthReportForm.class)
+                .orderBy("date_created ASC")
+                .execute();
+    }
+
     public static void deleteAll() {
         new Delete().from(MonthReportForm.class).execute();
     }
 
     @Override
     public String toString() {
-        return "Monthly Report Form";
+        return "Register Form";
     }
 
     public static MonthReportForm fromJson(JSONObject jsonObject) {
@@ -737,61 +742,115 @@ public class MonthReportForm extends Model {
             new TypeToken<List<MonthReportForm>>() {
             };
 
-
-    public String Question1() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne1 + maleOneToFour1 + maleOneToFour2 +
-                maleFiveToNine1 + maleTenToFourteen1 + maleFifteenToNineteen1 +
-                maleTwentyToTwentyFour1 + maleTwentyFiveToFortyNine1 + maleFiftyPlus1;
+    public Long maleQuestion1() {
+        return AppUtil.getLong(maleLessThanOne1) + AppUtil.getLong(maleOneToFour1) +
+                AppUtil.getLong(maleFiveToNine1) + AppUtil.getLong(maleTenToFourteen1) +
+                AppUtil.getLong(maleFifteenToNineteen1) + AppUtil.getLong(maleTwentyToTwentyFour1) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine1) + AppUtil.getLong(maleFiftyPlus1);
     }
 
-    public String Question2() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne2 + maleOneToFour2 + maleOneToFour2 +
-                maleFiveToNine2 + maleTenToFourteen2 + maleFifteenToNineteen2 +
-                maleTwentyToTwentyFour2 + maleTwentyFiveToFortyNine2 + maleFiftyPlus2;
+    public Long femaleQuestion1() {
+        return AppUtil.getLong(femaleLessThanOne1) + AppUtil.getLong(femaleOneToFour1) +
+                AppUtil.getLong(femaleFiveToNine1) + AppUtil.getLong(femaleTenToFourteen1) +
+                AppUtil.getLong(femaleFifteenToNineteen1) + AppUtil.getLong(femaleTwentyToTwentyFour1) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine1) + AppUtil.getLong(femaleFiftyPlus1);
     }
 
-    public String Question3() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne3 + maleOneToFour3 + maleOneToFour3 +
-                maleFiveToNine3 + maleTenToFourteen3 + maleFifteenToNineteen3 +
-                maleTwentyToTwentyFour3 + maleTwentyFiveToFortyNine3 + maleFiftyPlus3;
+    public Long maleQuestion2() {
+        return AppUtil.getLong(maleLessThanOne2) + AppUtil.getLong(maleOneToFour2) +
+                AppUtil.getLong(maleFiveToNine2) + AppUtil.getLong(maleTenToFourteen2) +
+                AppUtil.getLong(maleFifteenToNineteen2) + AppUtil.getLong(maleTwentyToTwentyFour2) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine2) + AppUtil.getLong(maleFiftyPlus2);
     }
 
-    public String Question4() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne4 + maleOneToFour4 + maleOneToFour4 +
-                maleFiveToNine4 + maleTenToFourteen4 + maleFifteenToNineteen4 +
-                maleTwentyToTwentyFour4 + maleTwentyFiveToFortyNine4 + maleFiftyPlus4;
+    public Long femaleQuestion2() {
+        return AppUtil.getLong(femaleLessThanOne2) + AppUtil.getLong(femaleOneToFour2) +
+                AppUtil.getLong(femaleFiveToNine2) + AppUtil.getLong(femaleTenToFourteen2) +
+                AppUtil.getLong(femaleFifteenToNineteen2) + AppUtil.getLong(femaleTwentyToTwentyFour2) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine2) + AppUtil.getLong(femaleFiftyPlus2);
     }
 
-    public String Question5() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne5 + maleOneToFour5 + maleOneToFour5 +
-                maleFiveToNine5 + maleTenToFourteen5 + maleFifteenToNineteen5 +
-                maleTwentyToTwentyFour5 + maleTwentyFiveToFortyNine5 + maleFiftyPlus5;
+    public Long maleQuestion3() {
+        return AppUtil.getLong(maleLessThanOne3) + AppUtil.getLong(maleOneToFour3) +
+                AppUtil.getLong(maleFiveToNine3) + AppUtil.getLong(maleTenToFourteen3) +
+                AppUtil.getLong(maleFifteenToNineteen3) + AppUtil.getLong(maleTwentyToTwentyFour3) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine3) + AppUtil.getLong(maleFiftyPlus3);
     }
 
-    public String Question6() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne6 + maleOneToFour6 + maleOneToFour6 +
-                maleFiveToNine6 + maleTenToFourteen6 + maleFifteenToNineteen6 +
-                maleTwentyToTwentyFour6 + maleTwentyFiveToFortyNine6 + maleFiftyPlus6;
+    public Long femaleQuestion3() {
+        return AppUtil.getLong(femaleLessThanOne3) + AppUtil.getLong(femaleOneToFour3) +
+                AppUtil.getLong(femaleFiveToNine3) + AppUtil.getLong(femaleTenToFourteen3) +
+                AppUtil.getLong(femaleFifteenToNineteen3) + AppUtil.getLong(femaleTwentyToTwentyFour3) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine3) + AppUtil.getLong(femaleFiftyPlus3);
     }
 
-    public String Question7() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne7 + maleOneToFour7 + maleOneToFour7 +
-                maleFiveToNine7 + maleTenToFourteen7 + maleFifteenToNineteen7 +
-                maleTwentyToTwentyFour7 + maleTwentyFiveToFortyNine7 + maleFiftyPlus7;
+    public Long maleQuestion4() {
+        return AppUtil.getLong(maleLessThanOne4) + AppUtil.getLong(maleOneToFour4) +
+                AppUtil.getLong(maleFiveToNine4) + AppUtil.getLong(maleTenToFourteen4) +
+                AppUtil.getLong(maleFifteenToNineteen4) + AppUtil.getLong(maleTwentyToTwentyFour4) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine4) + AppUtil.getLong(maleFiftyPlus4);
     }
 
-    public String Question8() {
-        return R.string.register_question_one + " " +
-                maleLessThanOne8 + maleOneToFour8 + maleOneToFour8 +
-                maleFiveToNine8 + maleTenToFourteen8 + maleFifteenToNineteen8 +
-                maleTwentyToTwentyFour8 + maleTwentyFiveToFortyNine8 + maleFiftyPlus8;
+    public Long femaleQuestion4() {
+        return AppUtil.getLong(femaleLessThanOne5) + AppUtil.getLong(femaleOneToFour4) +
+                AppUtil.getLong(femaleFiveToNine4) + AppUtil.getLong(femaleTenToFourteen4) +
+                AppUtil.getLong(femaleFifteenToNineteen4) + AppUtil.getLong(femaleTwentyToTwentyFour4) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine4) + AppUtil.getLong(femaleFiftyPlus4);
     }
 
+    public Long maleQuestion5() {
+        return AppUtil.getLong(maleLessThanOne5) + AppUtil.getLong(maleOneToFour5) +
+                AppUtil.getLong(maleFiveToNine5) + AppUtil.getLong(maleTenToFourteen5) +
+                AppUtil.getLong(maleFifteenToNineteen5) + AppUtil.getLong(maleTwentyToTwentyFour5) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine5) + AppUtil.getLong(maleFiftyPlus5);
+    }
+
+    public Long femaleQuestion5() {
+        return AppUtil.getLong(femaleLessThanOne5) + AppUtil.getLong(femaleOneToFour5) +
+                AppUtil.getLong(femaleFiveToNine5) + AppUtil.getLong(femaleTenToFourteen5) +
+                AppUtil.getLong(femaleFifteenToNineteen5) + AppUtil.getLong(femaleTwentyToTwentyFour5) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine5) + AppUtil.getLong(femaleFiftyPlus5);
+    }
+
+    public Long maleQuestion6() {
+        return AppUtil.getLong(maleLessThanOne6) + AppUtil.getLong(maleOneToFour6) +
+                AppUtil.getLong(maleFiveToNine6) + AppUtil.getLong(maleTenToFourteen6) +
+                AppUtil.getLong(maleFifteenToNineteen6) + AppUtil.getLong(maleTwentyToTwentyFour6) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine6) + AppUtil.getLong(maleFiftyPlus6);
+    }
+
+    public Long femaleQuestion6() {
+        return AppUtil.getLong(femaleLessThanOne6) + AppUtil.getLong(femaleOneToFour6) +
+                AppUtil.getLong(femaleFiveToNine6) + AppUtil.getLong(femaleTenToFourteen6) +
+                AppUtil.getLong(femaleFifteenToNineteen6) + AppUtil.getLong(femaleTwentyToTwentyFour6) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine6) + AppUtil.getLong(femaleFiftyPlus6);
+    }
+
+    public Long maleQuestion7() {
+        return AppUtil.getLong(maleLessThanOne7) + AppUtil.getLong(maleOneToFour7) +
+                AppUtil.getLong(maleFiveToNine7) + AppUtil.getLong(maleTenToFourteen7) +
+                AppUtil.getLong(maleFifteenToNineteen7) + AppUtil.getLong(maleTwentyToTwentyFour7) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine7) + AppUtil.getLong(maleFiftyPlus7);
+    }
+
+    public Long femaleQuestion7() {
+        return AppUtil.getLong(femaleLessThanOne7) + AppUtil.getLong(femaleOneToFour7) +
+                AppUtil.getLong(femaleFiveToNine7) + AppUtil.getLong(femaleTenToFourteen7) +
+                AppUtil.getLong(femaleFifteenToNineteen7) + AppUtil.getLong(femaleTwentyToTwentyFour7) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine7) + AppUtil.getLong(femaleFiftyPlus7);
+    }
+
+    public Long maleQuestion8() {
+        return AppUtil.getLong(maleLessThanOne8) + AppUtil.getLong(maleOneToFour8) +
+                AppUtil.getLong(maleFiveToNine8) + AppUtil.getLong(maleTenToFourteen8) +
+                AppUtil.getLong(maleFifteenToNineteen8) + AppUtil.getLong(maleTwentyToTwentyFour8) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine8) + AppUtil.getLong(maleFiftyPlus8);
+    }
+
+    public Long femaleQuestion8() {
+        return AppUtil.getLong(femaleLessThanOne8) + AppUtil.getLong(femaleOneToFour8) +
+                AppUtil.getLong(femaleFiveToNine8) + AppUtil.getLong(femaleTenToFourteen8) +
+                AppUtil.getLong(femaleFifteenToNineteen8) + AppUtil.getLong(femaleTwentyToTwentyFour8) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine8) + AppUtil.getLong(femaleFiftyPlus8);
+    }
 }

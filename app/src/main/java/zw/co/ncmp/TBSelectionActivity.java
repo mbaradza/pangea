@@ -48,7 +48,7 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
         }
 
         if (v.getId() == btn_option_three.getId()) {
-            intent = new Intent(this, ScreenFormListActivity.class);
+            intent = new Intent(this, StatFormListActivity.class);
         }
 
         if (intent != null) {

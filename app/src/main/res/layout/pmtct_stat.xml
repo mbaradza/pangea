@@ -26,30 +26,15 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_span="2"
-                        android:text="4. PMTCT_STAT"
-                        android:textStyle="bold" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="P2: Pregnant Women HIV tested for the first time in ANC and received results"
-                        android:textStyle="bold" />
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP2"
-                        android:layout_width="150dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -60,13 +45,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="P5: Pregnant women booking for first ANC visit with known HIV positive result" />
+                        android:text="P5: Pregnant women booking for first ANC visit with known HIV positive result"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP5"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -78,13 +64,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="P13: Women tested in L and D for the first time and received results" />
+                        android:text="P13: Women tested in L&amp;D for the first time and received results"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP13"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -95,13 +82,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="Pregnant women booking for first ANC" />
+                        android:text="Pregnant women booking for first ANC"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP1"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -113,18 +101,29 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="P12: Women arriving in L and D with unknown HIV status" />
+                        android:text="P12: Women arriving in L&amp;D with unknown HIV status"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP12"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
                 </TableRow>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/dividerHorizontal" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Disaggregation’s"
+                    android:paddingBottom="@dimen/fab_margin" />
 
                 <TableRow
                     android:layout_width="wrap_content"
@@ -132,30 +131,15 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_span="2"
-                        android:text="Disaggregation’s"
-                        android:textStyle="bold" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="P4: Pregnant Women testing HIV positive in ANC"
-                        android:textStyle="bold" />
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP12DisaggregationP4"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -166,13 +150,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="P14: Women testing HIV positive at first Test in L and D" />
+                        android:text="P14: Women testing HIV positive at first Test in L&amp;D"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP12DisaggregationP14"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -184,13 +169,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="P17: Woman testing HIV positive at retesting in L and D" />
+                        android:text="P17: Woman testing HIV positive at retesting in L&amp;D"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP12DisaggregationP17"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -201,36 +187,24 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="Pregnant women booking for first ANC visit with known HIV positive resutlt" />
+                        android:text="Pregnant women booking for first ANC visit with known HIV positive resutlt"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctSTATP12DisaggregationP5"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <Button
-                        android:id="@+id/btn_next"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Next" />
-
-                    <Button
-                        android:id="@+id/btn_back"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Back" />
-
-                </TableRow>
+                    android:text="Save" />
 
             </TableLayout>
 

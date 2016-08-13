@@ -53,6 +53,16 @@
             style="@style/TextViewInputStyle"
             android:text="Date Completed" />
 
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
         <EditText
             android:id="@+id/dateCreated"
             android:layout_width="match_parent"

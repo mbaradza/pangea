@@ -32,9 +32,9 @@ public class ODSVSelectionActivity extends MenuBar implements View.OnClickListen
         btn_option_three = (Button) findViewById(R.id.btn_option_three);
         btn_option_three.setOnClickListener(this);
         btn_option_three.setBackgroundResource(R.drawable.finish_background);
-        btn_option_three.setText("TXTNew");
+        btn_option_three.setVisibility(View.GONE);
 
-        setSupportActionBar(createToolBar("DSD Selection"));
+        setSupportActionBar(createToolBar("OSDV Selection"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -48,10 +48,6 @@ public class ODSVSelectionActivity extends MenuBar implements View.OnClickListen
 
         if (v.getId() == btn_option_two.getId()) {
             intent = new Intent(this, RegisterFormListActivity.class);
-        }
-
-        if (v.getId() == btn_option_three.getId()) {
-            intent = new Intent(this, TXTNewListActivity.class);
         }
 
         if (intent != null) {

@@ -17,6 +17,7 @@
                 style="@style/TextViewStyle"></TextView>
 
             <TableLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -188,14 +189,14 @@
                         android:text="@string/twentyToTwentyFour" />
 
                     <EditText
-                        android:id="@+id/maleTwentyToTwentyFour"
+                        android:id="@+id/femaleTwentyToTwentyFour"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:hint="F"
+                        android:hint="M"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/femaleTwentyToTwentyFour"
+                        android:id="@+id/maleTwentyToTwentyFour"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="M"
@@ -214,14 +215,14 @@
                         android:text="@string/twentyFiveToTwentyNine" />
 
                     <EditText
-                        android:id="@+id/maleTwentyFiveToFortyNine"
+                        android:id="@+id/femaleTwentyFiveToFortyNine"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="F"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/femaleTwentyFiveToFortyNine"
+                        android:id="@+id/maleTwentyFiveToFortyNine"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="M"
@@ -240,14 +241,14 @@
                         android:text="@string/fiftyPlus" />
 
                     <EditText
-                        android:id="@+id/maleFiftyPlus"
+                        android:id="@+id/femaleFiftyPlus"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="F"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/femaleFiftyPlus"
+                        android:id="@+id/maleFiftyPlus"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="M"
@@ -260,20 +261,27 @@
                     android:layout_height="wrap_content"
                     android:padding="5dip">
 
-                    <Button
-                        android:id="@+id/btn_next"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Next" />
+                    <TextView
+                        style="@style/TextViewInputStyle"
+                        android:text="Total" />
 
-                    <Button
-                        android:id="@+id/btn_back"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/femaleTotal"
+                        style="@style/TextViewInputStyle"
+                        android:text="Total" />
 
-                        android:text="Back" />
+                    <TextView
+                        android:id="@+id/maleTotal"
+                        style="@style/TextViewInputStyle"
+                        android:text="Total" />
 
                 </TableRow>
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
 
             </TableLayout>
 

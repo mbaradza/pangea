@@ -97,6 +97,16 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
 
         dateCreated.setOnClickListener(this);
 
+        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Facility.getAll());
+        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        facility.setAdapter(facilityArrayAdapter);
+
+        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Period.getAll());
+        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        period.setAdapter(periodArrayAdapter);
+
         if (screenForm_id != 0) {
             screenForm = ScreenForm.get(screenForm_id);
             numerator.setText(String.valueOf(screenForm.numerator));
@@ -147,16 +157,6 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
             screenForm = new ScreenForm();
             setSupportActionBar(createToolBar("TB_SCREENDX"));
         }
-
-        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
-        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        facility.setAdapter(facilityArrayAdapter);
-
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -229,10 +229,10 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
                             if (validate()) {
                                 screenForm.dateSubmitted = new Date();
                                 screenForm.save();
-                                btn_completed.setVisibility(View.VISIBLE);
-                                btn_submit.setVisibility(View.GONE);
-                                btn_save.setVisibility(View.GONE);
                                 AppUtil.createLongNotification(ScreenFormActivity.this, "Submitted for Upload to Server");
+                                Intent intent = new Intent(ScreenFormActivity.this, ScreenFormListActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         }
                     })
@@ -288,11 +288,15 @@ public class ScreenFormActivity extends MenuBar implements View.OnClickListener 
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(context)
-                .setMessage("Are you sure you want to cancel?")
+                .setMessage("Exit Form?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
+                        Intent intent = new Intent(ScreenFormActivity.this, ScreenFormListActivity.class);
+                        startActivity(intent);
                         finish();
+
                     }
                 })
                 .setNegativeButton("No", null)

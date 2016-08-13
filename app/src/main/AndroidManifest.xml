@@ -225,6 +225,10 @@
             android:label="@string/app_name"></activity>
 
         <activity
+            android:name=".DSDFlowPager"
+            android:label="@string/app_name"></activity>
+
+        <activity
             android:name=".TXTNewListActivity"
             android:label="@string/app_name">
         </activity>

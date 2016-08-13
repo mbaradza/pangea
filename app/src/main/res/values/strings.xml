@@ -25,9 +25,6 @@
     <string name="tb">TB</string>
     <string name="sti">STI</string>
 
-    <string name="pmtct_eid">PMTCT_EID</string>
-    <string name="pmtct_stat">PMTCT_STAT</string>
-
     <string name="dsd_indvidual_title">HTC_TST: DSD- Individuals</string>
     <string name="dsd_indvidual_question_one">1. Number of clients Mobilized for PITC</string>
     <string name="dsd_indvidual_question_two">2. Number of PITC clients receiving GHE talk and offered HIV testing</string>
@@ -50,6 +47,7 @@
     <string name="txt_new_question_four">4. Total viral load tested</string>
 
     <string name="register_title">Registers</string>
+    <string name="month_report_form_title">Month Report Form</string>
     <string name="register_question_one">1. Number who received their results this month</string>
     <string name="register_question_two">2. Number of clients tested HIV positive this month</string>
     <string name="register_question_three">3. Number who received their results this month.</string>
@@ -58,5 +56,8 @@
     <string name="register_question_six">8. Total declined ART</string>
     <string name="register_question_seven">9. Total CD4 Tested</string>
     <string name="register_question_eight">10. Total viral load tested</string>
+
+    <string name="pmtct_eid">5. PMTCT_EID</string>
+    <string name="pmtct_stat">6 .PMTCT_STAT</string>
 
 </resources>

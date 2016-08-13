@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,10 +15,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import zw.co.ncmp.business.DSDCouple;
+import zw.co.ncmp.business.DSDIndividual;
 import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.util.AppUtil;
@@ -40,6 +44,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
     EditText positiveTestedMaternity;
     EditText testedANC;
     EditText positiveTestedANC;
+    EditText name;
 
     Button btn_save;
     Button btn_completed;
@@ -48,6 +53,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
     Button btn_question_one;
     Button btn_question_two;
     Button btn_question_three;
+    DSDIndividual dsdIndividual = null;
 
     private DatePickerDialog datePickerDialog;
 
@@ -58,6 +64,19 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
 
         Intent intent = getIntent();
         Long dsdCouple_id = intent.getLongExtra(AppUtil.ID, 0);
+
+        Long dsdIndividual_id = intent.getLongExtra(AppUtil.DSD_ID, 0);
+        if (dsdIndividual_id != 0) {
+            dsdIndividual = DSDIndividual.get(dsdIndividual_id);
+            if (dsdIndividual != null) {
+                dsdCouple = DSDCouple.getDSDCouple(dsdIndividual.facility.getId(), dsdIndividual.period.getId());
+                if (dsdCouple != null) {
+                    dsdCouple_id = dsdCouple.getId();
+                } else {
+                    dsdCouple_id = 0L;
+                }
+            }
+        }
 
         facility = (Spinner) findViewById(R.id.facility);
 
@@ -72,6 +91,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         positiveTestedMaternity = (EditText) findViewById(R.id.positiveTestedMaternity);
         testedANC = (EditText) findViewById(R.id.testedANC);
         positiveTestedANC = (EditText) findViewById(R.id.positiveTestedANC);
+        name = (EditText) findViewById(R.id.name);
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
@@ -86,6 +106,16 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         dateCreated = (EditText) findViewById(R.id.dateCreated);
         dateCreated.setOnClickListener(this);
 
+        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Facility.getAll());
+        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        facility.setAdapter(facilityArrayAdapter);
+
+        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Period.getAll());
+        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        period.setAdapter(periodArrayAdapter);
+
         if (dsdCouple_id != 0) {
             dsdCouple = DSDCouple.get(dsdCouple_id);
 
@@ -99,6 +129,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             positiveTestedMaternity.setText(AppUtil.getLongValue(dsdCouple.positiveTestedMaternity));
             testedANC.setText(AppUtil.getLongValue(dsdCouple.testedANC));
             positiveTestedANC.setText(AppUtil.getLongValue(dsdCouple.positiveTestedANC));
+            name.setText(dsdCouple.name);
 
             updateLabel(dsdCouple.dateCreated);
 
@@ -123,18 +154,42 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             setSupportActionBar(createToolBar("HTC_TST: DSD- Couples"));
         } else {
             dsdCouple = new DSDCouple();
+            if (dsdIndividual != null) {
+
+                dsdCouple.facility = dsdIndividual.facility;
+                dsdCouple.period = dsdIndividual.period;
+                dsdCouple.name = dsdIndividual.name;
+                dsdCouple.dateCreated = dsdIndividual.dateCreated;
+
+                int i = 0;
+                for (Facility s : Facility.getAll()) {
+                    if (dsdCouple.facility.equals(facility.getItemAtPosition(i))) {
+                        facility.setSelection(i);
+                        break;
+                    }
+                    i++;
+                }
+
+                i = 0;
+                for (Period s : Period.getAll()) {
+                    if (dsdCouple.period.equals(period.getItemAtPosition(i))) {
+                        period.setSelection(i);
+                        break;
+                    }
+                    i++;
+                }
+
+                updateLabel(dsdCouple.dateCreated);
+            }
             setSupportActionBar(createToolBar("HTC_TST: DSD- Couples"));
         }
 
-        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
-        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        facility.setAdapter(facilityArrayAdapter);
-
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
+        if (dsdIndividual != null) {
+            facility.setEnabled(false);
+            period.setEnabled(false);
+            dateCreated.setEnabled(false);
+            name.setEnabled(false);
+        }
 
         btn_question_one = (Button) findViewById(R.id.btn_question_one);
         btn_question_one.setOnClickListener(this);
@@ -193,7 +248,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.facility = (Facility) facility.getSelectedItem();
                 dsdCouple.period = (Period) period.getSelectedItem();
                 dsdCouple.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
-
+                dsdCouple.name = name.toString();
                 dsdCouple.testedFHS = AppUtil.getLongValue(testedFHS.getText().toString());
                 dsdCouple.positiveTestedFHS = AppUtil.getLongValue(positiveTestedFHS.getText().toString());
                 dsdCouple.testedOPD = AppUtil.getLongValue(testedOPD.getText().toString());
@@ -222,11 +277,14 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                             if (validate()) {
                                 dsdCouple.dateSubmitted = new Date();
                                 dsdCouple.save();
-                                btn_completed.setVisibility(View.VISIBLE);
-                                btn_submit.setVisibility(View.GONE);
-                                btn_save.setVisibility(View.GONE);
-                                btn_completed.setVisibility(View.VISIBLE);
+
                                 AppUtil.createLongNotification(DSDCoupleActivity.this, "Submitted for Upload to Server");
+                                DSDIndividual dsdIndividual = DSDIndividual.getDSDIndividual(dsdCouple.facility.getId(), dsdCouple.period.getId());
+                                Intent intent = new Intent(DSDCoupleActivity.this, DSDIndividualActivity.class);
+                                intent.putExtra(AppUtil.ID, dsdIndividual.getId());
+                                startActivity(intent);
+                                finish();
+
                             }
                         }
                     })
@@ -264,10 +322,14 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(context)
-                .setMessage("Are you sure you want to cancel?")
+                .setMessage("Exit Form?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        DSDIndividual dsdIndividual = DSDIndividual.getDSDIndividual(dsdCouple.facility.getId(), dsdCouple.period.getId());
+                        Intent intent = new Intent(DSDCoupleActivity.this, DSDIndividualActivity.class);
+                        intent.putExtra(AppUtil.ID, dsdIndividual.getId());
+                        startActivity(intent);
                         finish();
                     }
                 })
@@ -277,11 +339,17 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
 
     public void questionOne() {
         final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dsd_question_activity);
-        dialog.setTitle(R.string.dsd_indvidual_question_one);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
-        txt_name.setText(R.string.dsd_indvidual_question_one);
+        txt_name.setText(R.string.dsd_couple_question_one);
+
+        final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
+        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion1()));
+
+        final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
+        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion1()));
 
         final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
         final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
@@ -319,7 +387,71 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus1));
         }
 
-        Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
+        List<EditText> list = new ArrayList<>();
+        list.add(maleLessThanOne);
+        list.add(maleOneToFour);
+        list.add(maleFiveToNine);
+        list.add(maleTenToFourteen);
+        list.add(maleFifteenToNineteen);
+        list.add(maleTwentyToTwentyFour);
+        list.add(maleTwentyFiveToFortyNine);
+        list.add(maleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.maleLessThanOne1 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
+                        dsdCouple.maleOneToFour1 = AppUtil.getLongValue(maleOneToFour.getText().toString());
+                        dsdCouple.maleFiveToNine1 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
+                        dsdCouple.maleTenToFourteen1 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
+                        dsdCouple.maleFifteenToNineteen1 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
+                        dsdCouple.maleTwentyToTwentyFour1 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.maleTwentyFiveToFortyNine1 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.maleFiftyPlus1 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+
+                        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion1()));
+                    }
+
+                }
+            });
+        }
+
+        list = new ArrayList<>();
+        list.add(femaleLessThanOne);
+        list.add(femaleOneToFour);
+        list.add(femaleFiveToNine);
+        list.add(femaleTenToFourteen);
+        list.add(femaleFifteenToNineteen);
+        list.add(femaleTwentyToTwentyFour);
+        list.add(femaleTwentyFiveToFortyNine);
+        list.add(femaleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.femaleLessThanOne1 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                        dsdCouple.femaleOneToFour1 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
+                        dsdCouple.femaleFiveToNine1 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
+                        dsdCouple.femaleTenToFourteen1 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
+                        dsdCouple.femaleFifteenToNineteen1 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
+                        dsdCouple.femaleTwentyToTwentyFour1 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.femaleTwentyFiveToFortyNine1 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.femaleFiftyPlus1 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+
+                        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion1()));
+                    }
+
+                }
+            });
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -348,14 +480,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleFiftyPlus1 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
                 dsdCouple.femaleFiftyPlus1 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
-                dialog.dismiss();
-            }
-        });
-
-        Button cancelButton = (Button) dialog.findViewById(R.id.btn_back);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
+                upDateForm();
                 dialog.dismiss();
             }
         });
@@ -367,11 +492,17 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
 
     public void questionTwo() {
         final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dsd_question_activity);
-        dialog.setTitle(R.string.dsd_indvidual_question_two);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
-        txt_name.setText(R.string.dsd_indvidual_question_two);
+        txt_name.setText(R.string.dsd_couple_question_two);
+
+        final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
+        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion2()));
+
+        final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
+        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion2()));
 
         final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
         final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
@@ -409,8 +540,71 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus2));
         }
 
+        List<EditText> list = new ArrayList<>();
+        list.add(maleLessThanOne);
+        list.add(maleOneToFour);
+        list.add(maleFiveToNine);
+        list.add(maleTenToFourteen);
+        list.add(maleFifteenToNineteen);
+        list.add(maleTwentyToTwentyFour);
+        list.add(maleTwentyFiveToFortyNine);
+        list.add(maleFiftyPlus);
 
-        Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.maleLessThanOne2 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
+                        dsdCouple.maleOneToFour2 = AppUtil.getLongValue(maleOneToFour.getText().toString());
+                        dsdCouple.maleFiveToNine2 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
+                        dsdCouple.maleTenToFourteen2 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
+                        dsdCouple.maleFifteenToNineteen2 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
+                        dsdCouple.maleTwentyToTwentyFour2 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+
+                        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion2()));
+                    }
+
+                }
+            });
+        }
+
+        list = new ArrayList<>();
+        list.add(femaleLessThanOne);
+        list.add(femaleOneToFour);
+        list.add(femaleFiveToNine);
+        list.add(femaleTenToFourteen);
+        list.add(femaleFifteenToNineteen);
+        list.add(femaleTwentyToTwentyFour);
+        list.add(femaleTwentyFiveToFortyNine);
+        list.add(femaleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.femaleLessThanOne2 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                        dsdCouple.femaleOneToFour2 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
+                        dsdCouple.femaleFiveToNine2 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
+                        dsdCouple.femaleTenToFourteen2 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
+                        dsdCouple.femaleFifteenToNineteen2 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
+                        dsdCouple.femaleTwentyToTwentyFour2 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+
+                        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion2()));
+                    }
+
+                }
+            });
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -439,14 +633,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
                 dsdCouple.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
-                dialog.dismiss();
-            }
-        });
-
-        Button cancelButton = (Button) dialog.findViewById(R.id.btn_back);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
+                upDateForm();
                 dialog.dismiss();
             }
         });
@@ -454,16 +641,21 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
         dialog.setCancelable(true);
         dialog.show();
 
-
     }
 
     public void questionThree() {
         final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dsd_question_activity);
-        dialog.setTitle(R.string.dsd_indvidual_question_three);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
-        txt_name.setText(R.string.dsd_indvidual_question_three);
+        txt_name.setText(R.string.dsd_couple_question_three);
+
+        final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
+        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion3()));
+
+        final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
+        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion3()));
 
         final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
         final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
@@ -501,7 +693,71 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
             femaleFiftyPlus.setText(AppUtil.getLongValue(dsdCouple.femaleFiftyPlus3));
         }
 
-        Button saveButton = (Button) dialog.findViewById(R.id.btn_next);
+        List<EditText> list = new ArrayList<>();
+        list.add(maleLessThanOne);
+        list.add(maleOneToFour);
+        list.add(maleFiveToNine);
+        list.add(maleTenToFourteen);
+        list.add(maleFifteenToNineteen);
+        list.add(maleTwentyToTwentyFour);
+        list.add(maleTwentyFiveToFortyNine);
+        list.add(maleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.maleLessThanOne3 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
+                        dsdCouple.maleOneToFour3 = AppUtil.getLongValue(maleOneToFour.getText().toString());
+                        dsdCouple.maleFiveToNine3 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
+                        dsdCouple.maleTenToFourteen3 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
+                        dsdCouple.maleFifteenToNineteen3 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
+                        dsdCouple.maleTwentyToTwentyFour3 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+
+                        maleTotal.setText(AppUtil.getLongValue(dsdCouple.maleQuestion3()));
+                    }
+
+                }
+            });
+        }
+
+        list = new ArrayList<>();
+        list.add(femaleLessThanOne);
+        list.add(femaleOneToFour);
+        list.add(femaleFiveToNine);
+        list.add(femaleTenToFourteen);
+        list.add(femaleFifteenToNineteen);
+        list.add(femaleTwentyToTwentyFour);
+        list.add(femaleTwentyFiveToFortyNine);
+        list.add(femaleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        dsdCouple.femaleLessThanOne3 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                        dsdCouple.femaleOneToFour3 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
+                        dsdCouple.femaleFiveToNine3 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
+                        dsdCouple.femaleTenToFourteen3 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
+                        dsdCouple.femaleFifteenToNineteen3 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
+                        dsdCouple.femaleTwentyToTwentyFour3 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
+                        dsdCouple.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
+                        dsdCouple.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+
+                        femaleTotal.setText(AppUtil.getLongValue(dsdCouple.femaleQuestion3()));
+                    }
+
+                }
+            });
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -530,14 +786,7 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
                 dsdCouple.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
                 dsdCouple.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
-                dialog.dismiss();
-            }
-        });
-
-        Button cancelButton = (Button) dialog.findViewById(R.id.btn_back);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
+                upDateForm();
                 dialog.dismiss();
             }
         });
@@ -547,5 +796,17 @@ public class DSDCoupleActivity extends MenuBar implements View.OnClickListener {
 
     }
 
+    public void upDateForm() {
+
+        btn_question_one.setText(this.getString(R.string.dsd_couple_question_one)
+                + " [ " + (dsdCouple.maleQuestion1() + dsdCouple.femaleQuestion1()) + " ]");
+
+        btn_question_two.setText(this.getString(R.string.dsd_couple_question_two)
+                + " [ " + (dsdCouple.maleQuestion2() + dsdCouple.femaleQuestion2()) + " ]");
+
+        btn_question_three.setText(this.getString(R.string.dsd_couple_question_three)
+                + " [ " + (dsdCouple.maleQuestion3() + dsdCouple.femaleQuestion3()) + " ]");
+
+    }
 }
 

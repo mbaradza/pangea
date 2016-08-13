@@ -71,6 +71,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         dateCreated = (EditText) findViewById(R.id.dateCreated);
 
         maleLessThanOne = (EditText) findViewById(R.id.maleLessThanOne);
+        maleLessThanOne = (EditText) findViewById(R.id.maleLessThanOne);
         femaleLessThanOne = (EditText) findViewById(R.id.femaleLessThanOne);
         maleOneToFour = (EditText) findViewById(R.id.maleOneToFour);
         femaleOneToFour = (EditText) findViewById(R.id.femaleOneToFour);
@@ -94,6 +95,17 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
         dateCreated.setOnClickListener(this);
+
+        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Facility.getAll());
+        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        facility.setAdapter(facilityArrayAdapter);
+
+        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Period.getAll());
+        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        period.setAdapter(periodArrayAdapter);
+
 
         if (statForm_id != 0) {
             statForm = StatForm.get(statForm_id);
@@ -143,16 +155,6 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
             statForm = new StatForm();
             setSupportActionBar(createToolBar("TB_STAT"));
         }
-
-        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
-        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        facility.setAdapter(facilityArrayAdapter);
-
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -225,10 +227,10 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
                             if (validate()) {
                                 statForm.dateSubmitted = new Date();
                                 statForm.save();
-                                btn_completed.setVisibility(View.VISIBLE);
-                                btn_submit.setVisibility(View.GONE);
-                                btn_save.setVisibility(View.GONE);
                                 AppUtil.createLongNotification(StatFormActivity.this, "Submitted for Upload to Server");
+                                Intent intent = new Intent(StatFormActivity.this, StatFormListActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         }
                     })
@@ -283,11 +285,14 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(context)
-                .setMessage("Are you sure you want to cancel?")
+                .setMessage("Exit Form?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(StatFormActivity.this, StatFormListActivity.class);
+                        startActivity(intent);
                         finish();
+
                     }
                 })
                 .setNegativeButton("No", null)

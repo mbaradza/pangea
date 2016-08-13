@@ -16,12 +16,11 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-import zw.co.ncmp.business.ActionTakenCategory;
+import zw.co.ncmp.business.ActionCategory;
 import zw.co.ncmp.business.CaseFile;
 import zw.co.ncmp.business.Challenge;
 import zw.co.ncmp.business.ChallengeStatus;
 import zw.co.ncmp.business.FacilityChallenge;
-import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.util.AppUtil;
 
 public class FacilityChallengeReviewActivity extends MenuBar implements View.OnClickListener {
@@ -119,8 +118,8 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge.setAdapter(challengeArrayAdapter);
 
-        ArrayAdapter<ActionTakenCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ActionTakenCategory.getAll());
+        ArrayAdapter<ActionCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, ActionCategory.getAll());
         challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         action_taken_category.setAdapter(actionTakenCategoryArrayAdapter);
 
@@ -186,7 +185,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         }
 
         i = 0;
-        for (ActionTakenCategory a : ActionTakenCategory.getAll()) {
+        for (ActionCategory a : ActionCategory.getAll()) {
             if (facilityChallenge.actionCategory.equals(action_taken_category.getItemAtPosition(i))) {
                 action_taken_category.setSelection(i);
                 break;
@@ -282,7 +281,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
                 facilityChallenge.follow_up_date = AppUtil.getDate(follow_up_date.getText().toString());
                 facilityChallenge.challenge = (Challenge) challenge.getSelectedItem();
                 facilityChallenge.challengeStatus = (ChallengeStatus) challenge_status.getSelectedItem();
-                facilityChallenge.actionCategory = (ActionTakenCategory) action_taken_category.getSelectedItem();
+                facilityChallenge.actionCategory = (ActionCategory) action_taken_category.getSelectedItem();
                 facilityChallenge.actionTaken = action_taken.getText().toString();
                 facilityChallenge.expectedOutcome = expected_outcome.getText().toString();
                 facilityChallenge.expected_completion_date = AppUtil.getDate(expected_completion_date.getText().toString());

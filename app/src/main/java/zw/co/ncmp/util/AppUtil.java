@@ -62,6 +62,7 @@ public class AppUtil {
     public static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static String ID = "ID";
     public static String MENTEE_ID = "MENTEE_ID";
+    public static String DSD_ID = "DSD_ID";
     public static String CASE_ID = "CASE_ID";
     public static String MENTOR_ID = "MENTOR_ID";
     public static String DATE_FORMAT = "dd/MM/yyyy";
@@ -178,7 +179,7 @@ public class AppUtil {
     }
 
     public static HttpUrl getPushMonthFormReportUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-month-report")).newBuilder()
+        return HttpUrl.parse(getWebService(context).concat("dsd/month-report-form")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
@@ -500,6 +501,18 @@ public class AppUtil {
                 return 0L;
             } else {
                 return Long.valueOf(value);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static Long getLong(Long value) {
+        try {
+            if (value == null) {
+                return 0L;
+            } else {
+                return value;
             }
         } catch (Exception e) {
             return null;

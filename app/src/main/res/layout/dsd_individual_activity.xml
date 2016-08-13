@@ -16,6 +16,11 @@
             style="@style/TextViewStyle"
             android:text="@string/dsd_indvidual_title"></TextView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/dividerHorizontal" />
+
         <Button
             android:id="@+id/btn_submit"
             style="?android:attr/buttonBarButtonStyle"
@@ -58,6 +63,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date Completed" />
+
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -273,6 +288,12 @@
                     android:inputType="number" />
 
             </TableRow>
+
+            <Button
+                android:id="@+id/btn_dsd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DSD Couple" />
 
             <Button
                 android:id="@+id/btn_save"

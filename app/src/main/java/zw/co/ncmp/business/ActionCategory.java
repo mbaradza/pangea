@@ -14,7 +14,7 @@ import java.util.List;
  * Created by tdhlakama on 2/6/2016.
  */
 @Table(name = "action_category")
-public class ActionTakenCategory extends Model {
+public class ActionCategory extends Model {
 
     @Expose
     @Column(name = "name", unique = true)
@@ -25,23 +25,23 @@ public class ActionTakenCategory extends Model {
     @Column(name = "serverId", unique = true)
     public Long serverId;
 
-    public static ActionTakenCategory get(Long id) {
-        return new Select().from(ActionTakenCategory.class).where("Id = ?", id).executeSingle();
+    public static ActionCategory get(Long id) {
+        return new Select().from(ActionCategory.class).where("Id = ?", id).executeSingle();
     }
 
-    public static ActionTakenCategory getActionTakenCategory(Long id) {
-        return new Select().from(ActionTakenCategory.class).where("serverId = ?", id).executeSingle();
+    public static ActionCategory getActionTakenCategory(Long id) {
+        return new Select().from(ActionCategory.class).where("serverId = ?", id).executeSingle();
     }
 
-    public static List<ActionTakenCategory> getAll() {
+    public static List<ActionCategory> getAll() {
         return new Select()
-                .from(ActionTakenCategory.class)
+                .from(ActionCategory.class)
                 .orderBy("name ASC")
                 .execute();
     }
 
     public static void deleteAll() {
-        new Delete().from(ActionTakenCategory.class).execute();
+        new Delete().from(ActionCategory.class).execute();
     }
 
     @Override

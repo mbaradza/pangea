@@ -26,30 +26,15 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_span="2"
-                        android:text="3. PMTCT_EID"
-                        android:textStyle="bold" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:text="P30: Infants ≤ 2 months) with DNA PCR sample collected"
-                        android:textStyle="bold" />
+                        android:text="P30: Infants ≤ 2 months with DNA PCR sample collected"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP30"
-                        android:layout_width="150dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -60,13 +45,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="P31: Infants > 2 months with DNA PCR sample collected for the first time:" />
+                        android:text="P31: Infants > 2 months with DNA PCR sample collected for the first time:"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP31"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -78,13 +64,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="P4: Pregnant Women testing HIV positive in ANC" />
+                        android:text="P4: Pregnant Women testing HIV positive in ANC"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP4"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
                 </TableRow>
@@ -95,13 +82,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="P5: Pregnant women booking for first ANC visit with known HIV positive result" />
+                        android:text="P5: Pregnant women booking for first ANC visit with known HIV positive result"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP5"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -113,13 +101,14 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="P14: Women testing HIV positive at first test in L and D" />
+                        android:text="P14: Women testing HIV positive at first test in L&amp;D"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP14"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
@@ -131,37 +120,24 @@
                     android:padding="5dip">
 
                     <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:text="P17: Women testing HIV positive at first test in L and D" />
+                        android:text="P17: Women testing HIV positive at first test in L&amp;D"
+                        android:paddingBottom="@dimen/fab_margin" />
 
                     <EditText
                         android:id="@+id/pmtctEIDP17"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
 
                 </TableRow>
 
-
-                <TableRow
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <Button
-                        android:id="@+id/btn_next"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Next" />
-
-                    <Button
-                        android:id="@+id/btn_back"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Back" />
-
-                </TableRow>
+                    android:text="Save" />
 
             </TableLayout>
 

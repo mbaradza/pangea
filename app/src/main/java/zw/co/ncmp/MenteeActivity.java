@@ -72,6 +72,16 @@ public class MenteeActivity extends MenuBar implements View.OnClickListener {
 
         date_of_birth.setOnClickListener(this);
 
+        ArrayAdapter<Qualification> qualificationArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Qualification.getAll());
+        qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        qualification.setAdapter(qualificationArrayAdapter);
+
+        ArrayAdapter<Designation> designationArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Designation.getAll());
+        designationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        designation.setAdapter(designationArrayAdapter);
+
         if (mentee_id != 0) {
             mentee = Mentee.get(mentee_id);
             first_name.setText(mentee.firstName);
@@ -113,17 +123,6 @@ public class MenteeActivity extends MenuBar implements View.OnClickListener {
             txt_facility_name.setText("Facility : " + mentee.facility.name);
             setSupportActionBar(createToolBar("Add Mentee"));
         }
-
-        ArrayAdapter<Qualification> qualificationArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Qualification.getAll());
-        qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        qualification.setAdapter(qualificationArrayAdapter);
-
-        ArrayAdapter<Designation> designationArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Designation.getAll());
-        designationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        designation.setAdapter(designationArrayAdapter);
-
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);

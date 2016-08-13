@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zw.co.ncmp.business.ARTForm;
-import zw.co.ncmp.business.ActionTakenCategory;
+import zw.co.ncmp.business.ActionCategory;
 import zw.co.ncmp.business.CaseFile;
 import zw.co.ncmp.business.CaseFileMentee;
 import zw.co.ncmp.business.CaseFileMentor;
@@ -427,9 +427,9 @@ public class PushPullService extends IntentService {
             JSONArray jsonArray = new JSONArray(data);
             List<StaticData> list = StaticData.fromJson(jsonArray);
             for (StaticData staticData : list) {
-                ActionTakenCategory checkDuplicate = ActionTakenCategory.getActionTakenCategory(staticData.serverId);
+                ActionCategory checkDuplicate = ActionCategory.getActionTakenCategory(staticData.serverId);
                 if (checkDuplicate == null) {
-                    ActionTakenCategory item = new ActionTakenCategory();
+                    ActionCategory item = new ActionCategory();
                     item.serverId = staticData.serverId;
                     item.name = staticData.name;
                     item.save();

@@ -81,7 +81,6 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
         maleTwentyPlus = (EditText) findViewById(R.id.maleTwentyPlus);
         femaleTwentyPlus = (EditText) findViewById(R.id.femaleTwentyPlus);
 
-
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -93,6 +92,16 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
         dateCreated.setOnClickListener(this);
+
+        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Facility.getAll());
+        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        facility.setAdapter(facilityArrayAdapter);
+
+        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Period.getAll());
+        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        period.setAdapter(periodArrayAdapter);
 
         if (artForm_id != 0) {
             artForm = ARTForm.get(artForm_id);
@@ -140,16 +149,6 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
             artForm = new ARTForm();
             setSupportActionBar(createToolBar("TB_ART"));
         }
-
-        ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
-        facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        facility.setAdapter(facilityArrayAdapter);
-
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -222,10 +221,10 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
                             if (validate()) {
                                 artForm.dateSubmitted = new Date();
                                 artForm.save();
-                                btn_completed.setVisibility(View.VISIBLE);
-                                btn_submit.setVisibility(View.GONE);
-                                btn_save.setVisibility(View.GONE);
                                 AppUtil.createLongNotification(ARTFormActivity.this, "Submitted for Upload to Server");
+                                Intent intent = new Intent(ARTFormActivity.this, ARTFormListActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         }
                     })
@@ -280,11 +279,15 @@ public class ARTFormActivity extends MenuBar implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(context)
-                .setMessage("Are you sure you want to cancel?")
+                .setMessage("Exit Form?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
+                        Intent intent = new Intent(ARTFormActivity.this, ARTFormListActivity.class);
+                        startActivity(intent);
                         finish();
+
                     }
                 })
                 .setNegativeButton("No", null)

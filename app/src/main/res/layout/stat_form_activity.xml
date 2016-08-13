@@ -296,14 +296,14 @@
                     android:text="@string/fifteenToNineteen" />
 
                 <EditText
-                    android:id="@+id/femalefFifteenToNineteen"
+                    android:id="@+id/femaleFifteenToNineteen"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:hint="F"
                     android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/malefFifteenToNineteen"
+                    android:id="@+id/maleFifteenToNineteen"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:hint="M"

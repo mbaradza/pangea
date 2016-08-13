@@ -143,7 +143,7 @@ public class MenuBar extends AppCompatActivity {
 
     public void syncAppData() {
         if (AppUtil.isInternetPresent(context)) {
-            progressDialog = ProgressDialog.show(this, "Please wait", "Downloading...", true);
+            progressDialog = ProgressDialog.show(this, "Please wait", "Syncing with Server...", true);
             progressDialog.setCancelable(true);
             Intent intent = new Intent(this, PushPullService.class);
             startService(intent);
