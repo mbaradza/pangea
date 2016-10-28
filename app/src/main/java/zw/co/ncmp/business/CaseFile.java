@@ -44,6 +44,14 @@ public class CaseFile extends Model {
     @Expose
     public String serverSubmittedDate;
 
+    @SerializedName("checkInTime")
+    @Expose
+    public String checkInTime;
+
+    @SerializedName("checkOutTime")
+    @Expose
+    public String checkOutTime;
+
     @Expose
     @Column(name = "latitude_coordinate_created", notNull = false)
     public Double latitudeCreated;

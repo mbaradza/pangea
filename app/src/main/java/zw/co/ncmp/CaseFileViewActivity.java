@@ -21,6 +21,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import zw.co.ncmp.business.CaseFile;
@@ -121,7 +122,6 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
             btn_completed.setVisibility(View.VISIBLE);
         }
 
-
         case_file = (TextView) findViewById(R.id.txt_name);
         case_file.setText("SITE SUPPORT REPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + facility.name);
         case_file.setOnClickListener(this);
@@ -204,6 +204,7 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
                                 onLocationChanged(mLastLocation);
                                 onLocationChanged(location);
                                 caseFile.dateSubmitted = new Date();
+                                caseFile.checkOutTime = AppUtil.getFormatter().format(caseFile.dateSubmitted);
                                 caseFile.save();
                                 optionsLayout.setVisibility(View.GONE);
                                 optionsLayout1.setVisibility(View.GONE);

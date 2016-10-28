@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import zw.co.ncmp.business.CaseFile;
@@ -129,9 +130,12 @@ public class CaseFileActivity extends MenuBar implements View.OnClickListener, L
                 try {
                     caseFile.longitudeCreated = Double.valueOf(longitude_created.getText().toString());
                     caseFile.latitudeCreated = Double.valueOf(latitude_created.getText().toString());
+                    SimpleDateFormat formatter = new SimpleDateFormat("hh.mm.ss");
+                    caseFile.checkInTime = formatter.format(caseFile.dateCreated);
                     caseFile.save();
                     intent = new Intent(this, FacilityViewActivity.class);
                     intent.putExtra(AppUtil.ID, facility.getId());
+
                     AppUtil.createShortNotification(CaseFileActivity.this, "Check in successful");
                 } catch (Exception e) {
                     AppUtil.createShortNotification(CaseFileActivity.this, "Check In Failed - location Unavailable");

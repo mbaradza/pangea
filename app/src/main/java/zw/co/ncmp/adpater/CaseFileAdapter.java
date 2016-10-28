@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import zw.co.ncmp.R;
@@ -21,7 +22,7 @@ import zw.co.ncmp.util.ViewHolder;
  * Created by tdhlakama on 10/16/2015.
  */
 
-public class CaseFileAdapter extends ArrayAdapter<CaseFile>  {
+public class CaseFileAdapter extends ArrayAdapter<CaseFile> {
 
     private Context context;
     private ArrayList<CaseFile> list;
@@ -51,7 +52,11 @@ public class CaseFileAdapter extends ArrayAdapter<CaseFile>  {
         ViewHolder holder = (ViewHolder) rowView.getTag();
         CaseFile item = list.get(position);
         holder.name.setText((position + 1) + " . " + item.facility + " : " + AppUtil.getStringDate(item.dateCreated));
-        holder.more.setText("View Detail");
+        if (item.checkInTime != null) {
+            holder.more.setText("View Detail - " + AppUtil.getFormatter().format(item.dateCreated));
+        } else {
+            holder.more.setText("View Detail - " + item.checkInTime);
+        }
         holder.more.setTypeface(null, Typeface.BOLD_ITALIC);
         return rowView;
     }

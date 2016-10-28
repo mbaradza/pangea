@@ -86,6 +86,10 @@ public class AppUtil {
     public static String RESOLVED = "Resolved";
     public static String MENTOR_ROLE = "NATIONAL";
 
+    public static SimpleDateFormat getFormatter() {
+        return new SimpleDateFormat("hh.mm.ss");
+    }
+
     public static HttpUrl getLoginUrl(Context context) {
         return HttpUrl.parse(getWebService(context).concat("mentor"));
     }
