@@ -98,10 +98,9 @@ public class CaseFile extends Model {
                 .execute();
     }
 
-    public static List<CaseFile> getCaseFilesUploaded(Long id) {
+    public static List<CaseFile> getCaseFilesUploaded() {
         return new Select()
                 .from(CaseFile.class)
-                .where("facility_id = ?", id)
                 .where("serverId is not null")
                 .orderBy("date_created ASC")
                 .execute();

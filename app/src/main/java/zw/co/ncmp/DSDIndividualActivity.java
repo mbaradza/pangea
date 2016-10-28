@@ -166,6 +166,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         btn_question_four = (Button) findViewById(R.id.btn_question_four);
         btn_question_four.setOnClickListener(this);
         btn_question_four.setText(R.string.dsd_indvidual_question_four);
+        btn_question_four.setVisibility(View.GONE);
 
         btn_question_five = (Button) findViewById(R.id.btn_question_five);
         btn_question_five.setOnClickListener(this);

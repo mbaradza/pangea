@@ -1,5 +1,9 @@
 package zw.co.ncmp.business;
 
+/**
+ * Created by tdhla on 10/25/2016.
+ */
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -17,11 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by tdhlakama on 4/8/2016.
- */
-@Table(name = "art_form")
-public class ARTForm  extends Model {
+@Table(name = "pmtctfo_form")
+public class PMTCTFOForm extends Model {
 
     @SerializedName("id")
     @Expose
@@ -56,79 +57,39 @@ public class ARTForm  extends Model {
     public Long denominator;
 
     @Expose
-    @Column(name = "maleLessThanOne")
-    public Long maleLessThanOne;
+    @Column(name = "hivInfected")
+    public Long hivInfected;
 
     @Expose
-    @Column(name = "femaleLessThanOne")
-    public Long femaleLessThanOne;
+    @Column(name = "hivUnInfected")
+    public Long hivUnInfected;
 
     @Expose
-    @Column(name = "maleOneToFour")
-    public Long maleOneToFour;
+    @Column(name = "hivUnknown")
+    public Long hivUnknown;
 
     @Expose
-    @Column(name = "femaleOneToFour")
-    public Long femaleOneToFour;
-
-    @Expose
-    @Column(name = "maleFiveToNine")
-    public Long maleFiveToNine;
-
-    @Expose
-    @Column(name = "femaleFiveToNine")
-    public Long femaleFiveToNine;
-
-    @Expose
-    @Column(name = "maleTenToFourteen")
-    public Long maleTenToFourteen;
-
-    @Expose
-    @Column(name = "femaleTenToFourteen")
-    public Long femaleTenToFourteen;
-
-    @Expose
-    @Column(name = "maleFifteenToNineteen")
-    public Long maleFifteenToNineteen;
-
-    @Expose
-    @Column(name = "femaleFifteenToNineteen")
-    public Long femaleFifteenToNineteen;
-
-    @Expose
-    @Column(name = "maleTwentyPlus")
-    public Long maleTwentyPlus;
-
-    @Expose
-    @Column(name = "femaleTwentyPlus")
-    public Long femaleTwentyPlus;
-
-    @Expose
-    @Column(name = "alreadyOnART")
-    public Long alreadyOnART;
-
-    @Expose
-    @Column(name = "newOnART")
-    public Long newOnART;
+    @Column(name = "died")
+    public Long died;
 
     @Column(name = "date_submitted", notNull = false)
     public Date dateSubmitted;
 
-    public ARTForm() {
+    public PMTCTFOForm() {
         super();
     }
 
-    public static ARTForm get(Long id) {
-        return new Select().from(ARTForm.class).where("Id = ?", id).executeSingle();
+    public static PMTCTFOForm get(Long id) {
+        return new Select().from(PMTCTFOForm.class).where("Id = ?", id).executeSingle();
     }
 
-    public static ARTForm getARTForm(Long id) {
-        return new Select().from(ARTForm.class).where("serverId = ?", id).executeSingle();
+    public static PMTCTFOForm getPMTCTFOForm(Long id) {
+        return new Select().from(PMTCTFOForm.class).where("serverId = ?", id).executeSingle();
     }
 
-    public static List<ARTForm> getAll() {
+    public static List<PMTCTFOForm> getAll() {
         return new Select()
-                .from(ARTForm.class)
+                .from(PMTCTFOForm.class)
                 .orderBy("name ASC")
                 .execute();
     }
@@ -136,24 +97,24 @@ public class ARTForm  extends Model {
     public static int getCount() {
         return new Select()
                 .distinct()
-                .from(ARTForm.class)
+                .from(PMTCTFOForm.class)
                 .count();
     }
 
-    public static List<ARTForm> getFilesToUpload() {
+    public static List<PMTCTFOForm> getFilesToUpload() {
         return new Select()
-                .from(ARTForm.class)
+                .from(PMTCTFOForm.class)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();
     }
 
     public static void deleteAll() {
-        new Delete().from(ARTForm.class).execute();
+        new Delete().from(PMTCTFOForm.class).execute();
     }
 
-    public static ARTForm fromJson(JSONObject jsonObject) {
-        ARTForm i = new ARTForm();
+    public static PMTCTFOForm fromJson(JSONObject jsonObject) {
+        PMTCTFOForm i = new PMTCTFOForm();
         try {
             i.serverId = jsonObject.getLong("id");
         } catch (JSONException e) {
@@ -163,9 +124,9 @@ public class ARTForm  extends Model {
         return i;
     }
 
-    public static ArrayList<ARTForm> fromJson(JSONArray jsonArray) {
-        ArrayList<ARTForm> list = new ArrayList<ARTForm>(jsonArray.length());
-        for (int i=0; i < jsonArray.length(); i++) {
+    public static ArrayList<PMTCTFOForm> fromJson(JSONArray jsonArray) {
+        ArrayList<PMTCTFOForm> list = new ArrayList<PMTCTFOForm>(jsonArray.length());
+        for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject item = null;
             try {
                 item = jsonArray.getJSONObject(i);
@@ -174,7 +135,7 @@ public class ARTForm  extends Model {
                 continue;
             }
 
-            ARTForm business = ARTForm.fromJson(item);
+            PMTCTFOForm business = PMTCTFOForm.fromJson(item);
             if (business != null) {
                 list.add(business);
             }
@@ -183,8 +144,8 @@ public class ARTForm  extends Model {
         return list;
     }
 
-    public static final TypeToken<List<ARTForm>> LIST =
-            new TypeToken<List<ARTForm>>() {
+    public static final TypeToken<List<PMTCTFOForm>> LIST =
+            new TypeToken<List<PMTCTFOForm>>() {
             };
 
 
@@ -192,5 +153,6 @@ public class ARTForm  extends Model {
     public String toString() {
         return name;
     }
-}
 
+
+}

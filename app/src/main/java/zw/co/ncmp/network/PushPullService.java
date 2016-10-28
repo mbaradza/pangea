@@ -33,12 +33,18 @@ import zw.co.ncmp.business.Mentor;
 import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.MentorVisitReport;
 import zw.co.ncmp.business.MonthReportForm;
+import zw.co.ncmp.business.PMTCTARTForm;
+import zw.co.ncmp.business.PMTCTFOForm;
 import zw.co.ncmp.business.Period;
 import zw.co.ncmp.business.Qualification;
 import zw.co.ncmp.business.RegisterForm;
 import zw.co.ncmp.business.ScreenForm;
 import zw.co.ncmp.business.StatForm;
 import zw.co.ncmp.business.StaticData;
+import zw.co.ncmp.business.SupplementaryIndicatorForm;
+import zw.co.ncmp.business.TXCURRForm;
+import zw.co.ncmp.business.TXPVLSForm;
+import zw.co.ncmp.business.TXRETForm;
 import zw.co.ncmp.business.TXTNew;
 import zw.co.ncmp.business.VisitReportFocusArea;
 import zw.co.ncmp.util.AppUtil;
@@ -97,7 +103,7 @@ public class PushPullService extends IntentService {
                 result = Activity.RESULT_CANCELED;
             }
         }
-        List<Facility> facilities = Facility.getAll();
+        final List<Facility> facilities = Facility.getAll();
         try {
             for (Facility facility : facilities) {
                 loadFacilityMentees(AppUtil.run(AppUtil.getFacilityMenteesUrl(context, facility.serverId), context), facility.serverId);
@@ -117,7 +123,7 @@ public class PushPullService extends IntentService {
             result = Activity.RESULT_CANCELED;
         }
 
-        List<Mentee> newMentees = Mentee.getFilesToUpload();
+        final List<Mentee> newMentees = Mentee.getFilesToUpload();
         try {
             if (!newMentees.isEmpty()) {
                 for (Mentee mentee : newMentees) {
@@ -130,46 +136,27 @@ public class PushPullService extends IntentService {
         }
 
         try {
-            for (Facility facility : facilities) {
-                if (CaseFile.getNumberOfFilesToUpload(facility.getId()) != 0) {
-                    for (CaseFile caseFile : CaseFile.getCaseFiles(facility.getId())) {
-                        save(run(AppUtil.getPushCaseFileUrl(context), caseFile), caseFile);
-                    }
-                }
+            for (CaseFile caseFile : CaseFile.getCaseFilesUploaded()) {
+                save(run(AppUtil.getPushCaseFileUrl(context), caseFile), caseFile);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (CaseFile caseFile : CaseFile.getCaseFilesUploaded(facility.getId())) {
-                    if (FacilityChallenge.getNumberOfFilesToUpload(caseFile.getId()) != 0) {
-                        for (FacilityChallenge f : FacilityChallenge.getFilesToUpload(caseFile.getId())) {
-                            delete(run(AppUtil.getPushFacilityChallengeUrl(context, caseFile.serverId), f), f);
-                        }
-                    }
-                }
+            for (FacilityChallenge f : FacilityChallenge.getFilesToUpload()) {
+                delete(run(AppUtil.getPushFacilityChallengeUrl(context, f.caseFile.serverId), f), f);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (CaseFile caseFile : CaseFile.getCaseFilesUploaded(facility.getId())) {
-                    if (MentorVisitReport.getNumberOfFilesToUpload(caseFile.getId()) != 0) {
-                        for (MentorVisitReport m : MentorVisitReport.getFilesToUpload(caseFile.getId())) {
-                            save(run(AppUtil.getPushMentorVisitReportUrl(context, caseFile.serverId), m), m);
-                        }
-                    }
-                }
+            for (MentorVisitReport m : MentorVisitReport.getFilesToUpload()) {
+                save(run(AppUtil.getPushMentorVisitReportUrl(context, m.caseFile.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
@@ -186,31 +173,24 @@ public class PushPullService extends IntentService {
             for (Facility facility : facilities) {
                 saveServerlFacilityChallenge(runFacilityChallenges(AppUtil.getPullFacilityChallengeUrl(context, facility.serverId), facility));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (ARTForm m : ARTForm.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushARTFormReportUrl(context, facility.serverId), m), m);
-                }
+            for (ARTForm m : ARTForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushARTFormReportUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (ScreenForm m : ScreenForm.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushScreenFormReportUrl(context, facility.serverId), m), m);
-                }
+            for (ScreenForm m : ScreenForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushScreenFormReportUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -218,36 +198,27 @@ public class PushPullService extends IntentService {
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (StatForm m : StatForm.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushStatFormReportUrl(context, facility.serverId), m), m);
-                }
+            for (StatForm m : StatForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushStatFormReportUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (DSDCouple m : DSDCouple.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushDSDCoupleFormUrl(context, facility.serverId), m), m);
-                }
+            for (DSDCouple m : DSDCouple.getFilesToUpload()) {
+                save(run(AppUtil.getPushDSDCoupleFormUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (DSDIndividual m : DSDIndividual.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushDSDIndividualUrl(context, facility.serverId), m), m);
-                }
+            for (DSDIndividual m : DSDIndividual.getFilesToUpload()) {
+                save(run(AppUtil.getPushDSDIndividualUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
@@ -255,12 +226,9 @@ public class PushPullService extends IntentService {
 
 
         try {
-            for (Facility facility : facilities) {
-                for (MonthReportForm m : MonthReportForm.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushMonthFormReportUrl(context, facility.serverId), m), m);
-                }
+            for (MonthReportForm m : MonthReportForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushMonthFormReportUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
@@ -268,24 +236,73 @@ public class PushPullService extends IntentService {
 
 
         try {
-            for (Facility facility : facilities) {
-                for (RegisterForm m : RegisterForm.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushRegisterFormReportUrl(context, facility.serverId), m), m);
-                }
+            for (RegisterForm m : RegisterForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushRegisterFormReportUrl(context, m.facility.serverId), m), m);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
-            for (Facility facility : facilities) {
-                for (TXTNew m : TXTNew.getFilesToUpload(facility.getId())) {
-                    save(run(AppUtil.getPushTXTNewUrl(context, facility.serverId), m), m);
-                }
+            for (TXTNew m : TXTNew.getFilesToUpload()) {
+                save(run(AppUtil.getPushTXTNewUrl(context, m.facility.serverId), m), m);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
 
+
+        try {
+            for (PMTCTARTForm m : PMTCTARTForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushPMTCTARTFormReportUrl(context, m.facility.serverId), m), m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (PMTCTFOForm m : PMTCTFOForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushPMTCTFOFormReportUrl(context, m.facility.serverId), m), m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (SupplementaryIndicatorForm m : SupplementaryIndicatorForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushSupplementaryIndicatorFormReportUrl(context, m.facility.serverId), m), m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (TXCURRForm m : TXCURRForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushTXCURRFormReportUrl(context, m.facility.serverId), m), m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (TXPVLSForm m : TXPVLSForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushTXPVLSFormReportUrl(context, m.facility.serverId), m), m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Activity.RESULT_CANCELED;
+        }
+
+        try {
+            for (TXRETForm m : TXRETForm.getFilesToUpload()) {
+                save(run(AppUtil.getPushTXRETFormReportUrl(context, m.facility.serverId), m), m);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
@@ -755,6 +772,78 @@ public class PushPullService extends IntentService {
 
     }
 
+    private String run(HttpUrl httpUrl, PMTCTARTForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, PMTCTFOForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, SupplementaryIndicatorForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, TXCURRForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, TXPVLSForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
+    private String run(HttpUrl httpUrl, TXRETForm form) {
+
+        OkHttpClient client = new OkHttpClient();
+        client = AppUtil.connectionSettings(client);
+        client = AppUtil.getUnsafeOkHttpClient(client);
+        client = AppUtil.createAuthenticationData(client, context);
+        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        String json = gson.toJson(form);
+        return AppUtil.getResponeBody(client, httpUrl, json);
+
+    }
+
     public CaseFile save(String data, CaseFile item) {
         try {
             Long id = Long.valueOf(data);
@@ -920,6 +1009,81 @@ public class PushPullService extends IntentService {
             return null;
         }
     }
+
+    public PMTCTARTForm save(String data, PMTCTARTForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public PMTCTFOForm save(String data, PMTCTFOForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public SupplementaryIndicatorForm save(String data, SupplementaryIndicatorForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public TXCURRForm save(String data, TXCURRForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public TXPVLSForm save(String data, TXPVLSForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public TXRETForm save(String data, TXRETForm item) {
+        try {
+            Long id = Long.valueOf(data);
+            item.serverId = id;
+            item.save();
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }
 

@@ -101,20 +101,11 @@ public class MentorVisitReport extends Model {
                 .count();
     }
 
-    public static List<MentorVisitReport> getFilesToUpload(Long id) {
+    public static List<MentorVisitReport> getFilesToUpload() {
         return new Select()
                 .from(MentorVisitReport.class)
-                .where("case_file_id = ?", id)
                 .where("serverId is null")
                 .execute();
-    }
-
-    public static Integer getNumberOfFilesToUpload(Long id) {
-        return new Select()
-                .from(MentorVisitReport.class)
-                .where("case_file_id = ?", id)
-                .where("serverId is null")
-                .count();
     }
 
     public static void deleteAll() {

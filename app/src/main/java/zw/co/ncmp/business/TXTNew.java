@@ -323,11 +323,9 @@ public class TXTNew extends Model {
                 .execute();
     }
 
-
-    public static List<TXTNew> getFilesToUpload(Long id) {
+    public static List<TXTNew> getFilesToUpload() {
         return new Select()
                 .from(TXTNew.class)
-                .where("facility_id = ?", id)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();

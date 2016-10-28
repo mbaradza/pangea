@@ -17,14 +17,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import zw.co.ncmp.R;
 import zw.co.ncmp.util.AppUtil;
 
 /**
- * Created by tdhlakama on 2/6/2016.
+ * Created by tdhla on 10/25/2016.
  */
-@Table(name = "register_form")
-public class RegisterForm extends Model {
+@Table(name = "txtpvls_form")
+public class TXPVLSForm extends Model {
 
     @SerializedName("id")
     @Expose
@@ -34,10 +33,6 @@ public class RegisterForm extends Model {
     @Expose
     @Column(name = "facility_id")
     public Facility facility;
-
-    @Expose
-    @Column(name = "period_id")
-    public Period period;
 
     @Column(name = "date_created")
     public Date dateCreated;
@@ -49,6 +44,42 @@ public class RegisterForm extends Model {
     @Expose
     @Column(name = "name")
     public String name;
+
+    @Expose
+    @Column(name = "period_id")
+    public Period period;
+
+    @Expose
+    @Column(name = "routineNumeratorPregnant")
+    public Long routineNumeratorPregnant;
+
+    @Expose
+    @Column(name = "routineDenominatorPregnant")
+    public Long routineDenominatorPregnant;
+
+    @Expose
+    @Column(name = "routineNumeratorBreastFeeding")
+    public Long routineDenominatorBreastFeeding;
+
+    @Expose
+    @Column(name = "routineDenominatorBreastFeeding")
+    public Long routineNumeratorBreastFeeding;
+
+    @Expose
+    @Column(name = "targetNumeratorPregnant")
+    public Long targetNumeratorPregnant;
+
+    @Expose
+    @Column(name = "targetDenominatorPregnant")
+    public Long targetDenominatorPregnant;
+
+    @Expose
+    @Column(name = "targetNumeratorBreastFeeding")
+    public Long targetDenominatorBreastFeeding;
+
+    @Expose
+    @Column(name = "targetDenominatorBreastFeeding")
+    public Long targetNumeratorBreastFeeding;
 
     @Expose
     @Column(name = "maleLessThanOne1")
@@ -306,215 +337,49 @@ public class RegisterForm extends Model {
     @Column(name = "femaleFiftyPlus4")
     public Long femaleFiftyPlus4;
 
-    @Expose
-    @Column(name = "maleLessThanOne5")
-    public Long maleLessThanOne5;
-
-    @Expose
-    @Column(name = "femaleLessThanOne5")
-    public Long femaleLessThanOne5;
-
-    @Expose
-    @Column(name = "maleOneToFour5")
-    public Long maleOneToFour5;
-
-    @Expose
-    @Column(name = "femaleOneToFour5")
-    public Long femaleOneToFour5;
-
-    @Expose
-    @Column(name = "maleFiveToNine5")
-    public Long maleFiveToNine5;
-
-    @Expose
-    @Column(name = "femaleFiveToNine5")
-    public Long femaleFiveToNine5;
-
-    @Expose
-    @Column(name = "maleTenToFourteen5")
-    public Long maleTenToFourteen5;
-
-    @Expose
-    @Column(name = "femaleTenToFourteen5")
-    public Long femaleTenToFourteen5;
-
-    @Expose
-    @Column(name = "maleFifteenToNineteen5")
-    public Long maleFifteenToNineteen5;
-
-    @Expose
-    @Column(name = "femaleFifteenToNineteen5")
-    public Long femaleFifteenToNineteen5;
-
-    @Expose
-    @Column(name = "maleTwentyToTwentyFour5")
-    public Long maleTwentyToTwentyFour5;
-
-    @Expose
-    @Column(name = "femaleTwentyToTwentyFour5")
-    public Long femaleTwentyToTwentyFour5;
-
-    @Expose
-    @Column(name = "maleTwentyFiveToFortyNine5")
-    public Long maleTwentyFiveToFortyNine5;
-
-    @Expose
-    @Column(name = "femaleTwentyFiveToFortyNine5")
-    public Long femaleTwentyFiveToFortyNine5;
-
-    @Expose
-    @Column(name = "maleFiftyPlus5")
-    public Long maleFiftyPlus5;
-
-    @Expose
-    @Column(name = "femaleFiftyPlus5")
-    public Long femaleFiftyPlus5;
-
-    @Expose
-    @Column(name = "testedOPD")
-    public Long testedOPD;
-
-    @Expose
-    @Column(name = "positiveTestedOPD")
-    public Long positiveTestedOPD;
-
-    @Expose
-    @Column(name = "testedInpatient")
-    public Long testedInpatient;
-
-    @Expose
-    @Column(name = "positiveTestedInpatient")
-    public Long positiveTestedInpatient;
-
-    @Expose
-    @Column(name = "testedPaediatric")
-    public Long testedPaediatric;
-
-    @Expose
-    @Column(name = "positiveTestedPaediatric")
-    public Long positiveTestedPaediatric;
-
-    @Expose
-    @Column(name = "testedPMTCT")
-    public Long testedPMTCT;
-
-    @Expose
-    @Column(name = "positiveTestedPMTCT")
-    public Long positiveTestedPMTCT;
-
-    @Expose
-    @Column(name = "testedSTI")
-    public Long testedSTI;
-
-    @Expose
-    @Column(name = "positiveTestedSTI")
-    public Long positiveTestedSTI;
-
-    @Expose
-    @Column(name = "testedTB")
-    public Long testedTB;
-
-    @Expose
-    @Column(name = "positiveTestedTB")
-    public Long positiveTestedTB;
-
-    @Expose
-    @Column(name = "pmtctEIDP30")
-    public Long pmtctEIDP30;
-
-    @Expose
-    @Column(name = "pmtctEIDP31")
-    public Long pmtctEIDP31;
-
-    @Expose
-    @Column(name = "pmtctEIDP4")
-    public Long pmtctEIDP4;
-
-    @Expose
-    @Column(name = "pmtctEIDP5")
-    public Long pmtctEIDP5;
-
-    @Expose
-    @Column(name = "pmtctEIDP14")
-    public Long pmtctEIDP14;
-
-    @Expose
-    @Column(name = "pmtctEIDP17")
-    public Long pmtctEIDP17;
-
-    @Expose
-    @Column(name = "pmtctSTATP2")
-    public Long pmtctSTATP2;
-
-    @Expose
-    @Column(name = "pmtctSTATP5")
-    public Long pmtctSTATP5;
-
-    @Expose
-    @Column(name = "pmtctSTATP13")
-    public Long pmtctSTATP13;
-
-    @Expose
-    @Column(name = "pmtctSTATP1")
-    public Long pmtctSTATP1;
-
-    @Expose
-    @Column(name = "pmtctSTATP12")
-    public Long pmtctSTATP12;
-
-    @Expose
-    @Column(name = "pmtctSTATP12DisaggregationP4")
-    public Long pmtctSTATP12DisaggregationP4;
-
-    @Expose
-    @Column(name = "pmtctSTATP12DisaggregationP5")
-    public Long pmtctSTATP12DisaggregationP5;
-
-    @Expose
-    @Column(name = "pmtctSTATP12DisaggregationP14")
-    public Long pmtctSTATP12DisaggregationP14;
-
-    @Expose
-    @Column(name = "pmtctSTATP12DisaggregationP17")
-    public Long pmtctSTATP12DisaggregationP17;
-
     @Column(name = "date_submitted", notNull = false)
     public Date dateSubmitted;
 
-    public static RegisterForm get(Long id) {
-        return new Select().from(RegisterForm.class).where("Id = ?", id).executeSingle();
+    public TXPVLSForm() {
+        super();
     }
 
-    public static RegisterForm getRegisterForm(Long id) {
-        return new Select().from(RegisterForm.class).where("serverId = ?", id).executeSingle();
+    public static TXPVLSForm get(Long id) {
+        return new Select().from(TXPVLSForm.class).where("Id = ?", id).executeSingle();
     }
 
-    public static List<RegisterForm> getFilesToUpload() {
+    public static TXPVLSForm getTXPVLSForm(Long id) {
+        return new Select().from(TXPVLSForm.class).where("serverId = ?", id).executeSingle();
+    }
+
+    public static List<TXPVLSForm> getAll() {
         return new Select()
-                .from(RegisterForm.class)
+                .from(TXPVLSForm.class)
+                .orderBy("name ASC")
+                .execute();
+    }
+
+    public static int getCount() {
+        return new Select()
+                .distinct()
+                .from(TXPVLSForm.class)
+                .count();
+    }
+
+    public static List<TXPVLSForm> getFilesToUpload() {
+        return new Select()
+                .from(TXPVLSForm.class)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();
     }
 
-    public static List<RegisterForm> getAll() {
-        return new Select()
-                .from(RegisterForm.class)
-                .orderBy("date_created ASC")
-                .execute();
-    }
-
     public static void deleteAll() {
-        new Delete().from(RegisterForm.class).execute();
+        new Delete().from(TXPVLSForm.class).execute();
     }
 
-    @Override
-    public String toString() {
-        return "Register Form";
-    }
-
-    public static RegisterForm fromJson(JSONObject jsonObject) {
-        RegisterForm i = new RegisterForm();
+    public static TXPVLSForm fromJson(JSONObject jsonObject) {
+        TXPVLSForm i = new TXPVLSForm();
         try {
             i.serverId = jsonObject.getLong("id");
         } catch (JSONException e) {
@@ -524,8 +389,8 @@ public class RegisterForm extends Model {
         return i;
     }
 
-    public static ArrayList<RegisterForm> fromJson(JSONArray jsonArray) {
-        ArrayList<RegisterForm> list = new ArrayList<RegisterForm>(jsonArray.length());
+    public static ArrayList<TXPVLSForm> fromJson(JSONArray jsonArray) {
+        ArrayList<TXPVLSForm> list = new ArrayList<TXPVLSForm>(jsonArray.length());
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject item = null;
             try {
@@ -535,7 +400,7 @@ public class RegisterForm extends Model {
                 continue;
             }
 
-            RegisterForm business = RegisterForm.fromJson(item);
+            TXPVLSForm business = TXPVLSForm.fromJson(item);
             if (business != null) {
                 list.add(business);
             }
@@ -544,9 +409,15 @@ public class RegisterForm extends Model {
         return list;
     }
 
-    public static final TypeToken<List<RegisterForm>> LIST =
-            new TypeToken<List<RegisterForm>>() {
+    public static final TypeToken<List<TXPVLSForm>> LIST =
+            new TypeToken<List<TXPVLSForm>>() {
             };
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
     public Long maleQuestion1() {
         return AppUtil.getLong(maleLessThanOne1) + AppUtil.getLong(maleOneToFour1) +
@@ -604,17 +475,5 @@ public class RegisterForm extends Model {
                 AppUtil.getLong(femaleTwentyFiveToFortyNine4) + AppUtil.getLong(femaleFiftyPlus4);
     }
 
-    public Long maleQuestion5() {
-        return AppUtil.getLong(maleLessThanOne5) + AppUtil.getLong(maleOneToFour5) +
-                AppUtil.getLong(maleFiveToNine5) + AppUtil.getLong(maleTenToFourteen5) +
-                AppUtil.getLong(maleFifteenToNineteen5) + AppUtil.getLong(maleTwentyToTwentyFour5) +
-                AppUtil.getLong(maleTwentyFiveToFortyNine5) + AppUtil.getLong(maleFiftyPlus5);
-    }
 
-    public Long femaleQuestion5() {
-        return AppUtil.getLong(femaleLessThanOne5) + AppUtil.getLong(femaleOneToFour5) +
-                AppUtil.getLong(femaleFiveToNine5) + AppUtil.getLong(femaleTenToFourteen5) +
-                AppUtil.getLong(femaleFifteenToNineteen5) + AppUtil.getLong(femaleTwentyToTwentyFour5) +
-                AppUtil.getLong(femaleTwentyFiveToFortyNine5) + AppUtil.getLong(femaleFiftyPlus5);
-    }
 }

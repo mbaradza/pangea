@@ -148,10 +148,9 @@ public class ScreenForm  extends Model {
                 .count();
     }
 
-    public static List<ScreenForm> getFilesToUpload(Long id) {
+    public static List<ScreenForm> getFilesToUpload() {
         return new Select()
                 .from(ScreenForm.class)
-                .where("facility_id = ?", id)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();

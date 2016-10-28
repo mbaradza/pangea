@@ -233,6 +233,54 @@
             android:label="@string/app_name">
         </activity>
 
+        <activity
+            android:name=".PMTCTARTFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".PMTCTARTFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".PMTCTOFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".PMTCTFOFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".SupplementaryIndicatorFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".SupplementaryIndicatorFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXCURRFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXCURRFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXPLSVFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXPLSVFormActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXRETFormListActivity"
+            android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".TXRETFormActivity"
+            android:label="@string/app_name"></activity>
+
         <service android:name="zw.co.ncmp.network.PushPullService" />
 
     </application>

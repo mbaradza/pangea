@@ -52,7 +52,13 @@ import zw.co.ncmp.business.Mentee;
 import zw.co.ncmp.business.Mentor;
 import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.MentorVisitReport;
+import zw.co.ncmp.business.PMTCTARTForm;
+import zw.co.ncmp.business.PMTCTFOForm;
 import zw.co.ncmp.business.Qualification;
+import zw.co.ncmp.business.SupplementaryIndicatorForm;
+import zw.co.ncmp.business.TXCURRForm;
+import zw.co.ncmp.business.TXPVLSForm;
+import zw.co.ncmp.business.TXRETForm;
 
 /**
  * Created by tdhlakama on 1/19/2016.
@@ -69,8 +75,8 @@ public class AppUtil {
     public static String SQL_DATE_FORMAT = "yyyy-MM-dd";
     //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
 
-    public static String APP_URL = "http://192.168.0.45:8084/tracker-mobile/rest/mobile/"; //UAT
-    //public static String APP_URL = "http://pzat.org:8080/tracker-mobile/rest/mobile/"; //UAT
+    //public static String APP_URL = "http://192.168.0.45:8084/tracker-mobile/rest/mobile/"; //UAT
+    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";
@@ -186,6 +192,42 @@ public class AppUtil {
 
     public static HttpUrl getPushRegisterFormReportUrl(Context context, Long id) {
         return HttpUrl.parse(getWebService(context).concat("dsd/dsd-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushPMTCTARTFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushPMTCTFOFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushSupplementaryIndicatorFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushTXCURRFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushTXPVLSFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
+                .setQueryParameter("id", String.valueOf(id))
+                .build();
+    }
+
+    public static HttpUrl getPushTXRETFormReportUrl(Context context, Long id) {
+        return HttpUrl.parse(getWebService(context).concat("dsd/tb-register")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }

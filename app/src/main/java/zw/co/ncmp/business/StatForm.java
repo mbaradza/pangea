@@ -144,10 +144,9 @@ public class StatForm  extends Model {
                 .count();
     }
 
-    public static List<StatForm> getFilesToUpload(Long id) {
+    public static List<StatForm> getFilesToUpload() {
         return new Select()
                 .from(StatForm.class)
-                .where("facility_id = ?", id)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();

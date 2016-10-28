@@ -20,10 +20,10 @@ import java.util.List;
 import zw.co.ncmp.util.AppUtil;
 
 /**
- * Created by tdhlakama on 2/6/2016.
+ * Created by tdhla on 10/25/2016.
  */
-@Table(name = "dsd_couple")
-public class DSDCouple extends Model {
+@Table(name = "txtret_form")
+public class TXRETForm extends Model {
 
     @SerializedName("id")
     @Expose
@@ -33,10 +33,6 @@ public class DSDCouple extends Model {
     @Expose
     @Column(name = "facility_id")
     public Facility facility;
-
-    @Expose
-    @Column(name = "period_id")
-    public Period period;
 
     @Column(name = "date_created")
     public Date dateCreated;
@@ -48,6 +44,34 @@ public class DSDCouple extends Model {
     @Expose
     @Column(name = "name")
     public String name;
+
+    @Expose
+    @Column(name = "period_id")
+    public Period period;
+
+    @Expose
+    @Column(name = "numerator")
+    public Long numerator;
+
+    @Expose
+    @Column(name = "denominator")
+    public Long denominator;
+
+    @Expose
+    @Column(name = "numeratorPregnant")
+    public Long numeratorPregnant;
+
+    @Expose
+    @Column(name = "denominatorPregnant")
+    public Long denominatorPregnant;
+
+    @Expose
+    @Column(name = "numeratorBreastFeeding")
+    public Long numeratorBreastFeeding;
+
+    @Expose
+    @Column(name = "denominatorBreastFeeding")
+    public Long denominatorBreastFeeding;
 
     @Expose
     @Column(name = "maleLessThanOne1")
@@ -177,154 +201,49 @@ public class DSDCouple extends Model {
     @Column(name = "femaleFiftyPlus2")
     public Long femaleFiftyPlus2;
 
-    @Expose
-    @Column(name = "maleLessThanOne3")
-    public Long maleLessThanOne3;
-
-    @Expose
-    @Column(name = "femaleLessThanOne3")
-    public Long femaleLessThanOne3;
-
-    @Expose
-    @Column(name = "maleOneToFour3")
-    public Long maleOneToFour3;
-
-    @Expose
-    @Column(name = "femaleOneToFour3")
-    public Long femaleOneToFour3;
-
-    @Expose
-    @Column(name = "maleFiveToNine3")
-    public Long maleFiveToNine3;
-
-    @Expose
-    @Column(name = "femaleFiveToNine3")
-    public Long femaleFiveToNine3;
-
-    @Expose
-    @Column(name = "maleTenToFourteen3")
-    public Long maleTenToFourteen3;
-
-    @Expose
-    @Column(name = "femaleTenToFourteen3")
-    public Long femaleTenToFourteen3;
-
-    @Expose
-    @Column(name = "maleFifteenToNineteen3")
-    public Long maleFifteenToNineteen3;
-
-    @Expose
-    @Column(name = "femaleFifteenToNineteen3")
-    public Long femaleFifteenToNineteen3;
-
-    @Expose
-    @Column(name = "maleTwentyToTwentyFour3")
-    public Long maleTwentyToTwentyFour3;
-
-    @Expose
-    @Column(name = "femaleTwentyToTwentyFour3")
-    public Long femaleTwentyToTwentyFour3;
-
-    @Expose
-    @Column(name = "maleTwentyFiveToFortyNine3")
-    public Long maleTwentyFiveToFortyNine3;
-
-    @Expose
-    @Column(name = "femaleTwentyFiveToFortyNine3")
-    public Long femaleTwentyFiveToFortyNine3;
-
-    @Expose
-    @Column(name = "maleFiftyPlus3")
-    public Long maleFiftyPlus3;
-
-    @Expose
-    @Column(name = "femaleFiftyPlus3")
-    public Long femaleFiftyPlus3;
-
-    @Expose
-    @Column(name = "testedFHS")
-    public Long testedFHS;
-
-    @Expose
-    @Column(name = "positiveTestedFHS")
-    public Long positiveTestedFHS;
-
-    @Expose
-    @Column(name = "testedOPD")
-    public Long testedOPD;
-
-    @Expose
-    @Column(name = "positiveTestedOPD")
-    public Long positiveTestedOPD;
-
-    @Expose
-    @Column(name = "testedOutreach")
-    public Long testedOutreach;
-
-    @Expose
-    @Column(name = "positiveTestedOutreach")
-    public Long positiveTestedOutreach;
-
-    @Expose
-    @Column(name = "testedMaternity")
-    public Long testedMaternity;
-
-    @Expose
-    @Column(name = "positiveTestedMaternity")
-    public Long positiveTestedMaternity;
-
-    @Expose
-    @Column(name = "testedANC")
-    public Long testedANC;
-
-    @Expose
-    @Column(name = "positiveTestedANC")
-    public Long positiveTestedANC;
-
     @Column(name = "date_submitted", notNull = false)
     public Date dateSubmitted;
 
-    public static DSDCouple get(Long id) {
-        return new Select().from(DSDCouple.class).where("Id = ?", id).executeSingle();
+    public TXRETForm() {
+        super();
     }
 
-    public static DSDCouple getDSDCouple(Long id) {
-        return new Select().from(DSDCouple.class).where("serverId = ?", id).executeSingle();
+    public static TXRETForm get(Long id) {
+        return new Select().from(TXRETForm.class).where("Id = ?", id).executeSingle();
     }
 
-    public static DSDCouple getDSDCouple(Long facilityId, Long periodId) {
-        return new Select().from(DSDCouple.class)
-                .where("facility_id = ?", facilityId)
-                .where("period_id = ?", periodId)
-                .executeSingle();
+    public static TXRETForm getTXRETForm(Long id) {
+        return new Select().from(TXRETForm.class).where("serverId = ?", id).executeSingle();
     }
 
-    public static List<DSDCouple> getAll() {
+    public static List<TXRETForm> getAll() {
         return new Select()
-                .from(DSDCouple.class)
-                .orderBy("date_created ASC")
+                .from(TXRETForm.class)
+                .orderBy("name ASC")
                 .execute();
     }
 
-    public static List<DSDCouple> getFilesToUpload() {
+    public static int getCount() {
         return new Select()
-                .from(DSDCouple.class)
+                .distinct()
+                .from(TXRETForm.class)
+                .count();
+    }
+
+    public static List<TXRETForm> getFilesToUpload() {
+        return new Select()
+                .from(TXRETForm.class)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();
     }
 
     public static void deleteAll() {
-        new Delete().from(DSDCouple.class).execute();
+        new Delete().from(TXRETForm.class).execute();
     }
 
-    @Override
-    public String toString() {
-        return "HTC_TST: DSD- Individuals";
-    }
-
-    public static DSDCouple fromJson(JSONObject jsonObject) {
-        DSDCouple i = new DSDCouple();
+    public static TXRETForm fromJson(JSONObject jsonObject) {
+        TXRETForm i = new TXRETForm();
         try {
             i.serverId = jsonObject.getLong("id");
         } catch (JSONException e) {
@@ -334,8 +253,8 @@ public class DSDCouple extends Model {
         return i;
     }
 
-    public static ArrayList<DSDCouple> fromJson(JSONArray jsonArray) {
-        ArrayList<DSDCouple> list = new ArrayList<DSDCouple>(jsonArray.length());
+    public static ArrayList<TXRETForm> fromJson(JSONArray jsonArray) {
+        ArrayList<TXRETForm> list = new ArrayList<TXRETForm>(jsonArray.length());
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject item = null;
             try {
@@ -345,7 +264,7 @@ public class DSDCouple extends Model {
                 continue;
             }
 
-            DSDCouple business = DSDCouple.fromJson(item);
+            TXRETForm business = TXRETForm.fromJson(item);
             if (business != null) {
                 list.add(business);
             }
@@ -354,9 +273,15 @@ public class DSDCouple extends Model {
         return list;
     }
 
-    public static final TypeToken<List<DSDCouple>> LIST =
-            new TypeToken<List<DSDCouple>>() {
+    public static final TypeToken<List<TXRETForm>> LIST =
+            new TypeToken<List<TXRETForm>>() {
             };
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
     public Long maleQuestion1() {
         return AppUtil.getLong(maleLessThanOne1) + AppUtil.getLong(maleOneToFour1) +
@@ -385,19 +310,4 @@ public class DSDCouple extends Model {
                 AppUtil.getLong(femaleFifteenToNineteen2) + AppUtil.getLong(femaleTwentyToTwentyFour2) +
                 AppUtil.getLong(femaleTwentyFiveToFortyNine2) + AppUtil.getLong(femaleFiftyPlus2);
     }
-
-    public Long maleQuestion3() {
-        return AppUtil.getLong(maleLessThanOne3) + AppUtil.getLong(maleOneToFour3) +
-                AppUtil.getLong(maleFiveToNine3) + AppUtil.getLong(maleTenToFourteen3) +
-                AppUtil.getLong(maleFifteenToNineteen3) + AppUtil.getLong(maleTwentyToTwentyFour3) +
-                AppUtil.getLong(maleTwentyFiveToFortyNine3) + AppUtil.getLong(maleFiftyPlus3);
-    }
-
-    public Long femaleQuestion3() {
-        return AppUtil.getLong(femaleLessThanOne3) + AppUtil.getLong(femaleOneToFour3) +
-                AppUtil.getLong(femaleFiveToNine3) + AppUtil.getLong(femaleTenToFourteen3) +
-                AppUtil.getLong(femaleFifteenToNineteen3) + AppUtil.getLong(femaleTwentyToTwentyFour3) +
-                AppUtil.getLong(femaleTwentyFiveToFortyNine3) + AppUtil.getLong(femaleFiftyPlus3);
-    }
-
 }

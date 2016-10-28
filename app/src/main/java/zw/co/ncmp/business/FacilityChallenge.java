@@ -114,20 +114,11 @@ public class FacilityChallenge extends Model {
         return new Select().from(FacilityChallenge.class).where("serverId = ?", id).executeSingle();
     }
 
-    public static List<FacilityChallenge> getFilesToUpload(Long id) {
+    public static List<FacilityChallenge> getFilesToUpload() {
         return new Select()
                 .from(FacilityChallenge.class)
-                .where("case_file_id = ?", id)
                 .where("serverId is null")
                 .execute();
-    }
-
-    public static Integer getNumberOfFilesToUpload(Long id) {
-        return new Select()
-                .from(FacilityChallenge.class)
-                .where("case_file_id = ?", id)
-                .where("serverId is null")
-                .count();
     }
 
     public static List<FacilityChallenge> getAll() {

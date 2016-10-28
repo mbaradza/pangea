@@ -60,4 +60,14 @@
     <string name="pmtct_eid">5. PMTCT_EID</string>
     <string name="pmtct_stat">6 .PMTCT_STAT</string>
 
+
+    <string name="tx_ret_question_one">Disaggregation Numerator </string>
+    <string name="tx_ret_question_two">Disaggregation Denominator</string>
+
+
+    <string name="tx_pvls_question_one">Routine Pregnant Disaggregation</string>
+    <string name="tx_pvls_question_two">Routine Breast Feeding Disaggregation</string>
+    <string name="tx_pvls_question_three">Target Pregnant Disaggregation</string>
+    <string name="tx_pvls_question_four">Target Breast Feeding Disaggregation</string>
+
 </resources>

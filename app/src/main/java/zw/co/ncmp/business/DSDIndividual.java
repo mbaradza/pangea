@@ -628,10 +628,9 @@ public class DSDIndividual extends Model {
                 .execute();
     }
 
-    public static List<DSDIndividual> getFilesToUpload(Long id) {
+    public static List<DSDIndividual> getFilesToUpload() {
         return new Select()
                 .from(DSDIndividual.class)
-                .where("facility_id = ?", id)
                 .where("serverId is null")
                 .where("date_submitted is not null")
                 .execute();
