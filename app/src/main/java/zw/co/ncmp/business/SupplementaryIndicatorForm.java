@@ -47,58 +47,72 @@ public class SupplementaryIndicatorForm extends Model {
     @Column(name = "period_id")
     public Period period;
 
+    @SerializedName("estFacCatchmentPopulation")
     @Expose
     @Column(name = "estimatedFacilityCatchmentPopulation")
     public Long estimatedFacilityCatchmentPopulation;
 
+    @SerializedName("numOfActivePreARTPatients")
     @Expose
     @Column(name = "numberOfActivePreARTPatients")
     public Long numberOfActivePreARTPatients;
 
+    @SerializedName("opdNumOfPatientsInPastMonth")
     @Expose
     @Column(name = "opdNumberOfPatientsInPastMonth")
     public Long opdNumberOfPatientsInPastMonth;
 
+    @SerializedName("opdNumOfPatWithKnownHIVPosStatusOnEntry")
     @Expose
     @Column(name = "opdNumberOfPatientsWithKnownHIVPositiveStatusOnEntry")
     public Long opdNumberOfPatientsWithKnownHIVPositiveStatusOnEntry;
 
+    @SerializedName("opdNumOfPatTestedForHIVInPastMonth")
     @Expose
     @Column(name = "opdNumberOfPatientsTestedForHIVInPastMonth")
     public Long opdNumberOfPatientsTestedForHIVInPastMonth;
 
+    @SerializedName("opdNumOfPatTestedPositiveInPastMonth")
     @Expose
     @Column(name = "opdNumberOfPatientsTestedPositiveInPastMonth")
     public Long opdNumberOfPatientsTestedPositiveInPastMonth;
 
+    @SerializedName("stiNumberOfPatientsInPastMonth")
     @Expose
     @Column(name = "stiNumberOfPatientsInPastMonth")
     public Long stiNumberOfPatientsInPastMonth;
 
+    @SerializedName("stiNumOfPatWithKnownHIVPosStatusOnEntry")
     @Expose
     @Column(name = "stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry")
     public Long stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry;
 
+    @SerializedName("stiNumOfPatTestedForHIVInPastMonth")
     @Expose
     @Column(name = "stiNumberOfPatientsTestedForHIVInPastMonth")
     public Long stiNumberOfPatientsTestedForHIVInPastMonth;
 
+    @SerializedName("stiNumOfPatTestedPosInPastMonth")
     @Expose
     @Column(name = "stiNumberOfPatientsTestedPositiveInPastMonth")
     public Long stiNumberOfPatientsTestedPositiveInPastMonth;
 
+    @SerializedName("inPatNumOfPatientsInPastMonth")
     @Expose
     @Column(name = "inPatientNumberOfPatientsInPastMonth")
     public Long inPatientNumberOfPatientsInPastMonth;
 
+    @SerializedName("inPatNumOfPatientsWithKnownHIVPosStatusOnEntry")
     @Expose
     @Column(name = "inPatientNumberOfPatientsWithKnownHIVPositiveStatusOnEntry")
     public Long inPatientNumberOfPatientsWithKnownHIVPositiveStatusOnEntry;
 
+    @SerializedName("inPatNumOfPatTestedForHIVInPastMonth")
     @Expose
     @Column(name = "inPatientNumberOfPatientsTestedForHIVInPastMonth")
     public Long inPatientNumberOfPatientsTestedForHIVInPastMonth;
 
+    @SerializedName("inPatNumOfPatientsTestedPositiveInPastMonth")
     @Expose
     @Column(name = "inPatientNumberOfPatientsTestedPositiveInPastMonth")
     public Long inPatientNumberOfPatientsTestedPositiveInPastMonth;
