@@ -52,11 +52,8 @@ public class CaseFileAdapter extends ArrayAdapter<CaseFile> {
         ViewHolder holder = (ViewHolder) rowView.getTag();
         CaseFile item = list.get(position);
         holder.name.setText((position + 1) + " . " + item.facility + " : " + AppUtil.getStringDate(item.dateCreated));
-        if (item.checkInTime != null) {
-            holder.more.setText("View Detail - " + AppUtil.getFormatter().format(item.dateCreated));
-        } else {
-            holder.more.setText("View Detail - " + item.checkInTime);
-        }
+        holder.more.setText("View Detail");
+
         holder.more.setTypeface(null, Typeface.BOLD_ITALIC);
         return rowView;
     }

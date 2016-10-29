@@ -75,8 +75,8 @@ public class AppUtil {
     public static String SQL_DATE_FORMAT = "yyyy-MM-dd";
     //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
 
-    //public static String APP_URL = "http://192.168.0.45:8084/tracker-mobile/rest/mobile/"; //UAT
-    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
+    public static String APP_URL = "http://192.168.0.31:8084/tracker-mobile/rest/mobile/"; //UAT
+    //public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";
@@ -87,7 +87,7 @@ public class AppUtil {
     public static String MENTOR_ROLE = "NATIONAL";
 
     public static SimpleDateFormat getFormatter() {
-        return new SimpleDateFormat("hh.mm.ss");
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     }
 
     public static HttpUrl getLoginUrl(Context context) {
@@ -293,6 +293,18 @@ public class AppUtil {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(AppUtil.DATE_FORMAT);
             return sdf.format(date);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static String getStringTime(Date date) {
+        if (date == null) {
+            return "";
+
+        }
+        try {
+            return getFormatter().format(date);
         } catch (Exception e) {
             return null;
         }

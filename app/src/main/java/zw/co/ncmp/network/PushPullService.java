@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -13,8 +14,8 @@ import com.squareup.okhttp.OkHttpClient;
 import org.json.JSONArray;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import zw.co.ncmp.business.ARTForm;
@@ -137,17 +138,20 @@ public class PushPullService extends IntentService {
         }
 
         try {
-            for (CaseFile caseFile : CaseFile.getCaseFilesUploaded()) {
+            for (CaseFile caseFile : CaseFile.getFilesToUpload()) {
                 save(run(AppUtil.getPushCaseFileUrl(context), caseFile), caseFile);
             }
         } catch (Exception e) {
+
             e.printStackTrace();
             result = Activity.RESULT_CANCELED;
         }
 
         try {
             for (FacilityChallenge f : FacilityChallenge.getFilesToUpload()) {
-                delete(run(AppUtil.getPushFacilityChallengeUrl(context, f.caseFile.serverId), f), f);
+                if (f.caseFile.serverId != null) {
+                    delete(run(AppUtil.getPushFacilityChallengeUrl(context, f.caseFile.serverId), f), f);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +160,9 @@ public class PushPullService extends IntentService {
 
         try {
             for (MentorVisitReport m : MentorVisitReport.getFilesToUpload()) {
-                save(run(AppUtil.getPushMentorVisitReportUrl(context, m.caseFile.serverId), m), m);
+                if (m.caseFile.serverId != null) {
+                    save(run(AppUtil.getPushMentorVisitReportUrl(context, m.caseFile.serverId), m), m);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -624,12 +630,11 @@ public class PushPullService extends IntentService {
         client = AppUtil.connectionSettings(client);
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
-        caseFile.serverCreatedDate = AppUtil.getStringDate(caseFile.dateCreated);
-        caseFile.serverSubmittedDate = AppUtil.getStringDate(caseFile.dateSubmitted);
+        caseFile.serverCreatedDate = AppUtil.getStringTime(caseFile.dateCreated);
+        caseFile.serverSubmittedDate = AppUtil.getStringTime(caseFile.dateSubmitted);
         caseFile.mentees = CaseFileMentee.getMentees(caseFile.getId());
         caseFile.mentors = CaseFileMentor.getMentors(caseFile.getId());
         String json = gson.toJson(caseFile);
-
         return AppUtil.getResponeBody(client, httpUrl, json);
     }
 

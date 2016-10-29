@@ -204,7 +204,6 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
                                 onLocationChanged(mLastLocation);
                                 onLocationChanged(location);
                                 caseFile.dateSubmitted = new Date();
-                                caseFile.checkOutTime = AppUtil.getFormatter().format(caseFile.dateSubmitted);
                                 caseFile.save();
                                 optionsLayout.setVisibility(View.GONE);
                                 optionsLayout1.setVisibility(View.GONE);

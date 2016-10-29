@@ -44,14 +44,6 @@ public class CaseFile extends Model {
     @Expose
     public String serverSubmittedDate;
 
-    @SerializedName("checkInTime")
-    @Expose
-    public String checkInTime;
-
-    @SerializedName("checkOutTime")
-    @Expose
-    public String checkOutTime;
-
     @Expose
     @Column(name = "latitude_coordinate_created", notNull = false)
     public Double latitudeCreated;
@@ -106,10 +98,11 @@ public class CaseFile extends Model {
                 .execute();
     }
 
-    public static List<CaseFile> getCaseFilesUploaded() {
+    public static List<CaseFile> getFilesToUpload() {
         return new Select()
                 .from(CaseFile.class)
-                .where("serverId is not null")
+                .where("serverId is null")
+                .where("date_submitted is not null")
                 .orderBy("date_created ASC")
                 .execute();
     }
