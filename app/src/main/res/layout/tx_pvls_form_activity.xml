@@ -64,20 +64,26 @@
             android:layout_height="wrap_content"
             android:hint="Name" />
 
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:text="Numerator" />
-
-        <EditText
-            android:id="@+id/numerator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Numerator"
-            android:inputType="number" />
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="1. Numerator"
+                android:paddingBottom="@dimen/fab_margin" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="a. Routine"
+                android:paddingBottom="@dimen/fab_margin" />
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -107,33 +113,6 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Routine Denominator Pregnant"
-                    android:paddingBottom="@dimen/activity_height" />
-
-                <EditText
-                    android:id="@+id/routineDenominatorPregnant"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:hint="F"
-                    android:inputType="number" />
-
-            </TableRow>
-
-
-            <Button
-                android:id="@+id/btn_question_one"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
                     android:text="Routine Numerator Breast Feeding"
                     android:paddingBottom="@dimen/activity_height" />
 
@@ -146,30 +125,21 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Routine Denominator Breast Feeding"
-                    android:paddingBottom="@dimen/activity_height" />
-
-                <EditText
-                    android:id="@+id/routineDenominatorBreastFeeding"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:hint="F"
-                    android:inputType="number" />
-
-            </TableRow>
-
             <Button
-                android:id="@+id/btn_question_two"
+                android:id="@+id/btn_question_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="b. Target"
+                android:paddingBottom="@dimen/fab_margin" />
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -199,32 +169,6 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Target Denominator Pregnant"
-                    android:paddingBottom="@dimen/activity_height" />
-
-                <EditText
-                    android:id="@+id/targetDenominatorPregnant"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:hint="F"
-                    android:inputType="number" />
-
-            </TableRow>
-
-            <Button
-                android:id="@+id/btn_question_three"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
                     android:text="Target Numerator Breast Feeding"
                     android:paddingBottom="@dimen/activity_height" />
 
@@ -237,6 +181,104 @@
 
             </TableRow>
 
+            <Button
+                android:id="@+id/btn_question_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="2. Denominator"
+                android:paddingBottom="@dimen/fab_margin" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="a. Routine"
+                android:paddingBottom="@dimen/fab_margin" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Routine Denominator Pregnant"
+                    android:paddingBottom="@dimen/activity_height" />
+
+                <EditText
+                    android:id="@+id/routineDenominatorPregnant"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="F"
+                    android:inputType="number" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Routine Denominator Breast Feeding"
+                    android:paddingBottom="@dimen/activity_height" />
+
+                <EditText
+                    android:id="@+id/routineDenominatorBreastFeeding"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="F"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <Button
+                android:id="@+id/btn_question_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="a. Routine"
+                android:paddingBottom="@dimen/fab_margin" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Target Denominator Pregnant"
+                    android:paddingBottom="@dimen/activity_height" />
+
+                <EditText
+                    android:id="@+id/targetDenominatorPregnant"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="F"
+                    android:inputType="number" />
+
+            </TableRow>
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -257,6 +299,7 @@
                     android:inputType="number" />
 
             </TableRow>
+
 
             <Button
                 android:id="@+id/btn_question_four"

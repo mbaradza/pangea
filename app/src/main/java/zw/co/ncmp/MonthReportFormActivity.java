@@ -227,6 +227,10 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             questionFive();
         }
 
+        if (v.getId() == btn_question_nine.getId()) {
+            questionNine();
+        }
+
         if (v.getId() == btn_question_ten.getId()) {
             questionTen();
         }
@@ -255,7 +259,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                                 registerForm.dateSubmitted = new Date();
                                 registerForm.save();
                                 AppUtil.createLongNotification(MonthReportFormActivity.this, "Submitted for Upload to Server");
-                                Intent intent = new Intent(MonthReportFormActivity.this, RegisterFormListActivity.class);
+                                Intent intent = new Intent(MonthReportFormActivity.this, MonthReportFormListActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -299,7 +303,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                        Intent intent = new Intent(MonthReportFormActivity.this, RegisterFormListActivity.class);
+                        Intent intent = new Intent(MonthReportFormActivity.this, MonthReportFormListActivity.class);
                         startActivity(intent);
                         finish();
 
@@ -1065,6 +1069,53 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 registerForm.femaleFiftyPlus5 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 upDateForm();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
+
+    }
+
+    public void questionNine() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.pmtct_eid);
+
+        TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
+        txt_name.setText(R.string.pmtct_eid);
+
+        final EditText pmtctEIDP4 = (EditText) dialog.findViewById(R.id.pmtctEIDP4);
+        final EditText pmtctEIDP5 = (EditText) dialog.findViewById(R.id.pmtctEIDP5);
+        final EditText pmtctEIDP14 = (EditText) dialog.findViewById(R.id.pmtctEIDP14);
+        final EditText pmtctEIDP17 = (EditText) dialog.findViewById(R.id.pmtctEIDP17);
+        final EditText pmtctEIDP30 = (EditText) dialog.findViewById(R.id.pmtctEIDP30);
+        final EditText pmtctEIDP31 = (EditText) dialog.findViewById(R.id.pmtctEIDP31);
+
+        if (registerForm != null) {
+            pmtctEIDP4.setText(AppUtil.getLongValue(registerForm.pmtctEIDP4));
+            pmtctEIDP5.setText(AppUtil.getLongValue(registerForm.pmtctEIDP5));
+            pmtctEIDP14.setText(AppUtil.getLongValue(registerForm.pmtctEIDP14));
+            pmtctEIDP17.setText(AppUtil.getLongValue(registerForm.pmtctEIDP17));
+            pmtctEIDP30.setText(AppUtil.getLongValue(registerForm.pmtctEIDP30));
+            pmtctEIDP31.setText(AppUtil.getLongValue(registerForm.pmtctEIDP31));
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                registerForm.pmtctEIDP4 = AppUtil.getLongValue(pmtctEIDP4.getText().toString());
+                registerForm.pmtctEIDP5 = AppUtil.getLongValue(pmtctEIDP5.getText().toString());
+
+                registerForm.pmtctEIDP14 = AppUtil.getLongValue(pmtctEIDP14.getText().toString());
+                registerForm.pmtctEIDP17 = AppUtil.getLongValue(pmtctEIDP17.getText().toString());
+
+                registerForm.pmtctEIDP30 = AppUtil.getLongValue(pmtctEIDP30.getText().toString());
+                registerForm.pmtctEIDP31 = AppUtil.getLongValue(pmtctEIDP31.getText().toString());
+
                 dialog.dismiss();
             }
         });

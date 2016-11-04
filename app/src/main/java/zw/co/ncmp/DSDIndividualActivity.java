@@ -304,6 +304,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                             if (validate()) {
                                 dsdIndividual.dateSubmitted = new Date();
                                 dsdIndividual.save();
+                                btn_submit.setVisibility(View.VISIBLE);
                                 AppUtil.createLongNotification(DSDIndividualActivity.this, "Submitted for Upload to Server");
                                 Intent intent = new Intent(DSDIndividualActivity.this, DSDIndiviudalListActivity.class);
                                 startActivity(intent);

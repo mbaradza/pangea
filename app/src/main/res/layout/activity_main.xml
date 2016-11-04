@@ -32,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="TB" />
+                android:text="Abstraction" />
 
             <Button
                 android:id="@+id/btn_option_two"

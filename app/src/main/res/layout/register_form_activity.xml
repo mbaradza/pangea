@@ -289,12 +289,6 @@
                 android:text="Question_5" />
 
             <Button
-                android:id="@+id/btn_question_six"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Question_6" />
-
-            <Button
                 android:id="@+id/btn_save"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"

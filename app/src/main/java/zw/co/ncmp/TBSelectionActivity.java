@@ -69,7 +69,7 @@ public class TBSelectionActivity extends MenuBar implements View.OnClickListener
         btn_option_nine.setBackgroundResource(R.drawable.finish_background);
         btn_option_nine.setText("Supplementary Indicator Data");
 
-        setSupportActionBar(createToolBar("TB Selection"));
+        setSupportActionBar(createToolBar("Abstraction Selection"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

@@ -1,5 +1,7 @@
 package zw.co.ncmp.business;
 
+import android.util.Log;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -237,9 +239,13 @@ public class FacilityChallenge extends Model {
             i.specific = jsonObject.getString("specify");
             i.specificDetail = jsonObject.getString("specificDetail");
             //action taken category
-            JSONObject item = jsonObject.getJSONObject("actionCategory");
-            i.actionCategory = ActionCategory.getActionTakenCategory(Long.valueOf(item.getString("id")));
-
+            JSONObject item = null;
+            try {
+                item = jsonObject.getJSONObject("actionCategory");
+                i.actionCategory = ActionCategory.getActionTakenCategory(Long.valueOf(item.getString("id")));
+            } catch (Exception e) {
+                Log.d("", "Category Null");
+            }
             //challenge
             item = jsonObject.getJSONObject("challenge");
             i.challenge = Challenge.getChallenge(Long.valueOf(item.getString("id")));

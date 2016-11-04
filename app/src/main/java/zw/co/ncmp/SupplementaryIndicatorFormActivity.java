@@ -122,7 +122,6 @@ public class SupplementaryIndicatorFormActivity extends MenuBar implements View.
             stiNumberOfPatientsTestedPositiveInPastMonth.setText(AppUtil.getLongValue(form.stiNumberOfPatientsTestedPositiveInPastMonth));
             stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry.setText(AppUtil.getLongValue(form.stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry));
 
-
             updateLabel(form.dateCreated);
 
             int i = 0;

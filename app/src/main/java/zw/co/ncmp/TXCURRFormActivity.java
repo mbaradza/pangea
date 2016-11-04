@@ -196,7 +196,7 @@ public class TXCURRFormActivity extends MenuBar implements View.OnClickListener 
         dialog.setContentView(R.layout.dsd_question_activity);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
-        txt_name.setText(R.string.register_question_one);
+        txt_name.setText(R.string.tx_ret_question_one);
 
         final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
         maleTotal.setText(AppUtil.getLongValue(form.maleQuestion1()));
@@ -391,7 +391,7 @@ public class TXCURRFormActivity extends MenuBar implements View.OnClickListener 
 
     public void upDateForm() {
 
-        btn_question_one.setText(this.getString(R.string.register_question_one)
+        btn_question_one.setText(this.getString(R.string.tx_ret_question_one)
                 + " [ " + (form.maleQuestion1() + form.femaleQuestion1()) + " ]");
 
     }

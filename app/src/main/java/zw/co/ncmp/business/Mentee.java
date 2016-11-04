@@ -1,5 +1,7 @@
 package zw.co.ncmp.business;
 
+import android.util.Log;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -148,8 +150,12 @@ public class Mentee extends Model {
             JSONObject item = jsonObject.getJSONObject("qualification");
             i.qualification = Qualification.getQualification(Long.valueOf(item.getString("id")));
             //designation
-            item = jsonObject.getJSONObject("designation");
-            i.designation = Designation.getDesignation(Long.valueOf(item.getString("id")));
+            try {
+                item = jsonObject.getJSONObject("designation");
+                i.designation = Designation.getDesignation(Long.valueOf(item.getString("id")));
+            } catch (Exception e) {
+                Log.d("", "Designation Null");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             return null;

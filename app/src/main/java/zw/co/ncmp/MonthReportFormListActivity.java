@@ -26,7 +26,7 @@ public class MonthReportFormListActivity extends MenuBar implements AdapterView.
         listView.setEmptyView(findViewById(R.id.empty));
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-        setSupportActionBar(createToolBar("Month Report List "));
+        setSupportActionBar(createToolBar("Monthly Report List "));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -132,8 +132,10 @@ public class AppUtil {
     }
 
     public static HttpUrl getPushMentorVisitReportUrl(Context context, Long id) {
+        final Mentor mentor = Mentor.getMentor(AppUtil.getWebUserId(context));
         return HttpUrl.parse(getWebService(context).concat("visit-report")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
+                .setQueryParameter("email", mentor.email)
                 .build();
     }
 
@@ -148,7 +150,6 @@ public class AppUtil {
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
-
 
     public static HttpUrl getPushARTFormReportUrl(Context context, Long id) {
         return HttpUrl.parse(getWebService(context).concat("form/tb-art")).newBuilder()
@@ -195,7 +196,7 @@ public class AppUtil {
     }
 
     public static HttpUrl getPushRegisterFormReportUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-register")).newBuilder()
+        return HttpUrl.parse(getWebService(context).concat("dsd/register-form")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
@@ -517,6 +518,12 @@ public class AppUtil {
         MentorShipFocusArea.deleteAll();
         Challenge.deleteAll();
         ChallengeStatus.deleteAll();
+        PMTCTARTForm.deleteAll();
+        PMTCTFOForm.deleteAll();
+        TXCURRForm.deleteAll();
+        TXRETForm.deleteAll();
+        TXPVLSForm.deleteAll();
+        SupplementaryIndicatorForm.deleteAll();
 
     }
 

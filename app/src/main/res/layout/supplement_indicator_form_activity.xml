@@ -64,159 +64,286 @@
             android:layout_height="wrap_content"
             android:hint="Name" />
 
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="1. Estimated Facility Catchment Population" />
-
-        <EditText
-            android:id="@+id/estimatedFacilityCatchmentPopulation"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2. Number Of Active Pre-ART Patients" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/numberOfActivePreARTPatients"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="1. Estimated Facility Catchment Population" />
+
+                <EditText
+                    android:id="@+id/estimatedFacilityCatchmentPopulation"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="2. Number Of Active Pre-ART Patients" />
+
+                <EditText
+                    android:id="@+id/numberOfActivePreARTPatients"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3. Inpatient Number Of Patients In Past Month" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/inPatientNumberOfPatientsInPastMonth"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="3. Inpatient Number Of Patients In Past Month" />
+
+                <EditText
+                    android:id="@+id/inPatientNumberOfPatientsInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="4. Inpatient Number Of Patients Tested Positive In Past Month" />
+
+                <EditText
+                    android:id="@+id/inPatientNumberOfPatientsTestedPositiveInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4. Inpatient Number Of Patients Tested Positive In Past Month" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/inPatientNumberOfPatientsTestedPositiveInPastMonth"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="5. Inpatient Number Of Patients Tested For HIV In Past Month" />
+
+                <EditText
+                    android:id="@+id/inPatientNumberOfPatientsTestedForHIVInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="6. Inpatient Number Of Patients With Known HIV Positive Status On Entry" />
+
+                <EditText
+                    android:id="@+id/inPatientNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5. Inpatient Number Of Patients Tested For HIV In Past Month" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/inPatientNumberOfPatientsTestedForHIVInPastMonth"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="7. Opd Number Of Patients In Past Month" />
+
+                <EditText
+                    android:id="@+id/opdNumberOfPatientsInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="8. Opd Number Of Patients Tested For HIV In Past Month" />
+
+                <EditText
+                    android:id="@+id/opdNumberOfPatientsTestedForHIVInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6. Inpatient Number Of Patients With Known HIV Positive Status On Entry" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/inPatientNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="9. Opd Number Of Patients Tested Positive In Past Month" />
+
+                <EditText
+                    android:id="@+id/opdNumberOfPatientsTestedPositiveInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="10. Opd Number Of Patients With Known HIV Positive Status On Entry" />
+
+                <EditText
+                    android:id="@+id/opdNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7. Opd Number Of Patients In Past Month" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/opdNumberOfPatientsInPastMonth"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="11. STI Number Of Patients In Past Month" />
+
+                <EditText
+                    android:id="@+id/stiNumberOfPatientsInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="12. STI Number Of Patients Tested For HIV In Past Month" />
+
+                <EditText
+                    android:id="@+id/stiNumberOfPatientsTestedForHIVInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="8. Opd Number Of Patients Tested For HIV In Past Month" />
+                android:padding="5dip">
 
-        <EditText
-            android:id="@+id/opdNumberOfPatientsTestedForHIVInPastMonth"
-            android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:text="13. Number Of Patients Tested Positive In Past Month" />
+
+                <EditText
+                    android:id="@+id/stiNumberOfPatientsTestedPositiveInPastMonth"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+                android:padding="5dip">
 
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="9. Opd Number Of Patients Tested Positive In Past Month" />
+                <TextView
+                    style="@style/TextViewInputStyle"
+                    android:layout_width="200dp"
+                    android:paddingBottom="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="14. STI Number Of Patients With Known HIV Positive Status On Entry" />
 
-        <EditText
-            android:id="@+id/opdNumberOfPatientsTestedPositiveInPastMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+                <EditText
+                    android:id="@+id/stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </TableRow>
 
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="10. Opd Number Of Patients With Known HIV Positive Status On Entry" />
-
-        <EditText
-            android:id="@+id/opdNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="11. STI Number Of Patients In Past Month" />
-
-        <EditText
-            android:id="@+id/stiNumberOfPatientsInPastMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:text="12. STI Number Of Patients Tested For HIV In Past Month"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/stiNumberOfPatientsTestedForHIVInPastMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="13. Number Of Patients Tested Positive In Past Month" />
-
-        <EditText
-            android:id="@+id/stiNumberOfPatientsTestedPositiveInPastMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-        <TextView
-            style="@style/TextViewInputStyle"
-            android:layout_height="wrap_content"
-            android:text="14. STI Number Of Patients With Known HIV Positive Status On Entry" />
-
-        <EditText
-            android:id="@+id/stiNumberOfPatientsWithKnownHIVPositiveStatusOnEntry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+        </TableLayout>
 
         <Button
             android:id="@+id/btn_save"
