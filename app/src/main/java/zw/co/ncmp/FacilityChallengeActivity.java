@@ -75,7 +75,7 @@ public class FacilityChallengeActivity extends MenuBar implements View.OnClickLi
         measurementMethod = (EditText) findViewById(R.id.measurementMethod);
         expected_outcome = (EditText) findViewById(R.id.expected_outcome);
 
-        action_taken_category =(Spinner) findViewById(R.id.action_taken_category);
+        action_taken_category = (Spinner) findViewById(R.id.action_taken_category);
         challenge_status = (Spinner) findViewById(R.id.challenge_status);
         challenge = (Spinner) findViewById(R.id.challenge);
         achievable = (Spinner) findViewById(R.id.achievable);
@@ -175,7 +175,7 @@ public class FacilityChallengeActivity extends MenuBar implements View.OnClickLi
 
             i = 0;
             for (ActionCategory a : ActionCategory.getAll()) {
-                if (facilityChallenge.actionCategory.equals(action_taken_category.getItemAtPosition(i))) {
+                if (facilityChallenge.actionCategory != null && facilityChallenge.actionCategory.equals(action_taken_category.getItemAtPosition(i))) {
                     action_taken_category.setSelection(i);
                     break;
                 }

@@ -230,8 +230,6 @@ public class FacilityChallenge extends Model {
             if (dateCompleted.equals(null) || !dateCompleted.isEmpty()) {
                 i.expected_completion_date = AppUtil.getSQLDate(dateCompleted);
             }
-
-
             i.others = jsonObject.getString("others");
             i.measurementMethod = jsonObject.getString("measurementMethod");
             i.achievable = jsonObject.getString("achievable");
@@ -244,7 +242,7 @@ public class FacilityChallenge extends Model {
                 item = jsonObject.getJSONObject("actionCategory");
                 i.actionCategory = ActionCategory.getActionTakenCategory(Long.valueOf(item.getString("id")));
             } catch (Exception e) {
-                Log.d("", "Category Null");
+
             }
             //challenge
             item = jsonObject.getJSONObject("challenge");

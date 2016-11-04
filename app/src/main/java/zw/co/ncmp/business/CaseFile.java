@@ -194,7 +194,13 @@ public class CaseFile extends Model {
             i.latitudeSubmitted = jsonObject.getDouble("latitudeSubmitted");
             i.longitudeSubmitted = jsonObject.getDouble("longitudeSubmitted");
             i.dateCreated = AppUtil.getSQLDate(jsonObject.getString("dateCreated"));
+            if (i.dateCreated == null) {
+                i.dateCreated = AppUtil.getOIDSQLDate(jsonObject.getString("dateCreated"));
+            }
             i.dateSubmitted = AppUtil.getSQLDate(jsonObject.getString("dateSubmitted"));
+            if (i.dateSubmitted == null) {
+                i.dateSubmitted = AppUtil.getOIDSQLDate(jsonObject.getString("dateSubmitted"));
+            }
             JSONObject item = jsonObject.getJSONObject("facility");
             i.facility = Facility.getFacility(Long.valueOf(item.getString("id")));
         } catch (JSONException e) {

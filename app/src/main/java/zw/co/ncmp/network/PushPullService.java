@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import zw.co.ncmp.LoginActivity;
 import zw.co.ncmp.business.ARTForm;
 import zw.co.ncmp.business.ActionCategory;
 import zw.co.ncmp.business.CaseFile;
@@ -333,6 +334,7 @@ public class PushPullService extends IntentService {
         static_lists.add(AppUtil.getFocusAreaUrl(context));
         static_lists.add(AppUtil.getQualificationsUrl(context));
         static_lists.add(AppUtil.getPeriodUrl(context));
+        static_lists.add(AppUtil.getActionTakenCategoryUrl(context));
         return static_lists;
     }
 
@@ -903,10 +905,15 @@ public class PushPullService extends IntentService {
             JSONArray jsonArray = new JSONArray(data);
             List<FacilityChallenge> list = FacilityChallenge.fromJson(jsonArray);
             for (FacilityChallenge item : list) {
+                Log.d("Server ID", " " + item.serverId);
                 FacilityChallenge checkDuplicate = FacilityChallenge.getFacilityChallenge(item.serverId);
                 if (checkDuplicate == null) {
-                    item.save();
-                    item.caseFile.save();
+                    CaseFile caseFile = CaseFile.getCaseFile(item.caseFile.serverId);
+                    if (caseFile != null) {
+                        item.caseFile = caseFile;
+                    } else {
+                        item.caseFile.save();
+                    }
                     item.save();
                 }
                 i++;

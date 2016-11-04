@@ -89,7 +89,6 @@ public class MenuBar extends AppCompatActivity {
                             Intent out = new Intent(context, StartActivity.class);
                             out.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(out);
-                            AppUtil.loginReset(context);
                             finish();
                         }
                     })

@@ -73,10 +73,11 @@ public class AppUtil {
     public static String MENTOR_ID = "MENTOR_ID";
     public static String DATE_FORMAT = "dd/MM/yyyy";
     public static String SQL_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static String OLD_SQL_DATE_FORMAT = "yyyy-MM-dd";
     //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
 
-    public static String APP_URL = "http://192.168.0.31:8084/tracker-mobile/rest/mobile/"; //UAT
-    //public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
+    //public static String APP_URL = "http://192.168.0.31:8084/tracker-mobile/rest/mobile/"; //UAT
+    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";
@@ -286,6 +287,16 @@ public class AppUtil {
         }
     }
 
+
+    public static Date getOIDSQLDate(String dateInString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(OLD_SQL_DATE_FORMAT);
+            Date date = sdf.parse(dateInString);
+            return date;
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
     public static String getStringDate(Date date) {
         if (date == null) {
