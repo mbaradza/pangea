@@ -123,7 +123,7 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
         }
 
         case_file = (TextView) findViewById(R.id.txt_name);
-        case_file.setText("SITE SUPPORT REPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + facility.name);
+        case_file.setText("SITE PROFILE : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + facility.name);
         case_file.setOnClickListener(this);
 
         txt_visit = (TextView) findViewById(R.id.txt_visit);

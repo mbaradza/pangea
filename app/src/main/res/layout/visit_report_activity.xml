@@ -103,7 +103,7 @@
 
             <TextView
                 style="@style/TextViewInputStyle"
-                android:text="Time Spent on Focus Area"></TextView>
+                android:text="Time Spent at Facility"></TextView>
 
             <LinearLayout
                 android:layout_width="fill_parent"

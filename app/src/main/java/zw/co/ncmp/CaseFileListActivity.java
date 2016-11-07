@@ -31,7 +31,7 @@ public class CaseFileListActivity extends MenuBar implements AdapterView.OnItemC
         listView.setEmptyView(findViewById(R.id.empty));
         listView.setAdapter(caseFileAdapter);
         listView.setOnItemClickListener(this);
-        setSupportActionBar(createToolBar("Site support reports - " + facility));
+        setSupportActionBar(createToolBar("Site Support Reports - " + facility));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

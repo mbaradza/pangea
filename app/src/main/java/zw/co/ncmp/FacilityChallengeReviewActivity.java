@@ -115,12 +115,12 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
 
         ArrayAdapter<Challenge> challengeArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Challenge.getAll());
-        challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        challengeArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge.setAdapter(challengeArrayAdapter);
 
         ArrayAdapter<ActionCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, ActionCategory.getAll());
-        challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        actionTakenCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         action_taken_category.setAdapter(actionTakenCategoryArrayAdapter);
 
         ArrayAdapter<String> yesNoAdapter = new ArrayAdapter<>(this,

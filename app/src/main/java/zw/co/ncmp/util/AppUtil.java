@@ -45,6 +45,8 @@ import zw.co.ncmp.business.CaseFileMentee;
 import zw.co.ncmp.business.CaseFileMentor;
 import zw.co.ncmp.business.Challenge;
 import zw.co.ncmp.business.ChallengeStatus;
+import zw.co.ncmp.business.DSDCouple;
+import zw.co.ncmp.business.DSDIndividual;
 import zw.co.ncmp.business.Designation;
 import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.FacilityChallenge;
@@ -52,13 +54,18 @@ import zw.co.ncmp.business.Mentee;
 import zw.co.ncmp.business.Mentor;
 import zw.co.ncmp.business.MentorShipFocusArea;
 import zw.co.ncmp.business.MentorVisitReport;
+import zw.co.ncmp.business.MonthReportForm;
 import zw.co.ncmp.business.PMTCTARTForm;
 import zw.co.ncmp.business.PMTCTFOForm;
+import zw.co.ncmp.business.Period;
 import zw.co.ncmp.business.Qualification;
+import zw.co.ncmp.business.RegisterForm;
+import zw.co.ncmp.business.StatForm;
 import zw.co.ncmp.business.SupplementaryIndicatorForm;
 import zw.co.ncmp.business.TXCURRForm;
 import zw.co.ncmp.business.TXPVLSForm;
 import zw.co.ncmp.business.TXRETForm;
+import zw.co.ncmp.business.TXTNew;
 
 /**
  * Created by tdhlakama on 1/19/2016.
@@ -527,13 +534,20 @@ public class AppUtil {
         Qualification.deleteAll();
         Designation.deleteAll();
         MentorShipFocusArea.deleteAll();
+        DSDIndividual.deleteAll();
+        DSDCouple.deleteAll();
         Challenge.deleteAll();
         ChallengeStatus.deleteAll();
+        StatForm.deleteAll();
+        TXTNew.deleteAll();
+        RegisterForm.deleteAll();
+        MonthReportForm.deleteAll();
         PMTCTARTForm.deleteAll();
         PMTCTFOForm.deleteAll();
         TXCURRForm.deleteAll();
         TXRETForm.deleteAll();
         TXPVLSForm.deleteAll();
+        Period.deleteAll();
         SupplementaryIndicatorForm.deleteAll();
 
     }

@@ -47,7 +47,7 @@
     <string name="txt_new_question_four">4. Total viral load tested</string>
 
     <string name="register_title">Registers</string>
-    <string name="month_report_form_title">Month Report Form</string>
+    <string name="month_report_form_title">Monthly Return Form</string>
     <string name="register_question_one">1. Number who received their results this month</string>
     <string name="register_question_two">2. Number of clients tested HIV positive this month</string>
     <string name="register_question_three">3. Number who received their results this month.</string>

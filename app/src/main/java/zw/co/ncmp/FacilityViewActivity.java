@@ -45,7 +45,7 @@ public class FacilityViewActivity extends MenuBar implements View.OnClickListene
         txt_facility_name.setOnClickListener(this);
 
         case_file_list_View = (ListView) findViewById(R.id.case_file_list_View);
-        CaseFileAdapter caseFileAdapter = (new CaseFileAdapter(this, new ArrayList<CaseFile>(CaseFile.getOpenCaseFiles(facility.getId()))));
+        CaseFileAdapter caseFileAdapter = (new CaseFileAdapter(this, new ArrayList<>(CaseFile.getOpenCaseFiles(facility.getId()))));
 
         case_file_list_View.setAdapter(caseFileAdapter);
         case_file_list_View.setOnItemClickListener(new AdapterView.OnItemClickListener() {

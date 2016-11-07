@@ -98,7 +98,7 @@ public class CaseFileActivity extends MenuBar implements View.OnClickListener, L
                 longitude_submitted.setText(String.valueOf(caseFile.longitudeSubmitted));
                 latitude_submitted.setText(String.valueOf(caseFile.latitudeSubmitted));
             }
-            facility_name.setText("SITE SUPPORT REPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + facility);
+            facility_name.setText("SITE PROFILE : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + facility);
             setSupportActionBar(createToolBar("View Case Report"));
             btn_save.setVisibility(View.GONE);
             btn_load.setVisibility(View.GONE);
@@ -108,7 +108,7 @@ public class CaseFileActivity extends MenuBar implements View.OnClickListener, L
             caseFile.dateCreated = new Date();
             updateDateCreatedLabel(caseFile.dateCreated);
             caseFile.facility = facility;
-            facility_name.setText("SITE SUPPORT REPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + facility);
+            facility_name.setText("SITE PROFILE : " + AppUtil.getStringDate(caseFile.dateCreated) + " " + facility);
             setSupportActionBar(createToolBar("Check In Case File"));
         }
 
