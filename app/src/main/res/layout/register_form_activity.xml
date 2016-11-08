@@ -133,7 +133,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/fhs" />
+                    android:text="@string/opd" />
 
                 <EditText
                     android:id="@+id/testedOPD"
@@ -173,7 +173,6 @@
 
             </TableRow>
 
-
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,7 +181,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/outreach" />
+                    android:text="@string/paediatric" />
 
                 <EditText
                     android:id="@+id/testedPaediatric"
@@ -206,7 +205,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/maternity" />
+                    android:text="@string/pmtct" />
 
                 <EditText
                     android:id="@+id/testedPMTCT"
@@ -230,7 +229,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/maternity" />
+                    android:text="@string/sti" />
 
                 <EditText
                     android:id="@+id/testedSTI"
@@ -254,7 +253,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/maternity" />
+                    android:text="@string/tb" />
 
                 <EditText
                     android:id="@+id/testedTB"

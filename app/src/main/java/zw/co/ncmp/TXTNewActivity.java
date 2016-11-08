@@ -30,8 +30,9 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
     private TXTNew txtNew;
 
     Spinner facility;
-    Spinner period;
     EditText dateCreated;
+    EditText startDate;
+    EditText endDate;
 
     Button btn_save;
     Button btn_completed;
@@ -43,6 +44,9 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
     Button btn_question_four;
 
     private DatePickerDialog datePickerDialog;
+    private DatePickerDialog datePickerDialog1;
+    private DatePickerDialog datePickerDialog2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,34 +57,57 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
         Long txtNew_id = intent.getLongExtra(AppUtil.ID, 0);
 
         facility = (Spinner) findViewById(R.id.facility);
-        period = (Spinner) findViewById(R.id.period);
+
+        dateCreated = (EditText) findViewById(R.id.dateCreated);
+        dateCreated.setOnClickListener(this);
+
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                updateLabel(newDate.getTime());
+                updateLabel(dateCreated, newDate.getTime());
             }
 
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-        dateCreated = (EditText) findViewById(R.id.dateCreated);
-        dateCreated.setOnClickListener(this);
+
+        startDate = (EditText) findViewById(R.id.startDate);
+        startDate.setOnClickListener(this);
+        datePickerDialog1 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                updateLabel(startDate, newDate.getTime());
+            }
+
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+
+        endDate = (EditText) findViewById(R.id.endDate);
+        endDate.setOnClickListener(this);
+        datePickerDialog2 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                updateLabel(endDate, newDate.getTime());
+            }
+
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
 
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
 
         if (txtNew_id != 0) {
             txtNew = TXTNew.get(txtNew_id);
 
-            updateLabel(txtNew.dateCreated);
+            updateLabel(dateCreated, txtNew.dateCreated);
 
             int i = 0;
             for (Facility s : Facility.getAll()) {
@@ -90,16 +117,6 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
                 }
                 i++;
             }
-
-            i = 0;
-            for (Period s : Period.getAll()) {
-                if (txtNew.period.equals(period.getItemAtPosition(i))) {
-                    period.setSelection(i);
-                    break;
-                }
-                i++;
-            }
-
             setSupportActionBar(createToolBar("TX_NEW: DSD"));
         } else {
             txtNew = new TXTNew();
@@ -169,8 +186,9 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 txtNew.facility = (Facility) facility.getSelectedItem();
-                txtNew.period = (Period) period.getSelectedItem();
                 txtNew.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
+                txtNew.startDate = AppUtil.getDate(startDate.getText().toString());
+                txtNew.endDate = AppUtil.getDate(endDate.getText().toString());
 
                 txtNew.save();
                 btn_submit.setVisibility(View.VISIBLE);
@@ -178,6 +196,14 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
             } else {
                 return;
             }
+        }
+
+        if (v.getId() == startDate.getId()) {
+            datePickerDialog1.show();
+        }
+
+        if (v.getId() == endDate.getId()) {
+            datePickerDialog2.show();
         }
 
         if (v.getId() == btn_submit.getId()) {
@@ -206,8 +232,8 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
         }
     }
 
-    private void updateLabel(Date date) {
-        dateCreated.setText(AppUtil.getStringDate(date));
+    private void updateLabel(EditText editText, Date date) {
+        editText.setText(AppUtil.getStringDate(date));
     }
 
     public boolean validate() {
@@ -217,6 +243,26 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
 
         if (name.isEmpty()) {
             dateCreated.setError("Required");
+            valid = false;
+        } else {
+            dateCreated.setError(null);
+        }
+
+
+        name = startDate.getText().toString().toString();
+
+        if (name.isEmpty()) {
+            startDate.setError("Required");
+            valid = false;
+        } else {
+            dateCreated.setError(null);
+        }
+
+
+        name = endDate.getText().toString().toString();
+
+        if (name.isEmpty()) {
+            endDate.setError("Required");
             valid = false;
         } else {
             dateCreated.setError(null);

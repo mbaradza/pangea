@@ -15,10 +15,8 @@ import org.json.JSONArray;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import zw.co.ncmp.LoginActivity;
 import zw.co.ncmp.business.ARTForm;
 import zw.co.ncmp.business.ActionCategory;
 import zw.co.ncmp.business.CaseFile;
@@ -26,7 +24,6 @@ import zw.co.ncmp.business.CaseFileMentee;
 import zw.co.ncmp.business.CaseFileMentor;
 import zw.co.ncmp.business.Challenge;
 import zw.co.ncmp.business.ChallengeStatus;
-import zw.co.ncmp.business.DSDCouple;
 import zw.co.ncmp.business.DSDIndividual;
 import zw.co.ncmp.business.Designation;
 import zw.co.ncmp.business.Facility;
@@ -208,15 +205,6 @@ public class PushPullService extends IntentService {
         try {
             for (StatForm m : StatForm.getFilesToUpload()) {
                 save(run(AppUtil.getPushStatFormReportUrl(context, m.facility.serverId), m), m);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = Activity.RESULT_CANCELED;
-        }
-
-        try {
-            for (DSDCouple m : DSDCouple.getFilesToUpload()) {
-                save(run(AppUtil.getPushDSDCoupleFormUrl(context, m.facility.serverId), m), m);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -701,23 +689,12 @@ public class PushPullService extends IntentService {
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
         form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        form.startDateC = AppUtil.getStringDate(form.startDate);
+        form.endDateC = AppUtil.getStringDate(form.endDate);
         String json = gson.toJson(form);
         return AppUtil.getResponeBody(client, httpUrl, json);
 
     }
-
-    private String run(HttpUrl httpUrl, DSDCouple form) {
-
-        OkHttpClient client = new OkHttpClient();
-        client = AppUtil.connectionSettings(client);
-        client = AppUtil.getUnsafeOkHttpClient(client);
-        client = AppUtil.createAuthenticationData(client, context);
-        form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
-        String json = gson.toJson(form);
-        return AppUtil.getResponeBody(client, httpUrl, json);
-
-    }
-
 
     private String run(HttpUrl httpUrl, MonthReportForm form) {
 
@@ -744,7 +721,6 @@ public class PushPullService extends IntentService {
 
     }
 
-
     private String run(HttpUrl httpUrl, TXTNew form) {
 
         OkHttpClient client = new OkHttpClient();
@@ -752,6 +728,8 @@ public class PushPullService extends IntentService {
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
         form.serverCreatedDate = AppUtil.getStringDate(form.dateCreated);
+        form.startDateC = AppUtil.getStringDate(form.startDate);
+        form.endDateC = AppUtil.getStringDate(form.endDate);
         String json = gson.toJson(form);
         return AppUtil.getResponeBody(client, httpUrl, json);
 
@@ -905,7 +883,6 @@ public class PushPullService extends IntentService {
             JSONArray jsonArray = new JSONArray(data);
             List<FacilityChallenge> list = FacilityChallenge.fromJson(jsonArray);
             for (FacilityChallenge item : list) {
-                Log.d("Server ID", " " + item.serverId);
                 FacilityChallenge checkDuplicate = FacilityChallenge.getFacilityChallenge(item.serverId);
                 if (checkDuplicate == null) {
                     CaseFile caseFile = CaseFile.getCaseFile(item.caseFile.serverId);
@@ -952,18 +929,6 @@ public class PushPullService extends IntentService {
     }
 
     public StatForm save(String data, StatForm item) {
-        try {
-            Long id = Long.valueOf(data);
-            item.serverId = id;
-            item.save();
-            return item;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public DSDCouple save(String data, DSDCouple item) {
         try {
             Long id = Long.valueOf(data);
             item.serverId = id;

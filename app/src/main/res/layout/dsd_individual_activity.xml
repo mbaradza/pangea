@@ -48,11 +48,23 @@
 
         <TextView
             style="@style/TextViewInputStyle"
-            android:text="Select Period"></TextView>
+            android:text="From Date:" />
 
-        <Spinner
-            android:id="@+id/period"
-            style="@style/SpinnerStyle" />
+        <EditText
+            android:id="@+id/startDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Start" />
+
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="End Date" />
+
+        <EditText
+            android:id="@+id/endDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End" />
 
         <TextView
             style="@style/TextViewInputStyle"
@@ -134,6 +146,7 @@
                 android:text="Disaggregated by Facility Delivery Point Number tested and number tested positive."
                 android:textStyle="bold" />
 
+
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -169,30 +182,6 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/fhs" />
-
-                <EditText
-                    android:id="@+id/testedFHS"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
-
-                <EditText
-                    android:id="@+id/positiveTestedFHS"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
                     android:text="@string/opd" />
 
                 <EditText
@@ -209,6 +198,125 @@
 
             </TableRow>
 
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/inpatient" />
+
+                <EditText
+                    android:id="@+id/testedInpatient"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedInpatient"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/paediatric" />
+
+                <EditText
+                    android:id="@+id/testedPaediatric"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedPaediatric"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pmtct" />
+
+                <EditText
+                    android:id="@+id/testedPMTCT"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedPMTCT"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sti" />
+
+                <EditText
+                    android:id="@+id/testedSTI"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedSTI"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fhs" />
+
+                <EditText
+                    android:id="@+id/testedFHS"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedFHS"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
 
             <TableRow
                 android:layout_width="wrap_content"
@@ -282,11 +390,169 @@
 
             </TableRow>
 
-            <Button
-                android:id="@+id/btn_dsd"
-                android:layout_width="match_parent"
+            <TableRow
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DSD Couple" />
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tb_unit" />
+
+                <EditText
+                    android:id="@+id/testedTBUnit"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedTBUnit"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/viac" />
+
+                <EditText
+                    android:id="@+id/testedVIAC"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedVIAC"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vmmc" />
+
+                <EditText
+                    android:id="@+id/testedVMMC"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedVMMC"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tb" />
+
+                <EditText
+                    android:id="@+id/testedTB"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/positiveTestedTB"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_span="2"
+                android:text="Couples Testing"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Total Couples Tested"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/couplesTested"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Total Couples Tested Positive"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/couplesPositiveTested"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Total Couples With Discordant Results"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/couplesDiscordantTested"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </TableRow>
 
             <Button
                 android:id="@+id/btn_save"

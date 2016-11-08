@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.activeandroid.annotation.Column;
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,9 +34,11 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     private DSDIndividual dsdIndividual;
 
     Spinner facility;
-    Spinner period;
     EditText dateCreated;
+    EditText startDate;
+    EditText endDate;
 
+    EditText name;
     EditText testedFHS;
     EditText positiveTestedFHS;
     EditText testedOPD;
@@ -44,7 +49,26 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     EditText positiveTestedMaternity;
     EditText testedANC;
     EditText positiveTestedANC;
-    EditText name;
+    EditText testedInpatient;
+    EditText positiveTestedInpatient;
+    EditText testedPaediatric;
+    EditText positiveTestedPaediatric;
+    EditText testedPMTCT;
+    EditText positiveTestedPMTCT;
+    EditText testedSTI;
+    EditText positiveTestedSTI;
+    EditText testedTBUnit;
+    EditText positiveTestedTBUnit;
+    EditText testedVIAC;
+    EditText testedVMMC;
+    EditText testedTB;
+    EditText positiveTestedTB;
+    EditText positiveTestedVMMC;
+    EditText positiveTestedVIAC;
+
+    EditText couplesTested;
+    EditText couplesPositiveTested;
+    EditText couplesDiscordantTested;
 
     Button btn_save;
     Button btn_completed;
@@ -59,9 +83,9 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     Button btn_question_seven;
     Button btn_question_eight;
 
-    Button btn_dsd;
-
     private DatePickerDialog datePickerDialog;
+    private DatePickerDialog datePickerDialog1;
+    private DatePickerDialog datePickerDialog2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +97,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
         facility = (Spinner) findViewById(R.id.facility);
 
-        period = (Spinner) findViewById(R.id.period);
         testedFHS = (EditText) findViewById(R.id.testedFHS);
         positiveTestedFHS = (EditText) findViewById(R.id.positiveTestedFHS);
         testedOPD = (EditText) findViewById(R.id.testedOPD);
@@ -84,30 +107,74 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         positiveTestedMaternity = (EditText) findViewById(R.id.positiveTestedMaternity);
         testedANC = (EditText) findViewById(R.id.testedANC);
         positiveTestedANC = (EditText) findViewById(R.id.positiveTestedANC);
+
+        testedInpatient = (EditText) findViewById(R.id.testedInpatient);
+        positiveTestedInpatient = (EditText) findViewById(R.id.positiveTestedInpatient);
+        testedPaediatric = (EditText) findViewById(R.id.testedPaediatric);
+        positiveTestedPaediatric = (EditText) findViewById(R.id.positiveTestedPaediatric);
+        testedPMTCT = (EditText) findViewById(R.id.testedPMTCT);
+        positiveTestedPMTCT = (EditText) findViewById(R.id.positiveTestedPMTCT);
+        testedSTI = (EditText) findViewById(R.id.testedSTI);
+        positiveTestedSTI = (EditText) findViewById(R.id.positiveTestedSTI);
+        testedTBUnit = (EditText) findViewById(R.id.testedTBUnit);
+        positiveTestedTBUnit = (EditText) findViewById(R.id.positiveTestedTBUnit);
+        positiveTestedVMMC = (EditText) findViewById(R.id.positiveTestedVMMC);
+        testedVMMC = (EditText) findViewById(R.id.testedVMMC);
+        testedVIAC = (EditText) findViewById(R.id.testedVIAC);
+        positiveTestedVIAC = (EditText) findViewById(R.id.positiveTestedVIAC);
+        testedTB = (EditText) findViewById(R.id.testedTB);
+        positiveTestedTB = (EditText) findViewById(R.id.positiveTestedTB);
+
+        couplesTested = (EditText) findViewById(R.id.couplesTested);
+        couplesPositiveTested = (EditText) findViewById(R.id.couplesPositiveTested);
+        couplesDiscordantTested = (EditText) findViewById(R.id.couplesDiscordantTested);
+
         name = (EditText) findViewById(R.id.name);
+
+        dateCreated = (EditText) findViewById(R.id.dateCreated);
+        dateCreated.setOnClickListener(this);
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                updateLabel(newDate.getTime());
+                updateLabel(dateCreated, newDate.getTime());
             }
 
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-        dateCreated = (EditText) findViewById(R.id.dateCreated);
-        dateCreated.setOnClickListener(this);
+
+        startDate = (EditText) findViewById(R.id.startDate);
+        startDate.setOnClickListener(this);
+        datePickerDialog1 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                updateLabel(startDate, newDate.getTime());
+            }
+
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+
+        endDate = (EditText) findViewById(R.id.endDate);
+        endDate.setOnClickListener(this);
+        datePickerDialog2 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                updateLabel(endDate, newDate.getTime());
+            }
+
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
-
-        ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
-        periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period.setAdapter(periodArrayAdapter);
 
         if (dsdIndividual_id != 0) {
             dsdIndividual = DSDIndividual.get(dsdIndividual_id);
@@ -124,7 +191,30 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             testedANC.setText(AppUtil.getLongValue(dsdIndividual.testedANC));
             positiveTestedANC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedANC));
 
-            updateLabel(dsdIndividual.dateCreated);
+            testedInpatient.setText(AppUtil.getLongValue(dsdIndividual.testedInpatient));
+            positiveTestedInpatient.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedInpatient));
+            testedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.testedPaediatric));
+            positiveTestedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPaediatric));
+            testedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.testedPMTCT));
+            positiveTestedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPMTCT));
+            testedSTI.setText(AppUtil.getLongValue(dsdIndividual.testedSTI));
+            positiveTestedSTI.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedSTI));
+            testedTBUnit.setText(AppUtil.getLongValue(dsdIndividual.testedTBUnit));
+            positiveTestedTBUnit.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedTBUnit));
+            positiveTestedVMMC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVMMC));
+            testedVMMC.setText(AppUtil.getLongValue(dsdIndividual.testedVMMC));
+            testedVIAC.setText(AppUtil.getLongValue(dsdIndividual.testedVIAC));
+            positiveTestedVIAC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVIAC));
+            testedTB.setText(AppUtil.getLongValue(dsdIndividual.testedTB));
+            positiveTestedTB.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedTB));
+
+            couplesTested.setText(AppUtil.getLongValue(dsdIndividual.couplesTested));
+            couplesPositiveTested.setText(AppUtil.getLongValue(dsdIndividual.couplesPositiveTested));
+            couplesDiscordantTested.setText(AppUtil.getLongValue(dsdIndividual.couplesDiscordantTested));
+
+            updateLabel(dateCreated, dsdIndividual.dateCreated);
+            updateLabel(startDate, dsdIndividual.startDate);
+            updateLabel(endDate, dsdIndividual.endDate);
 
             int i = 0;
             for (Facility s : Facility.getAll()) {
@@ -134,16 +224,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 }
                 i++;
             }
-
-            i = 0;
-            for (Period s : Period.getAll()) {
-                if (dsdIndividual.period.equals(period.getItemAtPosition(i))) {
-                    period.setSelection(i);
-                    break;
-                }
-                i++;
-            }
-
             setSupportActionBar(createToolBar("HTC_TST: DSD- Individuals"));
         } else {
             dsdIndividual = new DSDIndividual();
@@ -196,13 +276,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         btn_submit.setVisibility(View.GONE);
         btn_submit.setBackgroundResource(R.drawable.finish_background);
 
-        btn_dsd = (Button) findViewById(R.id.btn_dsd);
-        btn_dsd.setOnClickListener(this);
-        btn_dsd.setVisibility(View.GONE);
-
         if (dsdIndividual.dateCreated != null) {
             btn_submit.setVisibility(View.VISIBLE);
-            btn_dsd.setVisibility(View.VISIBLE);
         }
 
         if (dsdIndividual.dateSubmitted != null) {
@@ -249,18 +324,12 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             questionEight();
         }
 
-        if (v.getId() == btn_dsd.getId()) {
-            Intent intent = new Intent(DSDIndividualActivity.this, DSDCoupleActivity.class);
-            intent.putExtra(AppUtil.DSD_ID, dsdIndividual.getId());
-            startActivity(intent);
-            finish();
-        }
-
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 dsdIndividual.facility = (Facility) facility.getSelectedItem();
-                dsdIndividual.period = (Period) period.getSelectedItem();
                 dsdIndividual.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
+                dsdIndividual.startDate = AppUtil.getDate(startDate.getText().toString());
+                dsdIndividual.endDate = AppUtil.getDate(endDate.getText().toString());
                 dsdIndividual.name = name.getText().toString();
                 dsdIndividual.testedFHS = AppUtil.getLongValue(testedFHS.getText().toString());
                 dsdIndividual.positiveTestedFHS = AppUtil.getLongValue(positiveTestedFHS.getText().toString());
@@ -273,17 +342,31 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.testedANC = AppUtil.getLongValue(testedANC.getText().toString());
                 dsdIndividual.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
 
+                dsdIndividual.testedInpatient = AppUtil.getLongValue(testedInpatient.getText().toString());
+                dsdIndividual.positiveTestedInpatient = AppUtil.getLongValue(positiveTestedInpatient.getText().toString());
+                dsdIndividual.testedPaediatric = AppUtil.getLongValue(testedPaediatric.getText().toString());
+                dsdIndividual.positiveTestedPaediatric = AppUtil.getLongValue(positiveTestedPaediatric.getText().toString());
+                dsdIndividual.testedPMTCT = AppUtil.getLongValue(testedPMTCT.getText().toString());
+                dsdIndividual.positiveTestedPMTCT = AppUtil.getLongValue(positiveTestedPMTCT.getText().toString());
+                dsdIndividual.testedSTI = AppUtil.getLongValue(testedSTI.getText().toString());
+                dsdIndividual.positiveTestedSTI = AppUtil.getLongValue(positiveTestedSTI.getText().toString());
+                dsdIndividual.testedTBUnit = AppUtil.getLongValue(testedTBUnit.getText().toString());
+                dsdIndividual.positiveTestedTBUnit = AppUtil.getLongValue(positiveTestedTBUnit.getText().toString());
+                dsdIndividual.testedVMMC = AppUtil.getLongValue(testedVMMC.getText().toString());
+                dsdIndividual.positiveTestedVMMC = AppUtil.getLongValue(positiveTestedVMMC.getText().toString());
+                dsdIndividual.testedVIAC = AppUtil.getLongValue(testedVIAC.getText().toString());
+                dsdIndividual.positiveTestedVIAC = AppUtil.getLongValue(positiveTestedVIAC.getText().toString());
+                dsdIndividual.testedTB = AppUtil.getLongValue(testedTB.getText().toString());
+                dsdIndividual.positiveTestedTB = AppUtil.getLongValue(positiveTestedTB.getText().toString());
+
+                dsdIndividual.couplesTested = AppUtil.getLongValue(couplesTested.getText().toString());
+                dsdIndividual.couplesPositiveTested = AppUtil.getLongValue(couplesPositiveTested.getText().toString());
+                dsdIndividual.couplesDiscordantTested = AppUtil.getLongValue(couplesDiscordantTested.getText().toString());
+
                 if (dsdIndividual.getId() == null) {
-                    DSDIndividual checkDuplicate = DSDIndividual.getDSDIndividual(dsdIndividual.facility.getId(), dsdIndividual.period.getId());
-                    if (checkDuplicate == null) {
-                        dsdIndividual.save();
-                        AppUtil.createShortNotification(DSDIndividualActivity.this, "Saved");
-                    } else {
-                        AppUtil.createShortNotification(DSDIndividualActivity.this, "Failed to save duplicate Entry Detected");
-                    }
-                } else {
                     dsdIndividual.save();
                     AppUtil.createShortNotification(DSDIndividualActivity.this, "Saved");
+                    btn_submit.setVisibility(View.VISIBLE);
                 }
             } else {
                 return;
@@ -292,7 +375,14 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
         if (v.getId() == dateCreated.getId()) {
             datePickerDialog.show();
+        }
 
+        if (v.getId() == startDate.getId()) {
+            datePickerDialog1.show();
+        }
+
+        if (v.getId() == endDate.getId()) {
+            datePickerDialog2.show();
         }
 
         if (v.getId() == btn_submit.getId()) {
@@ -304,7 +394,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                             if (validate()) {
                                 dsdIndividual.dateSubmitted = new Date();
                                 dsdIndividual.save();
-                                btn_submit.setVisibility(View.VISIBLE);
                                 AppUtil.createLongNotification(DSDIndividualActivity.this, "Submitted for Upload to Server");
                                 Intent intent = new Intent(DSDIndividualActivity.this, DSDIndiviudalListActivity.class);
                                 startActivity(intent);
@@ -318,8 +407,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         }
     }
 
-    private void updateLabel(Date date) {
-        dateCreated.setText(AppUtil.getStringDate(date));
+    private void updateLabel(EditText editText, Date date) {
+        editText.setText(AppUtil.getStringDate(date));
     }
 
     public boolean validate() {
@@ -329,6 +418,26 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
         if (name.isEmpty()) {
             dateCreated.setError("Required");
+            valid = false;
+        } else {
+            dateCreated.setError(null);
+        }
+
+
+        name = startDate.getText().toString().toString();
+
+        if (name.isEmpty()) {
+            startDate.setError("Required");
+            valid = false;
+        } else {
+            dateCreated.setError(null);
+        }
+
+
+        name = endDate.getText().toString().toString();
+
+        if (name.isEmpty()) {
+            endDate.setError("Required");
             valid = false;
         } else {
             dateCreated.setError(null);
@@ -511,9 +620,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     }
 
     public void questionTwo() {
+
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dsd_question_activity);
+        dialog.setContentView(R.layout.dsd_question_two_activity);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
         txt_name.setText(R.string.dsd_indvidual_question_two);
@@ -524,51 +634,21 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
         femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion2()));
 
-        final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
-        final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
-        final EditText maleOneToFour = (EditText) dialog.findViewById(R.id.maleOneToFour);
-        final EditText femaleOneToFour = (EditText) dialog.findViewById(R.id.femaleOneToFour);
-        final EditText maleFiveToNine = (EditText) dialog.findViewById(R.id.maleFiveToNine);
-        final EditText femaleFiveToNine = (EditText) dialog.findViewById(R.id.femaleFiveToNine);
-        final EditText maleTenToFourteen = (EditText) dialog.findViewById(R.id.maleTenToFourteen);
-        final EditText femaleTenToFourteen = (EditText) dialog.findViewById(R.id.femaleTenToFourteen);
-        final EditText maleFifteenToNineteen = (EditText) dialog.findViewById(R.id.maleFifteenToNineteen);
-        final EditText femaleFifteenToNineteen = (EditText) dialog.findViewById(R.id.femaleFifteenToNineteen);
-        final EditText maleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.maleTwentyToTwentyFour);
-        final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
-        final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
-        final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
-        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
+        final EditText maleFifteenLess = (EditText) dialog.findViewById(R.id.maleFifteenLess);
+        final EditText maleFifteenPlus = (EditText) dialog.findViewById(R.id.maleFifteenPlus);
+        final EditText femaleFifteenLess = (EditText) dialog.findViewById(R.id.femaleFifteenLess);
+        final EditText femaleFifteenPlus = (EditText) dialog.findViewById(R.id.femaleFifteenPlus);
 
         if (dsdIndividual != null) {
-            maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne2));
-            femaleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.femaleLessThanOne2));
-            maleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.maleOneToFour2));
-            femaleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.femaleOneToFour2));
-            maleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.maleFiveToNine2));
-            femaleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.femaleOneToFour2));
-            maleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.maleTenToFourteen2));
-            femaleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.femaleTenToFourteen2));
-            maleFifteenToNineteen.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenToNineteen2));
-            femaleFifteenToNineteen.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenToNineteen2));
-            maleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyToTwentyFour2));
-            femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour2));
-            maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine2));
-            femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine2));
-            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus2));
-            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus2));
+            maleFifteenLess.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenLess2));
+            maleFifteenPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenPlus2));
+            femaleFifteenLess.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenLess2));
+            femaleFifteenPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenPlus2));
         }
 
         List<EditText> list = new ArrayList<>();
-        list.add(maleLessThanOne);
-        list.add(maleOneToFour);
-        list.add(maleFiveToNine);
-        list.add(maleTenToFourteen);
-        list.add(maleFifteenToNineteen);
-        list.add(maleTwentyToTwentyFour);
-        list.add(maleTwentyFiveToFortyNine);
-        list.add(maleFiftyPlus);
+        list.add(maleFifteenLess);
+        list.add(maleFifteenPlus);
 
         for (EditText editText : list) {
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -576,15 +656,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
 
-                        dsdIndividual.maleLessThanOne2 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
-                        dsdIndividual.maleOneToFour2 = AppUtil.getLongValue(maleOneToFour.getText().toString());
-                        dsdIndividual.maleFiveToNine2 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
-                        dsdIndividual.maleTenToFourteen2 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
-                        dsdIndividual.maleFifteenToNineteen2 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
-                        dsdIndividual.maleTwentyToTwentyFour2 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
-                        dsdIndividual.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
-                        dsdIndividual.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
-
+                        dsdIndividual.maleFifteenLess2 = AppUtil.getLongValue(maleFifteenLess.getText().toString());
+                        dsdIndividual.maleFifteenPlus2 = AppUtil.getLongValue(maleFifteenPlus.getText().toString());
                         maleTotal.setText(AppUtil.getLongValue(dsdIndividual.maleQuestion2()));
                     }
 
@@ -593,14 +666,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         }
 
         list = new ArrayList<>();
-        list.add(femaleLessThanOne);
-        list.add(femaleOneToFour);
-        list.add(femaleFiveToNine);
-        list.add(femaleTenToFourteen);
-        list.add(femaleFifteenToNineteen);
-        list.add(femaleTwentyToTwentyFour);
-        list.add(femaleTwentyFiveToFortyNine);
-        list.add(femaleFiftyPlus);
+        list.add(femaleFifteenLess);
+        list.add(femaleFifteenPlus);
 
         for (EditText editText : list) {
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -608,15 +675,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
 
-                        dsdIndividual.femaleLessThanOne2 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
-                        dsdIndividual.femaleOneToFour2 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
-                        dsdIndividual.femaleFiveToNine2 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
-                        dsdIndividual.femaleTenToFourteen2 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
-                        dsdIndividual.femaleFifteenToNineteen2 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
-                        dsdIndividual.femaleTwentyToTwentyFour2 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
-                        dsdIndividual.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
-                        dsdIndividual.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
-
+                        dsdIndividual.femaleFifteenLess2 = AppUtil.getLongValue(femaleFifteenLess.getText().toString());
+                        dsdIndividual.femaleFifteenPlus2 = AppUtil.getLongValue(femaleFifteenPlus.getText().toString());
                         femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion2()));
                     }
 
@@ -629,29 +689,11 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             @Override
             public void onClick(View arg0) {
 
-                dsdIndividual.maleLessThanOne2 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
-                dsdIndividual.femaleLessThanOne2 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                dsdIndividual.maleFifteenLess2 = AppUtil.getLongValue(maleFifteenLess.getText().toString());
+                dsdIndividual.maleFifteenPlus2 = AppUtil.getLongValue(maleFifteenPlus.getText().toString());
 
-                dsdIndividual.maleOneToFour2 = AppUtil.getLongValue(maleOneToFour.getText().toString());
-                dsdIndividual.femaleOneToFour2 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
-
-                dsdIndividual.maleFiveToNine2 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
-                dsdIndividual.femaleFiveToNine2 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
-
-                dsdIndividual.maleTenToFourteen2 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
-                dsdIndividual.femaleTenToFourteen2 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
-
-                dsdIndividual.maleFifteenToNineteen2 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
-                dsdIndividual.femaleFifteenToNineteen2 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
-
-                dsdIndividual.maleTwentyToTwentyFour2 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
-                dsdIndividual.femaleTwentyToTwentyFour2 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
-
-                dsdIndividual.maleTwentyFiveToFortyNine2 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
-                dsdIndividual.femaleTwentyFiveToFortyNine2 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
-
-                dsdIndividual.maleFiftyPlus2 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
-                dsdIndividual.femaleFiftyPlus2 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFifteenLess2 = AppUtil.getLongValue(femaleFifteenLess.getText().toString());
+                dsdIndividual.femaleFifteenPlus2 = AppUtil.getLongValue(femaleFifteenPlus.getText().toString());
 
                 upDateForm();
                 dialog.dismiss();
@@ -666,7 +708,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     public void questionThree() {
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dsd_question_activity);
+        dialog.setContentView(R.layout.dsd_question_two_activity);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
         txt_name.setText(R.string.dsd_indvidual_question_three);
@@ -677,51 +719,21 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
         femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion3()));
 
-        final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
-        final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
-        final EditText maleOneToFour = (EditText) dialog.findViewById(R.id.maleOneToFour);
-        final EditText femaleOneToFour = (EditText) dialog.findViewById(R.id.femaleOneToFour);
-        final EditText maleFiveToNine = (EditText) dialog.findViewById(R.id.maleFiveToNine);
-        final EditText femaleFiveToNine = (EditText) dialog.findViewById(R.id.femaleFiveToNine);
-        final EditText maleTenToFourteen = (EditText) dialog.findViewById(R.id.maleTenToFourteen);
-        final EditText femaleTenToFourteen = (EditText) dialog.findViewById(R.id.femaleTenToFourteen);
-        final EditText maleFifteenToNineteen = (EditText) dialog.findViewById(R.id.maleFifteenToNineteen);
-        final EditText femaleFifteenToNineteen = (EditText) dialog.findViewById(R.id.femaleFifteenToNineteen);
-        final EditText maleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.maleTwentyToTwentyFour);
-        final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
-        final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
-        final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
-        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
-        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
+        final EditText maleFifteenLess = (EditText) dialog.findViewById(R.id.maleFifteenLess);
+        final EditText maleFifteenPlus = (EditText) dialog.findViewById(R.id.maleFifteenPlus);
+        final EditText femaleFifteenLess = (EditText) dialog.findViewById(R.id.femaleFifteenLess);
+        final EditText femaleFifteenPlus = (EditText) dialog.findViewById(R.id.femaleFifteenPlus);
 
         if (dsdIndividual != null) {
-            maleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.maleLessThanOne3));
-            femaleLessThanOne.setText(AppUtil.getLongValue(dsdIndividual.femaleLessThanOne3));
-            maleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.maleOneToFour3));
-            femaleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.femaleOneToFour3));
-            maleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.maleFiveToNine3));
-            femaleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.femaleOneToFour3));
-            maleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.maleTenToFourteen3));
-            femaleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.femaleTenToFourteen3));
-            maleFifteenToNineteen.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenToNineteen3));
-            femaleFifteenToNineteen.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenToNineteen3));
-            maleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyToTwentyFour3));
-            femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyToTwentyFour3));
-            maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.maleTwentyFiveToFortyNine3));
-            femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(dsdIndividual.femaleTwentyFiveToFortyNine3));
-            maleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFiftyPlus3));
-            femaleFiftyPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFiftyPlus3));
+            maleFifteenLess.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenLess3));
+            maleFifteenPlus.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenPlus3));
+            femaleFifteenLess.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenLess3));
+            femaleFifteenPlus.setText(AppUtil.getLongValue(dsdIndividual.femaleFifteenPlus3));
         }
 
         List<EditText> list = new ArrayList<>();
-        list.add(maleLessThanOne);
-        list.add(maleOneToFour);
-        list.add(maleFiveToNine);
-        list.add(maleTenToFourteen);
-        list.add(maleFifteenToNineteen);
-        list.add(maleTwentyToTwentyFour);
-        list.add(maleTwentyFiveToFortyNine);
-        list.add(maleFiftyPlus);
+        list.add(maleFifteenLess);
+        list.add(maleFifteenPlus);
 
         for (EditText editText : list) {
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -729,16 +741,9 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
 
-                        dsdIndividual.maleLessThanOne3 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
-                        dsdIndividual.maleOneToFour3 = AppUtil.getLongValue(maleOneToFour.getText().toString());
-                        dsdIndividual.maleFiveToNine3 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
-                        dsdIndividual.maleTenToFourteen3 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
-                        dsdIndividual.maleFifteenToNineteen3 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
-                        dsdIndividual.maleTwentyToTwentyFour3 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
-                        dsdIndividual.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
-                        dsdIndividual.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
-
-                        maleTotal.setText(AppUtil.getLongValue(dsdIndividual.maleQuestion3()));
+                        dsdIndividual.maleFifteenLess3 = AppUtil.getLongValue(maleFifteenLess.getText().toString());
+                        dsdIndividual.maleFifteenPlus3 = AppUtil.getLongValue(maleFifteenPlus.getText().toString());
+                        maleTotal.setText(AppUtil.getLongValue(dsdIndividual.maleQuestion2()));
                     }
 
                 }
@@ -746,14 +751,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         }
 
         list = new ArrayList<>();
-        list.add(femaleLessThanOne);
-        list.add(femaleOneToFour);
-        list.add(femaleFiveToNine);
-        list.add(femaleTenToFourteen);
-        list.add(femaleFifteenToNineteen);
-        list.add(femaleTwentyToTwentyFour);
-        list.add(femaleTwentyFiveToFortyNine);
-        list.add(femaleFiftyPlus);
+        list.add(femaleFifteenLess);
+        list.add(femaleFifteenPlus);
 
         for (EditText editText : list) {
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -761,16 +760,9 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
 
-                        dsdIndividual.femaleLessThanOne3 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
-                        dsdIndividual.femaleOneToFour3 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
-                        dsdIndividual.femaleFiveToNine3 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
-                        dsdIndividual.femaleTenToFourteen3 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
-                        dsdIndividual.femaleFifteenToNineteen3 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
-                        dsdIndividual.femaleTwentyToTwentyFour3 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
-                        dsdIndividual.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
-                        dsdIndividual.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
-
-                        femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion3()));
+                        dsdIndividual.femaleFifteenLess3 = AppUtil.getLongValue(femaleFifteenLess.getText().toString());
+                        dsdIndividual.femaleFifteenPlus3 = AppUtil.getLongValue(femaleFifteenPlus.getText().toString());
+                        femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion2()));
                     }
 
                 }
@@ -782,29 +774,11 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             @Override
             public void onClick(View arg0) {
 
-                dsdIndividual.maleLessThanOne3 = AppUtil.getLongValue(maleLessThanOne.getText().toString());
-                dsdIndividual.femaleLessThanOne3 = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                dsdIndividual.maleFifteenLess3 = AppUtil.getLongValue(maleFifteenLess.getText().toString());
+                dsdIndividual.maleFifteenPlus3 = AppUtil.getLongValue(maleFifteenPlus.getText().toString());
 
-                dsdIndividual.maleOneToFour3 = AppUtil.getLongValue(maleOneToFour.getText().toString());
-                dsdIndividual.femaleOneToFour3 = AppUtil.getLongValue(femaleOneToFour.getText().toString());
-
-                dsdIndividual.maleFiveToNine3 = AppUtil.getLongValue(maleFiveToNine.getText().toString());
-                dsdIndividual.femaleFiveToNine3 = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
-
-                dsdIndividual.maleTenToFourteen3 = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
-                dsdIndividual.femaleTenToFourteen3 = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
-
-                dsdIndividual.maleFifteenToNineteen3 = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
-                dsdIndividual.femaleFifteenToNineteen3 = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
-
-                dsdIndividual.maleTwentyToTwentyFour3 = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
-                dsdIndividual.femaleTwentyToTwentyFour3 = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
-
-                dsdIndividual.maleTwentyFiveToFortyNine3 = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
-                dsdIndividual.femaleTwentyFiveToFortyNine3 = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
-
-                dsdIndividual.maleFiftyPlus3 = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
-                dsdIndividual.femaleFiftyPlus3 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+                dsdIndividual.femaleFifteenLess3 = AppUtil.getLongValue(femaleFifteenLess.getText().toString());
+                dsdIndividual.femaleFifteenPlus3 = AppUtil.getLongValue(femaleFifteenPlus.getText().toString());
 
                 upDateForm();
                 dialog.dismiss();

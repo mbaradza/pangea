@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import zw.co.ncmp.R;
 import zw.co.ncmp.business.TXTNew;
+import zw.co.ncmp.util.AppUtil;
 import zw.co.ncmp.util.ViewHolder;
 
 /**
@@ -46,7 +47,7 @@ public class TXTNewAdapter extends ArrayAdapter<TXTNew> {
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
         TXTNew item = list.get(position);
-        holder.name.setText((position + 1) + ". " + item.period + " " + item.facility);
+        holder.name.setText((position + 1) + ". " + AppUtil.getStringDate(item.startDate) + " - " + (AppUtil.getStringDate(item.endDate) + " " + item.facility));
         return rowView;
     }
 

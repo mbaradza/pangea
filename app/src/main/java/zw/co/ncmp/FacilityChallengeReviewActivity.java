@@ -156,6 +156,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         facilityChallenge.challenge = oldFacilityChallenge.challenge;
         facilityChallenge.challengeStatus = oldFacilityChallenge.challengeStatus;
         facilityChallenge.expectedOutcome = oldFacilityChallenge.expectedOutcome;
+        facilityChallenge.measurementMethod = oldFacilityChallenge.measurementMethod;
         facilityChallenge.follow_up_date = oldFacilityChallenge.follow_up_date;
         facilityChallenge.expected_completion_date = oldFacilityChallenge.expected_completion_date;
         facilityChallenge.actionTaken = oldFacilityChallenge.actionTaken;
@@ -230,7 +231,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
 
         txt_caseFile_name.setEnabled(false);
         txt_follow_up_date.setEnabled(false);
-        challenge_status.setEnabled(false);
+        challenge_status.setEnabled(true);
         challenge.setEnabled(false);
         action_taken.setEnabled(false);
         action_taken_category.setEnabled(false);

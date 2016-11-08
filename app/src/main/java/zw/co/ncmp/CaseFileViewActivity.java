@@ -123,18 +123,18 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
         }
 
         case_file = (TextView) findViewById(R.id.txt_name);
-        case_file.setText("SITE PROFILE : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + facility.name);
+        case_file.setText("Site Profile : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + facility.name);
         case_file.setOnClickListener(this);
 
         txt_visit = (TextView) findViewById(R.id.txt_visit);
-        txt_visit.setText("Activities - (" + MentorVisitReport.getCount(caseFile.getId())+ ")");
+        txt_visit.setText("Site Support Report - (" + MentorVisitReport.getCount(caseFile.getId()) + ")");
         txt_visit.setOnClickListener(this);
 
         txt_challenge = (TextView) findViewById(R.id.txt_challenge);
         txt_challenge.setText("Facility Challenges - (" + FacilityChallenge.getCountChallengesByCaseFile(caseFile.getId())+ ")");
         txt_challenge.setOnClickListener(this);
 
-        setSupportActionBar(createToolBar("Site Support Report - " + AppUtil.getStringDate(caseFile.dateCreated) + " " + caseFile.facility));
+        setSupportActionBar(createToolBar("Site Profile - " + AppUtil.getStringDate(caseFile.dateCreated) + " " + caseFile.facility));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         onLocationChanged(mLastLocation);
         onLocationChanged(location);

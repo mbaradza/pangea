@@ -34,9 +34,11 @@ public class TXTNew extends Model {
     @Column(name = "facility_id")
     public Facility facility;
 
-    @Expose
-    @Column(name = "period_id")
-    public Period period;
+    @Column(name = "start_date")
+    public Date startDate;
+
+    @Column(name = "end_date")
+    public Date endDate;
 
     @Column(name = "date_created")
     public Date dateCreated;
@@ -44,6 +46,14 @@ public class TXTNew extends Model {
     @SerializedName("datec")
     @Expose
     public String serverCreatedDate;
+
+    @SerializedName("start")
+    @Expose
+    public String startDateC;
+
+    @SerializedName("end")
+    @Expose
+    public String endDateC;
 
     @Expose
     @Column(name = "name")

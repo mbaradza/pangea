@@ -10,14 +10,11 @@ import android.support.v4.view.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import zw.co.ncmp.business.DSDCouple;
-
 /**
  * Created by tdhlakama on 8/13/2016.
  */
 public class DSDFlowPager extends FragmentActivity {
     DSDPageAdapter pageAdapter;
-    private DSDCouple dsdCouple;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

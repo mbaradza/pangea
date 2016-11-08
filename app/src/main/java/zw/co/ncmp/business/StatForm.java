@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import zw.co.ncmp.util.AppUtil;
+
 /**
  * Created by tdhlakama on 4/8/2016.
  */
@@ -95,13 +97,30 @@ public class StatForm  extends Model {
     @Column(name = "femaleFifteenToNineteen")
     public Long femaleFifteenToNineteen;
 
-    @Expose
-    @Column(name = "maleTwentyPlus")
-    public Long maleTwentyPlus;
 
     @Expose
-    @Column(name = "femaleTwentyPlus")
-    public Long femaleTwentyPlus;
+    @Column(name = "maleTwentyToTwentyFour")
+    public Long maleTwentyToTwentyFour;
+
+    @Expose
+    @Column(name = "femaleTwentyToTwentyFour")
+    public Long femaleTwentyToTwentyFour;
+
+    @Expose
+    @Column(name = "maleTwentyFiveToFortyNine")
+    public Long maleTwentyFiveToFortyNine;
+
+    @Expose
+    @Column(name = "femaleTwentyFiveToFortyNine")
+    public Long femaleTwentyFiveToFortyNine;
+
+    @Expose
+    @Column(name = "maleFiftyPlus")
+    public Long maleFiftyPlus;
+
+    @Expose
+    @Column(name = "femaleFiftyPlus")
+    public Long femaleFiftyPlus;
 
     @Expose
     @Column(name = "knownHIV")
@@ -195,5 +214,20 @@ public class StatForm  extends Model {
     @Override
     public String toString() {
         return name;
+    }
+
+
+    public Long maleQuestion1() {
+        return AppUtil.getLong(maleLessThanOne) + AppUtil.getLong(maleOneToFour) +
+                AppUtil.getLong(maleFiveToNine) + AppUtil.getLong(maleTenToFourteen) +
+                AppUtil.getLong(maleFifteenToNineteen) + AppUtil.getLong(maleTwentyToTwentyFour) +
+                AppUtil.getLong(maleTwentyFiveToFortyNine) + AppUtil.getLong(maleFiftyPlus);
+    }
+
+    public Long femaleQuestion1() {
+        return AppUtil.getLong(femaleLessThanOne) + AppUtil.getLong(femaleOneToFour) +
+                AppUtil.getLong(femaleFiveToNine) + AppUtil.getLong(femaleTenToFourteen) +
+                AppUtil.getLong(femaleFifteenToNineteen) + AppUtil.getLong(femaleTwentyToTwentyFour) +
+                AppUtil.getLong(femaleTwentyFiveToFortyNine) + AppUtil.getLong(femaleFiftyPlus);
     }
 }

@@ -41,13 +41,21 @@
             android:id="@+id/facility"
             style="@style/SpinnerStyle" />
 
+        <EditText
+            android:id="@+id/startDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="From Date:" />
+
         <TextView
             style="@style/TextViewInputStyle"
-            android:text="Select Period"></TextView>
+            android:text="End Date" />
 
-        <Spinner
-            android:id="@+id/period"
-            style="@style/SpinnerStyle" />
+        <EditText
+            android:id="@+id/endDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End" />
 
         <TextView
             style="@style/TextViewInputStyle"

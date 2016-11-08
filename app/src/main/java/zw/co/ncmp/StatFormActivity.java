@@ -1,19 +1,24 @@
 package zw.co.ncmp;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import zw.co.ncmp.business.Facility;
 import zw.co.ncmp.business.Period;
@@ -32,25 +37,13 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
     EditText positiveHIV;
     EditText negativeHIV;
 
-    EditText maleLessThanOne;
-    EditText femaleLessThanOne;
-    EditText maleOneToFour;
-    EditText femaleOneToFour;
-    EditText maleFiveToNine;
-    EditText maleTenToFourteen;
-    EditText femaleFiveToNine;
-    EditText femaleTenToFourteen;
-    EditText maleFifteenToNineteen;
-    EditText femaleFifteenToNineteen;
-    EditText maleTwentyPlus;
-    EditText femaleTwentyPlus;
-
     Button btn_completed;
     Button btn_submit;
 
     Button btn_save;
-    private StatForm statForm;
+    private StatForm form;
     private DatePickerDialog datePickerDialog;
+    Button btn_question_one;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +51,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         setContentView(R.layout.stat_form_activity);
 
         Intent intent = getIntent();
-        Long statForm_id = intent.getLongExtra(AppUtil.ID, 0);
+        Long form_id = intent.getLongExtra(AppUtil.ID, 0);
 
         facility = (Spinner) findViewById(R.id.facility);
         name = (EditText) findViewById(R.id.name);
@@ -69,20 +62,6 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         positiveHIV = (EditText) findViewById(R.id.positiveHIV);
         negativeHIV = (EditText) findViewById(R.id.negativeHIV);
         dateCreated = (EditText) findViewById(R.id.dateCreated);
-
-        maleLessThanOne = (EditText) findViewById(R.id.maleLessThanOne);
-        maleLessThanOne = (EditText) findViewById(R.id.maleLessThanOne);
-        femaleLessThanOne = (EditText) findViewById(R.id.femaleLessThanOne);
-        maleOneToFour = (EditText) findViewById(R.id.maleOneToFour);
-        femaleOneToFour = (EditText) findViewById(R.id.femaleOneToFour);
-        maleFiveToNine = (EditText) findViewById(R.id.maleFiveToNine);
-        femaleFiveToNine = (EditText) findViewById(R.id.femaleFiveToNine);
-        maleTenToFourteen = (EditText) findViewById(R.id.maleTenToFourteen);
-        femaleTenToFourteen = (EditText) findViewById(R.id.femaleTenToFourteen);
-        maleFifteenToNineteen = (EditText) findViewById(R.id.maleFifteenToNineteen);
-        femaleFifteenToNineteen = (EditText) findViewById(R.id.femaleFifteenToNineteen);
-        maleTwentyPlus = (EditText) findViewById(R.id.maleTwentyPlus);
-        femaleTwentyPlus = (EditText) findViewById(R.id.femaleTwentyPlus);
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
@@ -107,34 +86,21 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         period.setAdapter(periodArrayAdapter);
 
 
-        if (statForm_id != 0) {
-            statForm = StatForm.get(statForm_id);
-            name.setText(statForm.name);
+        if (form_id != 0) {
+            form = StatForm.get(form_id);
+            name.setText(form.name);
 
-            numerator.setText(AppUtil.getLongValue(statForm.numerator));
-            denominator.setText(AppUtil.getLongValue(statForm.denominator));
-            knownHIV.setText(AppUtil.getLongValue(statForm.knownHIV));
-            positiveHIV.setText(AppUtil.getLongValue(statForm.positiveHIV));
-            negativeHIV.setText(AppUtil.getLongValue(statForm.negativeHIV));
+            numerator.setText(AppUtil.getLongValue(form.numerator));
+            denominator.setText(AppUtil.getLongValue(form.denominator));
+            knownHIV.setText(AppUtil.getLongValue(form.knownHIV));
+            positiveHIV.setText(AppUtil.getLongValue(form.positiveHIV));
+            negativeHIV.setText(AppUtil.getLongValue(form.negativeHIV));
 
-            maleLessThanOne.setText(AppUtil.getLongValue(statForm.maleLessThanOne));
-            femaleLessThanOne.setText(AppUtil.getLongValue(statForm.femaleLessThanOne));
-            maleOneToFour.setText(AppUtil.getLongValue(statForm.maleOneToFour));
-            femaleOneToFour.setText(AppUtil.getLongValue(statForm.femaleOneToFour));
-            maleFiveToNine.setText(AppUtil.getLongValue(statForm.maleFiveToNine));
-            femaleFiveToNine.setText(AppUtil.getLongValue(statForm.femaleFiveToNine));
-            maleTenToFourteen.setText(AppUtil.getLongValue(statForm.maleTenToFourteen));
-            femaleTenToFourteen.setText(AppUtil.getLongValue(statForm.femaleTenToFourteen));
-            maleFifteenToNineteen.setText(AppUtil.getLongValue(statForm.maleFifteenToNineteen));
-            femaleFifteenToNineteen.setText(AppUtil.getLongValue(statForm.femaleFifteenToNineteen));
-            maleTwentyPlus.setText(AppUtil.getLongValue(statForm.maleTwentyPlus));
-            femaleTwentyPlus.setText(AppUtil.getLongValue(statForm.femaleTwentyPlus));
-
-            updateLabel(statForm.dateCreated);
+            updateLabel(form.dateCreated);
 
             int i = 0;
             for (Facility s : Facility.getAll()) {
-                if (statForm.facility.equals(facility.getItemAtPosition(i))) {
+                if (form.facility.equals(facility.getItemAtPosition(i))) {
                     facility.setSelection(i);
                     break;
                 }
@@ -143,7 +109,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
             i = 0;
             for (Period s : Period.getAll()) {
-                if (statForm.period.equals(period.getItemAtPosition(i))) {
+                if (form.period.equals(period.getItemAtPosition(i))) {
                     period.setSelection(i);
                     break;
                 }
@@ -152,9 +118,14 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
             setSupportActionBar(createToolBar("TB_STAT Update"));
         } else {
-            statForm = new StatForm();
+            form = new StatForm();
             setSupportActionBar(createToolBar("TB_STAT"));
         }
+
+
+        btn_question_one = (Button) findViewById(R.id.btn_question_one);
+        btn_question_one.setOnClickListener(this);
+        btn_question_one.setText(R.string.disaggregation);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -168,11 +139,11 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         btn_submit.setVisibility(View.GONE);
         btn_submit.setBackgroundResource(R.drawable.finish_background);
 
-        if (statForm.dateCreated != null) {
+        if (form.dateCreated != null) {
             btn_submit.setVisibility(View.VISIBLE);
         }
 
-        if (statForm.dateSubmitted != null) {
+        if (form.dateSubmitted != null) {
             btn_submit.setVisibility(View.GONE);
             btn_save.setVisibility(View.GONE);
             btn_completed.setVisibility(View.VISIBLE);
@@ -183,34 +154,25 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        if (v.getId() == btn_question_one.getId()) {
+            questionOne();
+        }
+
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
-                statForm.facility = (Facility) facility.getSelectedItem();
-                statForm.name = name.getText().toString();
-                statForm.period = (Period) period.getSelectedItem();
-                statForm.numerator = AppUtil.getLongValue(numerator.getText().toString());
-                statForm.denominator = AppUtil.getLongValue(denominator.getText().toString());
+                form.facility = (Facility) facility.getSelectedItem();
+                form.name = name.getText().toString();
+                form.period = (Period) period.getSelectedItem();
+                form.numerator = AppUtil.getLongValue(numerator.getText().toString());
+                form.denominator = AppUtil.getLongValue(denominator.getText().toString());
 
-                statForm.knownHIV = AppUtil.getLongValue(knownHIV.getText().toString());
-                statForm.positiveHIV = AppUtil.getLongValue(positiveHIV.getText().toString());
-                statForm.negativeHIV = AppUtil.getLongValue(negativeHIV.getText().toString());
-                statForm.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
+                form.knownHIV = AppUtil.getLongValue(knownHIV.getText().toString());
+                form.positiveHIV = AppUtil.getLongValue(positiveHIV.getText().toString());
+                form.negativeHIV = AppUtil.getLongValue(negativeHIV.getText().toString());
+                form.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
 
-                statForm.maleLessThanOne = AppUtil.getLongValue(maleLessThanOne.getText().toString());
-                statForm.femaleLessThanOne = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
-                statForm.maleOneToFour = AppUtil.getLongValue(maleOneToFour.getText().toString());
-                statForm.femaleOneToFour = AppUtil.getLongValue(femaleOneToFour.getText().toString());
-                statForm.maleFiveToNine = AppUtil.getLongValue(maleFiveToNine.getText().toString());
-                statForm.femaleFiveToNine = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
-                statForm.maleTenToFourteen = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
-                statForm.femaleTenToFourteen = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
-                statForm.maleFifteenToNineteen = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
-                statForm.femaleFifteenToNineteen = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
-                statForm.maleTwentyPlus = AppUtil.getLongValue(maleTwentyPlus.getText().toString());
-                statForm.femaleTwentyPlus = AppUtil.getLongValue(femaleTwentyPlus.getText().toString());
-
-
-                statForm.save();
+                form.save();
                 btn_submit.setVisibility(View.VISIBLE);
                 AppUtil.createShortNotification(StatFormActivity.this, "Saved");
             } else {
@@ -225,8 +187,8 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             if (validate()) {
-                                statForm.dateSubmitted = new Date();
-                                statForm.save();
+                                form.dateSubmitted = new Date();
+                                form.save();
                                 AppUtil.createLongNotification(StatFormActivity.this, "Submitted for Upload to Server");
                                 Intent intent = new Intent(StatFormActivity.this, StatFormListActivity.class);
                                 startActivity(intent);
@@ -247,6 +209,160 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
     private void updateLabel(Date date) {
         dateCreated.setText(AppUtil.getStringDate(date));
+    }
+
+
+    public void questionOne() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dsd_question_activity);
+
+        TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
+        txt_name.setText(R.string.dsd_indvidual_question_one);
+
+        final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
+        maleTotal.setText(AppUtil.getLongValue(form.maleQuestion1()));
+
+        final TextView femaleTotal = (TextView) dialog.findViewById(R.id.femaleTotal);
+        femaleTotal.setText(AppUtil.getLongValue(form.femaleQuestion1()));
+
+        final EditText maleLessThanOne = (EditText) dialog.findViewById(R.id.maleLessThanOne);
+        final EditText femaleLessThanOne = (EditText) dialog.findViewById(R.id.femaleLessThanOne);
+        final EditText maleOneToFour = (EditText) dialog.findViewById(R.id.maleOneToFour);
+        final EditText femaleOneToFour = (EditText) dialog.findViewById(R.id.femaleOneToFour);
+        final EditText maleFiveToNine = (EditText) dialog.findViewById(R.id.maleFiveToNine);
+        final EditText femaleFiveToNine = (EditText) dialog.findViewById(R.id.femaleFiveToNine);
+        final EditText maleTenToFourteen = (EditText) dialog.findViewById(R.id.maleTenToFourteen);
+        final EditText femaleTenToFourteen = (EditText) dialog.findViewById(R.id.femaleTenToFourteen);
+        final EditText maleFifteenToNineteen = (EditText) dialog.findViewById(R.id.maleFifteenToNineteen);
+        final EditText femaleFifteenToNineteen = (EditText) dialog.findViewById(R.id.femaleFifteenToNineteen);
+        final EditText maleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.maleTwentyToTwentyFour);
+        final EditText femaleTwentyToTwentyFour = (EditText) dialog.findViewById(R.id.femaleTwentyToTwentyFour);
+        final EditText maleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.maleTwentyFiveToFortyNine);
+        final EditText femaleTwentyFiveToFortyNine = (EditText) dialog.findViewById(R.id.femaleTwentyFiveToFortyNine);
+        final EditText maleFiftyPlus = (EditText) dialog.findViewById(R.id.maleFiftyPlus);
+        final EditText femaleFiftyPlus = (EditText) dialog.findViewById(R.id.femaleFiftyPlus);
+
+        if (form != null) {
+            maleLessThanOne.setText(AppUtil.getLongValue(form.maleLessThanOne));
+            femaleLessThanOne.setText(AppUtil.getLongValue(form.femaleLessThanOne));
+            maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour));
+            femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour));
+            maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour));
+            maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen));
+            femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen));
+            maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen));
+            femaleFifteenToNineteen.setText(AppUtil.getLongValue(form.femaleFifteenToNineteen));
+            maleTwentyToTwentyFour.setText(AppUtil.getLongValue(form.maleTwentyToTwentyFour));
+            femaleTwentyToTwentyFour.setText(AppUtil.getLongValue(form.femaleTwentyToTwentyFour));
+            maleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(form.maleTwentyFiveToFortyNine));
+            femaleTwentyFiveToFortyNine.setText(AppUtil.getLongValue(form.femaleTwentyFiveToFortyNine));
+            maleFiftyPlus.setText(AppUtil.getLongValue(form.maleFiftyPlus));
+            femaleFiftyPlus.setText(AppUtil.getLongValue(form.femaleFiftyPlus));
+        }
+
+        List<EditText> list = new ArrayList<>();
+        list.add(maleLessThanOne);
+        list.add(maleOneToFour);
+        list.add(maleFiveToNine);
+        list.add(maleTenToFourteen);
+        list.add(maleFifteenToNineteen);
+        list.add(maleTwentyToTwentyFour);
+        list.add(maleTwentyFiveToFortyNine);
+        list.add(maleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        form.maleLessThanOne = AppUtil.getLongValue(maleLessThanOne.getText().toString());
+                        form.maleOneToFour = AppUtil.getLongValue(maleOneToFour.getText().toString());
+                        form.maleFiveToNine = AppUtil.getLongValue(maleFiveToNine.getText().toString());
+                        form.maleTenToFourteen = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
+                        form.maleFifteenToNineteen = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
+                        form.maleTwentyToTwentyFour = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
+                        form.maleTwentyFiveToFortyNine = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
+                        form.maleFiftyPlus = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+
+                        maleTotal.setText(AppUtil.getLongValue(form.maleQuestion1()));
+                    }
+
+                }
+            });
+        }
+
+        list = new ArrayList<>();
+        list.add(femaleLessThanOne);
+        list.add(femaleOneToFour);
+        list.add(femaleFiveToNine);
+        list.add(femaleTenToFourteen);
+        list.add(femaleFifteenToNineteen);
+        list.add(femaleTwentyToTwentyFour);
+        list.add(femaleTwentyFiveToFortyNine);
+        list.add(femaleFiftyPlus);
+
+        for (EditText editText : list) {
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+
+                        form.femaleLessThanOne = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+                        form.femaleOneToFour = AppUtil.getLongValue(femaleOneToFour.getText().toString());
+                        form.femaleFiveToNine = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
+                        form.femaleTenToFourteen = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
+                        form.femaleFifteenToNineteen = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
+                        form.femaleTwentyToTwentyFour = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
+                        form.femaleTwentyFiveToFortyNine = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
+                        form.femaleFiftyPlus = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+
+                        femaleTotal.setText(AppUtil.getLongValue(form.femaleQuestion1()));
+                    }
+
+                }
+            });
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                form.maleLessThanOne = AppUtil.getLongValue(maleLessThanOne.getText().toString());
+                form.femaleLessThanOne = AppUtil.getLongValue(femaleLessThanOne.getText().toString());
+
+                form.maleOneToFour = AppUtil.getLongValue(maleOneToFour.getText().toString());
+                form.femaleOneToFour = AppUtil.getLongValue(femaleOneToFour.getText().toString());
+
+                form.maleFiveToNine = AppUtil.getLongValue(maleFiveToNine.getText().toString());
+                form.femaleFiveToNine = AppUtil.getLongValue(femaleFiveToNine.getText().toString());
+
+                form.maleTenToFourteen = AppUtil.getLongValue(maleTenToFourteen.getText().toString());
+                form.femaleTenToFourteen = AppUtil.getLongValue(femaleTenToFourteen.getText().toString());
+
+                form.maleFifteenToNineteen = AppUtil.getLongValue(maleFifteenToNineteen.getText().toString());
+                form.femaleFifteenToNineteen = AppUtil.getLongValue(femaleFifteenToNineteen.getText().toString());
+
+                form.maleTwentyToTwentyFour = AppUtil.getLongValue(maleTwentyToTwentyFour.getText().toString());
+                form.femaleTwentyToTwentyFour = AppUtil.getLongValue(femaleTwentyToTwentyFour.getText().toString());
+
+                form.maleTwentyFiveToFortyNine = AppUtil.getLongValue(maleTwentyFiveToFortyNine.getText().toString());
+                form.femaleTwentyFiveToFortyNine = AppUtil.getLongValue(femaleTwentyFiveToFortyNine.getText().toString());
+
+                form.maleFiftyPlus = AppUtil.getLongValue(maleFiftyPlus.getText().toString());
+                form.femaleFiftyPlus = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
+
+                upDateForm();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
+
     }
 
     public boolean validate() {
@@ -299,5 +415,11 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
                 .show();
     }
 
+    public void upDateForm() {
+
+        btn_question_one.setText(this.getString(R.string.dsd_indvidual_question_one)
+                + " [ " + (form.maleQuestion1() + form.femaleQuestion1()) + " ]");
+
+    }
 
 }

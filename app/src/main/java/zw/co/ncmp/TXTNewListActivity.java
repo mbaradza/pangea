@@ -21,12 +21,12 @@ public class TXTNewListActivity extends MenuBar implements AdapterView.OnItemCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_list_view);
-        TXTNewAdapter adapter = (new TXTNewAdapter(this, new ArrayList<TXTNew>(TXTNew.getAll())));
+        TXTNewAdapter adapter = (new TXTNewAdapter(this, new ArrayList<>(TXTNew.getAll())));
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setEmptyView(findViewById(R.id.empty));
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-        setSupportActionBar(createToolBar("TXTNew List"));
+        setSupportActionBar(createToolBar("TX_New List"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

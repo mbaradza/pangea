@@ -45,7 +45,6 @@ import zw.co.ncmp.business.CaseFileMentee;
 import zw.co.ncmp.business.CaseFileMentor;
 import zw.co.ncmp.business.Challenge;
 import zw.co.ncmp.business.ChallengeStatus;
-import zw.co.ncmp.business.DSDCouple;
 import zw.co.ncmp.business.DSDIndividual;
 import zw.co.ncmp.business.Designation;
 import zw.co.ncmp.business.Facility;
@@ -175,12 +174,6 @@ public class AppUtil {
 
     public static HttpUrl getPushStatFormReportUrl(Context context, Long id) {
         return HttpUrl.parse(getWebService(context).concat("form/tb-stat")).newBuilder()
-                .setQueryParameter("id", String.valueOf(id))
-                .build();
-    }
-
-    public static HttpUrl getPushDSDCoupleFormUrl(Context context, Long id) {
-        return HttpUrl.parse(getWebService(context).concat("dsd/dsd-couple")).newBuilder()
                 .setQueryParameter("id", String.valueOf(id))
                 .build();
     }
@@ -535,7 +528,6 @@ public class AppUtil {
         Designation.deleteAll();
         MentorShipFocusArea.deleteAll();
         DSDIndividual.deleteAll();
-        DSDCouple.deleteAll();
         Challenge.deleteAll();
         ChallengeStatus.deleteAll();
         StatForm.deleteAll();

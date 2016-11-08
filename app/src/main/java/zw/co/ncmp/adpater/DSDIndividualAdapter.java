@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import zw.co.ncmp.R;
 import zw.co.ncmp.business.DSDIndividual;
+import zw.co.ncmp.util.AppUtil;
 import zw.co.ncmp.util.ViewHolder;
 
 /**
@@ -46,7 +47,7 @@ public class DSDIndividualAdapter extends ArrayAdapter<DSDIndividual> {
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
         DSDIndividual item = list.get(position);
-        holder.name.setText((position + 1) + ". " + item.period + " " + item.facility);
+        holder.name.setText((position + 1) + ". " + AppUtil.getStringDate(item.startDate) + " - " + (AppUtil.getStringDate(item.endDate) + " " + item.facility));
         return rowView;
     }
 
