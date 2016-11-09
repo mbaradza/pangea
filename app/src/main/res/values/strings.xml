@@ -72,9 +72,9 @@
 
     <string name="entry_point">Disaggregated by Facility Delivery Point Number tested and number tested positive</string>
 
-    <string name="tx_pvls_question_one">Routine Numerator Pregnant</string>
-    <string name="tx_pvls_question_two">Routine Numerator Breast Feeding</string>
-    <string name="tx_pvls_question_three">Target Denominator Pregnant</string>
-    <string name="tx_pvls_question_four">Target Denominator Breast Feeding</string>
+    <string name="tx_pvls_question_one">Routine Numerator Disaggregation</string>
+    <string name="tx_pvls_question_two">Targeted Numerator Disaggregation</string>
+    <string name="tx_pvls_question_three">Routine Denominator Disaggregation</string>
+    <string name="tx_pvls_question_four">Target Denominator Disaggregation</string>
 
 </resources>
