@@ -73,12 +73,12 @@ public class MenteeActivity extends MenuBar implements View.OnClickListener {
         date_of_birth.setOnClickListener(this);
 
         ArrayAdapter<Qualification> qualificationArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Qualification.getAll());
+                R.layout.spinner_item, Qualification.getAll());
         qualificationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         qualification.setAdapter(qualificationArrayAdapter);
 
         ArrayAdapter<Designation> designationArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Designation.getAll());
+                R.layout.spinner_item, Designation.getAll());
         designationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         designation.setAdapter(designationArrayAdapter);
 

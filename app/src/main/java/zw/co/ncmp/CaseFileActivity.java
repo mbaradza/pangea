@@ -88,8 +88,8 @@ public class CaseFileActivity extends MenuBar implements View.OnClickListener, L
             caseFile = CaseFile.get(case_file_id);
             facility = Facility.get(caseFile.facility.getId());
             updateDateCreatedLabel(caseFile.dateCreated);
-            if (caseFile.dateSubmitted != null) {
-                updateDateSubmittedLabel(caseFile.dateSubmitted);
+            if (caseFile.checkOutDate != null) {
+                updateDateSubmittedLabel(caseFile.checkOutDate);
             }
 
             longitude_created.setText(String.valueOf(caseFile.longitudeCreated));

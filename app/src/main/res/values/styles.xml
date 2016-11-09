@@ -31,7 +31,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/review_green</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:padding">8dp</item>
         <item name="android:textSize">17dp</item>
         <item name="android:paddingLeft">?android:attr/expandableListPreferredItemPaddingLeft</item>
@@ -43,7 +43,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/review_green</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="android:padding">8dp</item>
         <item name="android:textSize">17dp</item>
         <item name="android:paddingLeft">?android:attr/expandableListPreferredItemPaddingLeft</item>

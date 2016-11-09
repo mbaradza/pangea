@@ -36,6 +36,9 @@ public class CaseFile extends Model {
     @Column(name = "date_submitted", notNull = false)
     public Date dateSubmitted;
 
+    @Column(name = "check_out_date", notNull = false)
+    public Date checkOutDate;
+
     @SerializedName("dateCreated")
     @Expose
     public String serverCreatedDate;

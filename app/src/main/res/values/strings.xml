@@ -70,9 +70,11 @@
 
     <string name="disaggregation">Fine Disaggregation by Age Male and Female</string>
 
-    <string name="tx_pvls_question_one">Routine Pregnant Disaggregation</string>
-    <string name="tx_pvls_question_two">Routine Breast Feeding Disaggregation</string>
-    <string name="tx_pvls_question_three">Target Pregnant Disaggregation</string>
-    <string name="tx_pvls_question_four">Target Breast Feeding Disaggregation</string>
+    <string name="entry_point">Disaggregated by Facility Delivery Point Number tested and number tested positive</string>
+
+    <string name="tx_pvls_question_one">Routine Numerator Pregnant</string>
+    <string name="tx_pvls_question_two">Routine Numerator Breast Feeding</string>
+    <string name="tx_pvls_question_three">Target Denominator Pregnant</string>
+    <string name="tx_pvls_question_four">Target Denominator Breast Feeding</string>
 
 </resources>

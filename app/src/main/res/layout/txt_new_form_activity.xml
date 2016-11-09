@@ -16,6 +16,11 @@
             style="@style/TextViewStyle"
             android:text="@string/txt_new_title"></TextView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/dividerHorizontal" />
+
         <Button
             android:id="@+id/btn_submit"
             style="?android:attr/buttonBarButtonStyle"
@@ -40,6 +45,10 @@
         <Spinner
             android:id="@+id/facility"
             style="@style/SpinnerStyle" />
+
+        <TextView
+            style="@style/TextViewInputStyle"
+            android:text="Start Date" />
 
         <EditText
             android:id="@+id/startDate"

@@ -72,12 +72,12 @@ public class TXCURRFormActivity extends MenuBar implements View.OnClickListener 
         dateCreated.setOnClickListener(this);
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
+                R.layout.spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
 
         ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
+                R.layout.spinner_item, Period.getAll());
         periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         period.setAdapter(periodArrayAdapter);
 

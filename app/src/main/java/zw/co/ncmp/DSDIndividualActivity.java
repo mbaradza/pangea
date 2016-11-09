@@ -39,32 +39,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     EditText endDate;
 
     EditText name;
-    EditText testedFHS;
-    EditText positiveTestedFHS;
-    EditText testedOPD;
-    EditText positiveTestedOPD;
-    EditText testedOutreach;
-    EditText positiveTestedOutreach;
-    EditText testedMaternity;
-    EditText positiveTestedMaternity;
-    EditText testedANC;
-    EditText positiveTestedANC;
-    EditText testedInpatient;
-    EditText positiveTestedInpatient;
-    EditText testedPaediatric;
-    EditText positiveTestedPaediatric;
-    EditText testedPMTCT;
-    EditText positiveTestedPMTCT;
-    EditText testedSTI;
-    EditText positiveTestedSTI;
-    EditText testedTBUnit;
-    EditText positiveTestedTBUnit;
-    EditText testedVIAC;
-    EditText testedVMMC;
-    EditText testedTB;
-    EditText positiveTestedTB;
-    EditText positiveTestedVMMC;
-    EditText positiveTestedVIAC;
+
 
     EditText couplesTested;
     EditText couplesPositiveTested;
@@ -82,6 +57,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
     Button btn_question_six;
     Button btn_question_seven;
     Button btn_question_eight;
+    Button btn_question_nine;
 
     private DatePickerDialog datePickerDialog;
     private DatePickerDialog datePickerDialog1;
@@ -96,34 +72,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         Long dsdIndividual_id = intent.getLongExtra(AppUtil.ID, 0);
 
         facility = (Spinner) findViewById(R.id.facility);
-
-        testedFHS = (EditText) findViewById(R.id.testedFHS);
-        positiveTestedFHS = (EditText) findViewById(R.id.positiveTestedFHS);
-        testedOPD = (EditText) findViewById(R.id.testedOPD);
-        positiveTestedOPD = (EditText) findViewById(R.id.positiveTestedOPD);
-        testedOutreach = (EditText) findViewById(R.id.testedOutreach);
-        positiveTestedOutreach = (EditText) findViewById(R.id.positiveTestedOutreach);
-        testedMaternity = (EditText) findViewById(R.id.testedMaternity);
-        positiveTestedMaternity = (EditText) findViewById(R.id.positiveTestedMaternity);
-        testedANC = (EditText) findViewById(R.id.testedANC);
-        positiveTestedANC = (EditText) findViewById(R.id.positiveTestedANC);
-
-        testedInpatient = (EditText) findViewById(R.id.testedInpatient);
-        positiveTestedInpatient = (EditText) findViewById(R.id.positiveTestedInpatient);
-        testedPaediatric = (EditText) findViewById(R.id.testedPaediatric);
-        positiveTestedPaediatric = (EditText) findViewById(R.id.positiveTestedPaediatric);
-        testedPMTCT = (EditText) findViewById(R.id.testedPMTCT);
-        positiveTestedPMTCT = (EditText) findViewById(R.id.positiveTestedPMTCT);
-        testedSTI = (EditText) findViewById(R.id.testedSTI);
-        positiveTestedSTI = (EditText) findViewById(R.id.positiveTestedSTI);
-        testedTBUnit = (EditText) findViewById(R.id.testedTBUnit);
-        positiveTestedTBUnit = (EditText) findViewById(R.id.positiveTestedTBUnit);
-        positiveTestedVMMC = (EditText) findViewById(R.id.positiveTestedVMMC);
-        testedVMMC = (EditText) findViewById(R.id.testedVMMC);
-        testedVIAC = (EditText) findViewById(R.id.testedVIAC);
-        positiveTestedVIAC = (EditText) findViewById(R.id.positiveTestedVIAC);
-        testedTB = (EditText) findViewById(R.id.testedTB);
-        positiveTestedTB = (EditText) findViewById(R.id.positiveTestedTB);
 
         couplesTested = (EditText) findViewById(R.id.couplesTested);
         couplesPositiveTested = (EditText) findViewById(R.id.couplesPositiveTested);
@@ -172,41 +120,15 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
+                R.layout.spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         facility.setAdapter(facilityArrayAdapter);
 
         if (dsdIndividual_id != 0) {
             dsdIndividual = DSDIndividual.get(dsdIndividual_id);
 
             name.setText(dsdIndividual.name);
-            testedFHS.setText(AppUtil.getLongValue(dsdIndividual.testedFHS));
-            positiveTestedFHS.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedFHS));
-            testedOPD.setText(AppUtil.getLongValue(dsdIndividual.testedOPD));
-            positiveTestedOPD.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedOPD));
-            testedOutreach.setText(AppUtil.getLongValue(dsdIndividual.testedOutreach));
-            positiveTestedOutreach.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedOutreach));
-            testedMaternity.setText(AppUtil.getLongValue(dsdIndividual.testedMaternity));
-            positiveTestedMaternity.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedMaternity));
-            testedANC.setText(AppUtil.getLongValue(dsdIndividual.testedANC));
-            positiveTestedANC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedANC));
-
-            testedInpatient.setText(AppUtil.getLongValue(dsdIndividual.testedInpatient));
-            positiveTestedInpatient.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedInpatient));
-            testedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.testedPaediatric));
-            positiveTestedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPaediatric));
-            testedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.testedPMTCT));
-            positiveTestedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPMTCT));
-            testedSTI.setText(AppUtil.getLongValue(dsdIndividual.testedSTI));
-            positiveTestedSTI.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedSTI));
-            testedTBUnit.setText(AppUtil.getLongValue(dsdIndividual.testedTBUnit));
-            positiveTestedTBUnit.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedTBUnit));
-            positiveTestedVMMC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVMMC));
-            testedVMMC.setText(AppUtil.getLongValue(dsdIndividual.testedVMMC));
-            testedVIAC.setText(AppUtil.getLongValue(dsdIndividual.testedVIAC));
-            positiveTestedVIAC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVIAC));
-            testedTB.setText(AppUtil.getLongValue(dsdIndividual.testedTB));
-            positiveTestedTB.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedTB));
 
             couplesTested.setText(AppUtil.getLongValue(dsdIndividual.couplesTested));
             couplesPositiveTested.setText(AppUtil.getLongValue(dsdIndividual.couplesPositiveTested));
@@ -263,6 +185,9 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
         btn_question_eight = (Button) findViewById(R.id.btn_question_eight);
         btn_question_eight.setOnClickListener(this);
         btn_question_eight.setText(R.string.dsd_indvidual_question_eight);
+
+        btn_question_nine = (Button) findViewById(R.id.btn_question_nine);
+        btn_question_nine.setOnClickListener(this);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -324,6 +249,10 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             questionEight();
         }
 
+        if (v.getId() == btn_question_nine.getId()) {
+            questionNine();
+        }
+
         if (v.getId() == btn_save.getId()) {
             if (validate()) {
                 dsdIndividual.facility = (Facility) facility.getSelectedItem();
@@ -331,33 +260,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.startDate = AppUtil.getDate(startDate.getText().toString());
                 dsdIndividual.endDate = AppUtil.getDate(endDate.getText().toString());
                 dsdIndividual.name = name.getText().toString();
-                dsdIndividual.testedFHS = AppUtil.getLongValue(testedFHS.getText().toString());
-                dsdIndividual.positiveTestedFHS = AppUtil.getLongValue(positiveTestedFHS.getText().toString());
-                dsdIndividual.testedOPD = AppUtil.getLongValue(testedOPD.getText().toString());
-                dsdIndividual.positiveTestedOPD = AppUtil.getLongValue(positiveTestedOPD.getText().toString());
-                dsdIndividual.testedOutreach = AppUtil.getLongValue(testedOutreach.getText().toString());
-                dsdIndividual.positiveTestedOutreach = AppUtil.getLongValue(positiveTestedOutreach.getText().toString());
-                dsdIndividual.testedMaternity = AppUtil.getLongValue(testedMaternity.getText().toString());
-                dsdIndividual.positiveTestedMaternity = AppUtil.getLongValue(positiveTestedMaternity.getText().toString());
-                dsdIndividual.testedANC = AppUtil.getLongValue(testedANC.getText().toString());
-                dsdIndividual.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
-
-                dsdIndividual.testedInpatient = AppUtil.getLongValue(testedInpatient.getText().toString());
-                dsdIndividual.positiveTestedInpatient = AppUtil.getLongValue(positiveTestedInpatient.getText().toString());
-                dsdIndividual.testedPaediatric = AppUtil.getLongValue(testedPaediatric.getText().toString());
-                dsdIndividual.positiveTestedPaediatric = AppUtil.getLongValue(positiveTestedPaediatric.getText().toString());
-                dsdIndividual.testedPMTCT = AppUtil.getLongValue(testedPMTCT.getText().toString());
-                dsdIndividual.positiveTestedPMTCT = AppUtil.getLongValue(positiveTestedPMTCT.getText().toString());
-                dsdIndividual.testedSTI = AppUtil.getLongValue(testedSTI.getText().toString());
-                dsdIndividual.positiveTestedSTI = AppUtil.getLongValue(positiveTestedSTI.getText().toString());
-                dsdIndividual.testedTBUnit = AppUtil.getLongValue(testedTBUnit.getText().toString());
-                dsdIndividual.positiveTestedTBUnit = AppUtil.getLongValue(positiveTestedTBUnit.getText().toString());
-                dsdIndividual.testedVMMC = AppUtil.getLongValue(testedVMMC.getText().toString());
-                dsdIndividual.positiveTestedVMMC = AppUtil.getLongValue(positiveTestedVMMC.getText().toString());
-                dsdIndividual.testedVIAC = AppUtil.getLongValue(testedVIAC.getText().toString());
-                dsdIndividual.positiveTestedVIAC = AppUtil.getLongValue(positiveTestedVIAC.getText().toString());
-                dsdIndividual.testedTB = AppUtil.getLongValue(testedTB.getText().toString());
-                dsdIndividual.positiveTestedTB = AppUtil.getLongValue(positiveTestedTB.getText().toString());
 
                 dsdIndividual.couplesTested = AppUtil.getLongValue(couplesTested.getText().toString());
                 dsdIndividual.couplesPositiveTested = AppUtil.getLongValue(couplesPositiveTested.getText().toString());
@@ -743,7 +645,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
                         dsdIndividual.maleFifteenLess3 = AppUtil.getLongValue(maleFifteenLess.getText().toString());
                         dsdIndividual.maleFifteenPlus3 = AppUtil.getLongValue(maleFifteenPlus.getText().toString());
-                        maleTotal.setText(AppUtil.getLongValue(dsdIndividual.maleQuestion2()));
+                        maleTotal.setText(AppUtil.getLongValue(dsdIndividual.maleQuestion3()));
                     }
 
                 }
@@ -762,7 +664,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
 
                         dsdIndividual.femaleFifteenLess3 = AppUtil.getLongValue(femaleFifteenLess.getText().toString());
                         dsdIndividual.femaleFifteenPlus3 = AppUtil.getLongValue(femaleFifteenPlus.getText().toString());
-                        femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion2()));
+                        femaleTotal.setText(AppUtil.getLongValue(dsdIndividual.femaleQuestion3()));
                     }
 
                 }
@@ -1546,6 +1448,103 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.femaleFiftyPlus8 = AppUtil.getLongValue(femaleFiftyPlus.getText().toString());
 
                 upDateForm();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
+
+    }
+
+    public void questionNine() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.entry_point);
+
+        TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
+        txt_name.setText(R.string.entry_point);
+
+        final EditText testedOPD = (EditText) dialog.findViewById(R.id.testedOPD);
+        final EditText positiveTestedOPD = (EditText) dialog.findViewById(R.id.positiveTestedOPD);
+        final EditText testedOutreach = (EditText) dialog.findViewById(R.id.testedOutreach);
+        final EditText positiveTestedOutreach = (EditText) dialog.findViewById(R.id.positiveTestedOutreach);
+        final EditText testedMaternity = (EditText) dialog.findViewById(R.id.testedMaternity);
+        final EditText positiveTestedMaternity = (EditText) dialog.findViewById(R.id.positiveTestedMaternity);
+        final EditText testedANC = (EditText) dialog.findViewById(R.id.testedANC);
+        final EditText positiveTestedANC = (EditText) dialog.findViewById(R.id.positiveTestedANC);
+
+        final EditText testedInpatient = (EditText) dialog.findViewById(R.id.testedInpatient);
+        final EditText positiveTestedInpatient = (EditText) dialog.findViewById(R.id.positiveTestedInpatient);
+        final EditText testedPaediatric = (EditText) dialog.findViewById(R.id.testedPaediatric);
+        final EditText positiveTestedPaediatric = (EditText) dialog.findViewById(R.id.positiveTestedPaediatric);
+        final EditText testedPMTCT = (EditText) dialog.findViewById(R.id.testedPMTCT);
+        final EditText positiveTestedPMTCT = (EditText) dialog.findViewById(R.id.positiveTestedPMTCT);
+        final EditText testedSTI = (EditText) dialog.findViewById(R.id.testedSTI);
+        final EditText positiveTestedSTI = (EditText) dialog.findViewById(R.id.positiveTestedSTI);
+        final EditText positiveTestedVMMC = (EditText) dialog.findViewById(R.id.positiveTestedVMMC);
+        final EditText testedVMMC = (EditText) dialog.findViewById(R.id.testedVMMC);
+        final EditText testedVIAC = (EditText) dialog.findViewById(R.id.testedVIAC);
+        final EditText positiveTestedVIAC = (EditText) dialog.findViewById(R.id.positiveTestedVIAC);
+        final EditText testedTB = (EditText) dialog.findViewById(R.id.testedTB);
+        final EditText positiveTestedTB = (EditText) dialog.findViewById(R.id.positiveTestedTB);
+
+        if (dsdIndividual != null) {
+            testedOPD.setText(AppUtil.getLongValue(dsdIndividual.testedOPD));
+            positiveTestedOPD.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedOPD));
+            testedOutreach.setText(AppUtil.getLongValue(dsdIndividual.testedOutreach));
+            positiveTestedOutreach.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedOutreach));
+            testedMaternity.setText(AppUtil.getLongValue(dsdIndividual.testedMaternity));
+            positiveTestedMaternity.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedMaternity));
+            testedANC.setText(AppUtil.getLongValue(dsdIndividual.testedANC));
+            positiveTestedANC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedANC));
+
+            testedInpatient.setText(AppUtil.getLongValue(dsdIndividual.testedInpatient));
+            positiveTestedInpatient.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedInpatient));
+            testedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.testedPaediatric));
+            positiveTestedPaediatric.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPaediatric));
+            testedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.testedPMTCT));
+            positiveTestedPMTCT.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedPMTCT));
+            testedSTI.setText(AppUtil.getLongValue(dsdIndividual.testedSTI));
+            positiveTestedSTI.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedSTI));
+            positiveTestedVMMC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVMMC));
+            testedVMMC.setText(AppUtil.getLongValue(dsdIndividual.testedVMMC));
+            testedVIAC.setText(AppUtil.getLongValue(dsdIndividual.testedVIAC));
+            positiveTestedVIAC.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedVIAC));
+            testedTB.setText(AppUtil.getLongValue(dsdIndividual.testedTB));
+            positiveTestedTB.setText(AppUtil.getLongValue(dsdIndividual.positiveTestedTB));
+
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                dsdIndividual.testedOPD = AppUtil.getLongValue(testedOPD.getText().toString());
+                dsdIndividual.positiveTestedOPD = AppUtil.getLongValue(positiveTestedOPD.getText().toString());
+                dsdIndividual.testedOutreach = AppUtil.getLongValue(testedOutreach.getText().toString());
+                dsdIndividual.positiveTestedOutreach = AppUtil.getLongValue(positiveTestedOutreach.getText().toString());
+                dsdIndividual.testedMaternity = AppUtil.getLongValue(testedMaternity.getText().toString());
+                dsdIndividual.positiveTestedMaternity = AppUtil.getLongValue(positiveTestedMaternity.getText().toString());
+                dsdIndividual.testedANC = AppUtil.getLongValue(testedANC.getText().toString());
+                dsdIndividual.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
+
+                dsdIndividual.testedInpatient = AppUtil.getLongValue(testedInpatient.getText().toString());
+                dsdIndividual.positiveTestedInpatient = AppUtil.getLongValue(positiveTestedInpatient.getText().toString());
+                dsdIndividual.testedPaediatric = AppUtil.getLongValue(testedPaediatric.getText().toString());
+                dsdIndividual.positiveTestedPaediatric = AppUtil.getLongValue(positiveTestedPaediatric.getText().toString());
+                dsdIndividual.testedPMTCT = AppUtil.getLongValue(testedPMTCT.getText().toString());
+                dsdIndividual.positiveTestedPMTCT = AppUtil.getLongValue(positiveTestedPMTCT.getText().toString());
+                dsdIndividual.testedSTI = AppUtil.getLongValue(testedSTI.getText().toString());
+                dsdIndividual.positiveTestedSTI = AppUtil.getLongValue(positiveTestedSTI.getText().toString());
+                dsdIndividual.testedVMMC = AppUtil.getLongValue(testedVMMC.getText().toString());
+                dsdIndividual.positiveTestedVMMC = AppUtil.getLongValue(positiveTestedVMMC.getText().toString());
+                dsdIndividual.testedVIAC = AppUtil.getLongValue(testedVIAC.getText().toString());
+                dsdIndividual.positiveTestedVIAC = AppUtil.getLongValue(positiveTestedVIAC.getText().toString());
+                dsdIndividual.testedTB = AppUtil.getLongValue(testedTB.getText().toString());
+                dsdIndividual.positiveTestedTB = AppUtil.getLongValue(positiveTestedTB.getText().toString());
+
                 dialog.dismiss();
             }
         });

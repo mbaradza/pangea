@@ -76,12 +76,12 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         dateCreated.setOnClickListener(this);
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
+                R.layout.spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
 
         ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
+                R.layout.spinner_item, Period.getAll());
         periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         period.setAdapter(periodArrayAdapter);
 
@@ -125,7 +125,6 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
         btn_question_one = (Button) findViewById(R.id.btn_question_one);
         btn_question_one.setOnClickListener(this);
-        btn_question_one.setText(R.string.disaggregation);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -148,6 +147,8 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
             btn_save.setVisibility(View.GONE);
             btn_completed.setVisibility(View.VISIBLE);
         }
+
+        upDateForm();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -218,7 +219,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
         dialog.setContentView(R.layout.dsd_question_activity);
 
         TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
-        txt_name.setText(R.string.dsd_indvidual_question_one);
+        txt_name.setText(R.string.disaggregation);
 
         final TextView maleTotal = (TextView) dialog.findViewById(R.id.maleTotal);
         maleTotal.setText(AppUtil.getLongValue(form.maleQuestion1()));
@@ -417,7 +418,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
 
     public void upDateForm() {
 
-        btn_question_one.setText(this.getString(R.string.dsd_indvidual_question_one)
+        btn_question_one.setText("3. " + this.getString(R.string.dsd_indvidual_question_one)
                 + " [ " + (form.maleQuestion1() + form.femaleQuestion1()) + " ]");
 
     }

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="PMTCT ART Form"
+            android:text="TX PVLS Form"
             android:textStyle="bold" />
 
         <TextView
@@ -120,12 +120,11 @@
 
             </TableRow>
 
-
             <Button
-                android:id="@+id/btn_question_two"
+                android:id="@+id/btn_question_one"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:text="One" />
 
             <View
                 android:layout_width="match_parent"
@@ -179,9 +178,10 @@
             </TableRow>
 
             <Button
-                android:id="@+id/btn_question_one"
+                android:id="@+id/btn_question_two"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Two" />
 
             <View
                 android:layout_width="match_parent"
@@ -244,7 +244,8 @@
             <Button
                 android:id="@+id/btn_question_three"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Three" />
 
             <View
                 android:layout_width="match_parent"
@@ -297,11 +298,11 @@
 
             </TableRow>
 
-
             <Button
                 android:id="@+id/btn_question_four"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Four" />
 
             <Button
                 android:id="@+id/btn_save"

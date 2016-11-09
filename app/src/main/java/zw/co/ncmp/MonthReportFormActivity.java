@@ -32,19 +32,6 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
     Spinner facility;
     Spinner period;
     EditText dateCreated;
-
-    EditText testedOPD;
-    EditText positiveTestedOPD;
-    EditText testedInpatient;
-    EditText positiveTestedInpatient;
-    EditText testedPaediatric;
-    EditText positiveTestedPaediatric;
-    EditText testedPMTCT;
-    EditText positiveTestedPMTCT;
-    EditText testedSTI;
-    EditText positiveTestedSTI;
-    EditText testedTB;
-    EditText positiveTestedTB;
     EditText name;
 
     Button btn_save;
@@ -58,6 +45,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
     Button btn_question_five;
     Button btn_question_nine;
     Button btn_question_ten;
+    Button btn_question_eleven;
 
     private DatePickerDialog datePickerDialog;
 
@@ -76,19 +64,6 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
         title = (TextView) findViewById(R.id.txt_name);
         name = (EditText) findViewById(R.id.name);
 
-        testedOPD = (EditText) findViewById(R.id.testedOPD);
-        positiveTestedOPD = (EditText) findViewById(R.id.positiveTestedOPD);
-        testedInpatient = (EditText) findViewById(R.id.testedInpatient);
-        positiveTestedInpatient = (EditText) findViewById(R.id.positiveTestedInpatient);
-        testedPaediatric = (EditText) findViewById(R.id.testedPaediatric);
-        positiveTestedPaediatric = (EditText) findViewById(R.id.positiveTestedPaediatric);
-        testedPMTCT = (EditText) findViewById(R.id.testedPMTCT);
-        positiveTestedPMTCT = (EditText) findViewById(R.id.positiveTestedPMTCT);
-        testedSTI = (EditText) findViewById(R.id.testedSTI);
-        positiveTestedSTI = (EditText) findViewById(R.id.positiveTestedSTI);
-        testedTB = (EditText) findViewById(R.id.testedTB);
-        positiveTestedTB = (EditText) findViewById(R.id.positiveTestedTB);
-
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -103,31 +78,18 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
         dateCreated.setOnClickListener(this);
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
+                R.layout.spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
 
         ArrayAdapter<Period> periodArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Period.getAll());
+                R.layout.spinner_item, Period.getAll());
         periodArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         period.setAdapter(periodArrayAdapter);
 
         if (registerForm_id != 0) {
             registerForm = MonthReportForm.get(registerForm_id);
             name.setText(registerForm.name);
-            testedOPD.setText(AppUtil.getLongValue(registerForm.testedOPD));
-            positiveTestedOPD.setText(AppUtil.getLongValue(registerForm.positiveTestedOPD));
-            testedInpatient.setText(AppUtil.getLongValue(registerForm.testedInpatient));
-            positiveTestedInpatient.setText(AppUtil.getLongValue(registerForm.positiveTestedInpatient));
-            testedPaediatric.setText(AppUtil.getLongValue(registerForm.testedPaediatric));
-            positiveTestedPaediatric.setText(AppUtil.getLongValue(registerForm.positiveTestedPaediatric));
-            testedPMTCT.setText(AppUtil.getLongValue(registerForm.testedPMTCT));
-            positiveTestedPMTCT.setText(AppUtil.getLongValue(registerForm.positiveTestedPMTCT));
-            testedSTI.setText(AppUtil.getLongValue(registerForm.testedSTI));
-            positiveTestedSTI.setText(AppUtil.getLongValue(registerForm.positiveTestedSTI));
-            testedTB.setText(AppUtil.getLongValue(registerForm.testedTB));
-            positiveTestedTB.setText(AppUtil.getLongValue(registerForm.positiveTestedTB));
-
             updateLabel(registerForm.dateCreated);
 
             int i = 0;
@@ -176,6 +138,9 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
 
         btn_question_ten = (Button) findViewById(R.id.btn_question_ten);
         btn_question_ten.setOnClickListener(this);
+
+        btn_question_eleven = (Button) findViewById(R.id.btn_question_eleven);
+        btn_question_eleven.setOnClickListener(this);
 
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_save.setOnClickListener(this);
@@ -233,6 +198,10 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
 
         if (v.getId() == btn_question_ten.getId()) {
             questionTen();
+        }
+
+        if (v.getId() == btn_question_eleven.getId()) {
+            questionEleven();
         }
 
         if (v.getId() == btn_save.getId()) {
@@ -1172,6 +1141,103 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
 
                 dialog.dismiss();
 
+            }
+        });
+
+        dialog.setCancelable(true);
+        dialog.show();
+
+    }
+
+    public void questionEleven() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.entry_point);
+
+        TextView txt_name = (TextView) dialog.findViewById(R.id.txt_name);
+        txt_name.setText(R.string.entry_point);
+
+        final EditText testedOPD = (EditText) dialog.findViewById(R.id.testedOPD);
+        final EditText positiveTestedOPD = (EditText) dialog.findViewById(R.id.positiveTestedOPD);
+        final EditText testedOutreach = (EditText) dialog.findViewById(R.id.testedOutreach);
+        final EditText positiveTestedOutreach = (EditText) dialog.findViewById(R.id.positiveTestedOutreach);
+        final EditText testedMaternity = (EditText) dialog.findViewById(R.id.testedMaternity);
+        final EditText positiveTestedMaternity = (EditText) dialog.findViewById(R.id.positiveTestedMaternity);
+        final EditText testedANC = (EditText) dialog.findViewById(R.id.testedANC);
+        final EditText positiveTestedANC = (EditText) dialog.findViewById(R.id.positiveTestedANC);
+
+        final EditText testedInpatient = (EditText) dialog.findViewById(R.id.testedInpatient);
+        final EditText positiveTestedInpatient = (EditText) dialog.findViewById(R.id.positiveTestedInpatient);
+        final EditText testedPaediatric = (EditText) dialog.findViewById(R.id.testedPaediatric);
+        final EditText positiveTestedPaediatric = (EditText) dialog.findViewById(R.id.positiveTestedPaediatric);
+        final EditText testedPMTCT = (EditText) dialog.findViewById(R.id.testedPMTCT);
+        final EditText positiveTestedPMTCT = (EditText) dialog.findViewById(R.id.positiveTestedPMTCT);
+        final EditText testedSTI = (EditText) dialog.findViewById(R.id.testedSTI);
+        final EditText positiveTestedSTI = (EditText) dialog.findViewById(R.id.positiveTestedSTI);
+        final EditText positiveTestedVMMC = (EditText) dialog.findViewById(R.id.positiveTestedVMMC);
+        final EditText testedVMMC = (EditText) dialog.findViewById(R.id.testedVMMC);
+        final EditText testedVIAC = (EditText) dialog.findViewById(R.id.testedVIAC);
+        final EditText positiveTestedVIAC = (EditText) dialog.findViewById(R.id.positiveTestedVIAC);
+        final EditText testedTB = (EditText) dialog.findViewById(R.id.testedTB);
+        final EditText positiveTestedTB = (EditText) dialog.findViewById(R.id.positiveTestedTB);
+
+        if (registerForm != null) {
+            testedOPD.setText(AppUtil.getLongValue(registerForm.testedOPD));
+            positiveTestedOPD.setText(AppUtil.getLongValue(registerForm.positiveTestedOPD));
+            testedOutreach.setText(AppUtil.getLongValue(registerForm.testedOutreach));
+            positiveTestedOutreach.setText(AppUtil.getLongValue(registerForm.positiveTestedOutreach));
+            testedMaternity.setText(AppUtil.getLongValue(registerForm.testedMaternity));
+            positiveTestedMaternity.setText(AppUtil.getLongValue(registerForm.positiveTestedMaternity));
+            testedANC.setText(AppUtil.getLongValue(registerForm.testedANC));
+            positiveTestedANC.setText(AppUtil.getLongValue(registerForm.positiveTestedANC));
+
+            testedInpatient.setText(AppUtil.getLongValue(registerForm.testedInpatient));
+            positiveTestedInpatient.setText(AppUtil.getLongValue(registerForm.positiveTestedInpatient));
+            testedPaediatric.setText(AppUtil.getLongValue(registerForm.testedPaediatric));
+            positiveTestedPaediatric.setText(AppUtil.getLongValue(registerForm.positiveTestedPaediatric));
+            testedPMTCT.setText(AppUtil.getLongValue(registerForm.testedPMTCT));
+            positiveTestedPMTCT.setText(AppUtil.getLongValue(registerForm.positiveTestedPMTCT));
+            testedSTI.setText(AppUtil.getLongValue(registerForm.testedSTI));
+            positiveTestedSTI.setText(AppUtil.getLongValue(registerForm.positiveTestedSTI));
+            positiveTestedVMMC.setText(AppUtil.getLongValue(registerForm.positiveTestedVMMC));
+            testedVMMC.setText(AppUtil.getLongValue(registerForm.testedVMMC));
+            testedVIAC.setText(AppUtil.getLongValue(registerForm.testedVIAC));
+            positiveTestedVIAC.setText(AppUtil.getLongValue(registerForm.positiveTestedVIAC));
+            testedTB.setText(AppUtil.getLongValue(registerForm.testedTB));
+            positiveTestedTB.setText(AppUtil.getLongValue(registerForm.positiveTestedTB));
+
+        }
+
+        Button saveButton = (Button) dialog.findViewById(R.id.btn_save);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                registerForm.testedOPD = AppUtil.getLongValue(testedOPD.getText().toString());
+                registerForm.positiveTestedOPD = AppUtil.getLongValue(positiveTestedOPD.getText().toString());
+                registerForm.testedOutreach = AppUtil.getLongValue(testedOutreach.getText().toString());
+                registerForm.positiveTestedOutreach = AppUtil.getLongValue(positiveTestedOutreach.getText().toString());
+                registerForm.testedMaternity = AppUtil.getLongValue(testedMaternity.getText().toString());
+                registerForm.positiveTestedMaternity = AppUtil.getLongValue(positiveTestedMaternity.getText().toString());
+                registerForm.testedANC = AppUtil.getLongValue(testedANC.getText().toString());
+                registerForm.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
+
+                registerForm.testedInpatient = AppUtil.getLongValue(testedInpatient.getText().toString());
+                registerForm.positiveTestedInpatient = AppUtil.getLongValue(positiveTestedInpatient.getText().toString());
+                registerForm.testedPaediatric = AppUtil.getLongValue(testedPaediatric.getText().toString());
+                registerForm.positiveTestedPaediatric = AppUtil.getLongValue(positiveTestedPaediatric.getText().toString());
+                registerForm.testedPMTCT = AppUtil.getLongValue(testedPMTCT.getText().toString());
+                registerForm.positiveTestedPMTCT = AppUtil.getLongValue(positiveTestedPMTCT.getText().toString());
+                registerForm.testedSTI = AppUtil.getLongValue(testedSTI.getText().toString());
+                registerForm.positiveTestedSTI = AppUtil.getLongValue(positiveTestedSTI.getText().toString());
+                registerForm.testedVMMC = AppUtil.getLongValue(testedVMMC.getText().toString());
+                registerForm.positiveTestedVMMC = AppUtil.getLongValue(positiveTestedVMMC.getText().toString());
+                registerForm.testedVIAC = AppUtil.getLongValue(testedVIAC.getText().toString());
+                registerForm.positiveTestedVIAC = AppUtil.getLongValue(positiveTestedVIAC.getText().toString());
+                registerForm.testedTB = AppUtil.getLongValue(testedTB.getText().toString());
+                registerForm.positiveTestedTB = AppUtil.getLongValue(positiveTestedTB.getText().toString());
+
+                dialog.dismiss();
             }
         });
 

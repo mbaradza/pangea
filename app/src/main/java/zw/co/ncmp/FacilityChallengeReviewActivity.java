@@ -61,7 +61,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         Long case_file_id = intent.getLongExtra(AppUtil.CASE_ID, 0);
 
         txt_caseFile_name = (TextView) findViewById(R.id.txt_name);
-        txt_follow_up_date = (TextView) findViewById(R.id.txt_follow_up_date);
+        txt_follow_up_date = (TextView) findViewById(R.id.follow_up_date);
         txt_other = (TextView) findViewById(R.id.txt_other);
 
         follow_up_date = (EditText) findViewById(R.id.follow_up_date);
@@ -109,22 +109,22 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
         ArrayAdapter<ChallengeStatus> challengeStatusArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ChallengeStatus.getAll());
+                R.layout.spinner_item, ChallengeStatus.getAll());
         challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge_status.setAdapter(challengeStatusArrayAdapter);
 
         ArrayAdapter<Challenge> challengeArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Challenge.getAll());
+                R.layout.spinner_item, Challenge.getAll());
         challengeArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge.setAdapter(challengeArrayAdapter);
 
         ArrayAdapter<ActionCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ActionCategory.getAll());
+                R.layout.spinner_item, ActionCategory.getAll());
         actionTakenCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         action_taken_category.setAdapter(actionTakenCategoryArrayAdapter);
 
         ArrayAdapter<String> yesNoAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, AppUtil.getYesNoCombo);
+                R.layout.spinner_item, AppUtil.getYesNoCombo);
         yesNoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         achievable.setAdapter(yesNoAdapter);
@@ -173,6 +173,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         detail.setText(facilityChallenge.detail);
         expected_outcome.setText(facilityChallenge.expectedOutcome);
         action_taken.setText(facilityChallenge.actionTaken);
+        measurementMethod.setText(facilityChallenge.measurementMethod);
 
         updateLabel(follow_up_date, facilityChallenge.follow_up_date);
         txt_caseFile_name.setText("SITE SUPPORT : " + AppUtil.getStringDate(caseFile.dateCreated) + " - " + caseFile.facility.name);

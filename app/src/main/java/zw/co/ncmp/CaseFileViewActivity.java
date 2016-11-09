@@ -45,6 +45,7 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
     Button btn_add_mentor;
     Button btn_load_challenges;
     Button btn_completed;
+    Button btn_submit;
 
     TextView txt_view_mentees;
     TextView txt_view_mentors;
@@ -113,6 +114,16 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
         if (CaseFileMentee.getCount(caseFile.getId()) == 0) {
             optionsLayout.setVisibility(View.GONE);
             optionsLayout2.setVisibility(View.GONE);
+        }
+
+        btn_submit = (Button) findViewById(R.id.btn_submit);
+        btn_submit.setOnClickListener(this);
+        btn_submit.setVisibility(View.GONE);
+        btn_submit.setBackgroundResource(R.drawable.finish_background);
+
+        if (caseFile.checkOutDate != null) {
+            btn_submit.setVisibility(View.VISIBLE);
+            btn_save.setVisibility(View.GONE);
         }
 
         if (caseFile.dateSubmitted != null) {
@@ -203,6 +214,26 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
                             if (validate()) {
                                 onLocationChanged(mLastLocation);
                                 onLocationChanged(location);
+                                caseFile.checkOutDate = new Date();
+                                caseFile.save();
+                                btn_save.setVisibility(View.GONE);
+                                btn_submit.setVisibility(View.VISIBLE);
+                                AppUtil.createLongNotification(CaseFileViewActivity.this, "Check Out Successfull");
+                            }
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
+        }
+
+        if (v.getId() == btn_submit.getId()) {
+            new AlertDialog.Builder(context)
+                    .setMessage("Are you sure you want to submit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            if (validate()) {
                                 caseFile.dateSubmitted = new Date();
                                 caseFile.save();
                                 optionsLayout.setVisibility(View.GONE);
@@ -210,7 +241,7 @@ public class CaseFileViewActivity extends MenuBar implements View.OnClickListene
                                 optionsLayout2.setVisibility(View.GONE);
                                 optionsLayout2.setVisibility(View.GONE);
                                 btn_completed.setVisibility(View.VISIBLE);
-                                AppUtil.createLongNotification(CaseFileViewActivity.this, "Check Out Successfull");
+                                AppUtil.createLongNotification(CaseFileViewActivity.this, "Submitted for Upload to Server");
                             }
                         }
                     })

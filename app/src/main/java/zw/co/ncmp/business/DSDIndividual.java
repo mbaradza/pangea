@@ -476,14 +476,6 @@ public class DSDIndividual extends Model {
     public Long femaleFiftyPlus8;
 
     @Expose
-    @Column(name = "testedFHS")
-    public Long testedFHS;
-
-    @Expose
-    @Column(name = "positiveTestedFHS")
-    public Long positiveTestedFHS;
-
-    @Expose
     @Column(name = "testedOPD")
     public Long testedOPD;
 
@@ -546,14 +538,6 @@ public class DSDIndividual extends Model {
     @Expose
     @Column(name = "positiveTestedSTI")
     public Long positiveTestedSTI;
-
-    @Expose
-    @Column(name = "testedTBUnit")
-    public Long testedTBUnit;
-
-    @Expose
-    @Column(name = "positiveTestedTBUnit")
-    public Long positiveTestedTBUnit;
 
     @Expose
     @Column(name = "testedVIAC")
@@ -680,7 +664,7 @@ public class DSDIndividual extends Model {
     }
 
     public Long femaleQuestion2() {
-        return AppUtil.getLong(femaleFifteenPlus2) + AppUtil.getLong(femaleFifteenPlus2);
+        return AppUtil.getLong(femaleFifteenLess2) + AppUtil.getLong(femaleFifteenPlus2);
 
     }
 

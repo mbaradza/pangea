@@ -109,22 +109,22 @@ public class FacilityChallengeActivity extends MenuBar implements View.OnClickLi
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
         ArrayAdapter<ChallengeStatus> challengeStatusArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ChallengeStatus.getAll());
+                R.layout.spinner_item, ChallengeStatus.getAll());
         challengeStatusArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge_status.setAdapter(challengeStatusArrayAdapter);
 
         ArrayAdapter<Challenge> challengeArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Challenge.getAll());
+                R.layout.spinner_item, Challenge.getAll());
         challengeArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         challenge.setAdapter(challengeArrayAdapter);
 
         ArrayAdapter<ActionCategory> actionTakenCategoryArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, ActionCategory.getAll());
+                R.layout.spinner_item, ActionCategory.getAll());
         actionTakenCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         action_taken_category.setAdapter(actionTakenCategoryArrayAdapter);
 
         ArrayAdapter<String> yesNoAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, AppUtil.getYesNoCombo);
+                R.layout.spinner_item, AppUtil.getYesNoCombo);
         yesNoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         achievable.setAdapter(yesNoAdapter);

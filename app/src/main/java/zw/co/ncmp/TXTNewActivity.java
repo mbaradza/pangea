@@ -99,7 +99,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
 
 
         ArrayAdapter<Facility> facilityArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, Facility.getAll());
+                R.layout.spinner_item, Facility.getAll());
         facilityArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         facility.setAdapter(facilityArrayAdapter);
 
