@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="1dp"
-        card_view:cardBackgroundColor="@color/review_green"
+        card_view:cardBackgroundColor="@color/colorPrimary"
         card_view:cardCornerRadius="10dp"
         card_view:contentPadding="10dp">
 
