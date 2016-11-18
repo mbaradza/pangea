@@ -435,6 +435,7 @@ public class RegisterForm extends Model {
     @Column(name = "positiveTestedSTI")
     public Long positiveTestedSTI;
 
+    @SerializedName("testedVIACCentre")
     @Expose
     @Column(name = "testedVIAC")
     public Long testedVIAC;
@@ -447,6 +448,7 @@ public class RegisterForm extends Model {
     @Column(name = "positiveTestedVMMC")
     public Long positiveTestedVMMC;
 
+    @SerializedName("positiveTestedVIACCentre")
     @Expose
     @Column(name = "positiveTestedVIAC")
     public Long positiveTestedVIAC;

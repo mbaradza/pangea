@@ -82,8 +82,8 @@ public class AppUtil {
     public static String OLD_SQL_DATE_FORMAT = "yyyy-MM-dd";
     //public static String APP_URL = "http://tracker.pzat.org:8080/tracker-mobile/rest/mobile/"; //PRO
 
-    public static String APP_URL = "http://192.168.0.31:8084/tracker-mobile/rest/mobile/"; //UAT
-    //public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
+    //public static String APP_URL = "http://192.168.0.28:8084/tracker-mobile/rest/mobile/"; //UAT
+    public static String APP_URL = "http://pzat.org:8089/tracker-mobile/rest/mobile/"; //UAT
     public static String LOGGED_IN = "LOGGED_IN";
     public static String USERNAME = "USERNAME";
     public static String PASSWORD = "PASSWORD";
@@ -621,7 +621,7 @@ public class AppUtil {
                     .url(httpUrl)
                     .build();
             response = client.newCall(request).execute();
-
+            //Log.v("----request url----", request.urlString());
             if (AppUtil.responseCount(response) >= 3) {
                 return "authentication_error";
             }

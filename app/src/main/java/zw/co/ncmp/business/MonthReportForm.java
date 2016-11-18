@@ -386,18 +386,18 @@ public class MonthReportForm extends Model {
     @Column(name = "positiveTestedOutreach")
     public Long positiveTestedOutreach;
 
-    @Expose
     @Column(name = "testedMaternity")
     public Long testedMaternity;
 
-    @Expose
     @Column(name = "positiveTestedMaternity")
     public Long positiveTestedMaternity;
 
+    @SerializedName("testedPNC")
     @Expose
     @Column(name = "testedANC")
     public Long testedANC;
 
+    @SerializedName("positiveTestedPNC")
     @Expose
     @Column(name = "positiveTestedANC")
     public Long positiveTestedANC;
@@ -434,6 +434,7 @@ public class MonthReportForm extends Model {
     @Column(name = "positiveTestedSTI")
     public Long positiveTestedSTI;
 
+    @SerializedName("testedVIACCentre")
     @Expose
     @Column(name = "testedVIAC")
     public Long testedVIAC;
@@ -446,6 +447,7 @@ public class MonthReportForm extends Model {
     @Column(name = "positiveTestedVMMC")
     public Long positiveTestedVMMC;
 
+    @SerializedName("positiveTestedVIACCentre")
     @Expose
     @Column(name = "positiveTestedVIAC")
     public Long positiveTestedVIAC;

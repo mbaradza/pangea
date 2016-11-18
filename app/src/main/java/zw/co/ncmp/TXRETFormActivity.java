@@ -269,7 +269,7 @@ public class TXRETFormActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour1));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen1));
@@ -422,7 +422,7 @@ public class TXRETFormActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour2));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour2));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine2));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour2));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine2));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen2));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen2));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen2));

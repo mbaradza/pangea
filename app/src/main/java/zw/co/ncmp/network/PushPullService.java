@@ -104,6 +104,7 @@ public class PushPullService extends IntentService {
             }
         }
         final List<Facility> facilities = Facility.getAll();
+
         try {
             for (Facility facility : facilities) {
                 loadFacilityMentees(AppUtil.run(AppUtil.getFacilityMenteesUrl(context, facility.serverId), context), facility.serverId);
@@ -610,7 +611,7 @@ public class PushPullService extends IntentService {
         client = AppUtil.connectionSettings(client);
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
-        return AppUtil.getResponeBody(client, AppUtil.getPullFacilityChallengeUrl(context, facility.serverId));
+        return AppUtil.getResponeBody(client, httpUrl);
     }
 
 
@@ -878,10 +879,12 @@ public class PushPullService extends IntentService {
 
     public String saveServerlFacilityChallenge(String data) {
         int i = 0;
+        Log.v("----Data----", data);
         String msg = "Facility Challenges Synced";
         try {
             JSONArray jsonArray = new JSONArray(data);
             List<FacilityChallenge> list = FacilityChallenge.fromJson(jsonArray);
+            Log.v("---List---", list.toString());
             for (FacilityChallenge item : list) {
                 FacilityChallenge checkDuplicate = FacilityChallenge.getFacilityChallenge(item.serverId);
                 if (checkDuplicate == null) {
@@ -898,6 +901,7 @@ public class PushPullService extends IntentService {
             msg = msg.concat(" - " + i);
 
         } catch (Exception e) {
+            Log.v("----Error----", e.getMessage());
             e.printStackTrace();
             msg = "Sync Failed";
         }

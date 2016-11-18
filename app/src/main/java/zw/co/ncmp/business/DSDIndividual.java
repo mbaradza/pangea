@@ -491,19 +491,18 @@ public class DSDIndividual extends Model {
     @Column(name = "positiveTestedOutreach")
     public Long positiveTestedOutreach;
 
-    @Expose
     @Column(name = "testedMaternity")
     public Long testedMaternity;
 
-    @Expose
     @Column(name = "positiveTestedMaternity")
     public Long positiveTestedMaternity;
 
+    @SerializedName("testedPNC")
     @Expose
     @Column(name = "testedANC")
     public Long testedANC;
 
-    @Expose
+    @SerializedName("positiveTestedPNC")
     @Column(name = "positiveTestedANC")
     public Long positiveTestedANC;
 

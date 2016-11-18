@@ -250,7 +250,7 @@ public class StatFormActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen));

@@ -227,7 +227,7 @@ public class TXCURRFormActivity extends MenuBar implements View.OnClickListener 
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour1));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen1));

@@ -289,7 +289,7 @@ public class TXPLSVFormActivity extends MenuBar implements View.OnClickListener 
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour1));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen1));
@@ -442,7 +442,7 @@ public class TXPLSVFormActivity extends MenuBar implements View.OnClickListener 
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour2));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour2));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine2));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour2));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine2));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen2));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen2));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen2));
@@ -595,7 +595,7 @@ public class TXPLSVFormActivity extends MenuBar implements View.OnClickListener 
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour3));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour3));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine3));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour3));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine3));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen3));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen3));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen3));
@@ -748,7 +748,7 @@ public class TXPLSVFormActivity extends MenuBar implements View.OnClickListener 
             maleOneToFour.setText(AppUtil.getLongValue(form.maleOneToFour4));
             femaleOneToFour.setText(AppUtil.getLongValue(form.femaleOneToFour4));
             maleFiveToNine.setText(AppUtil.getLongValue(form.maleFiveToNine4));
-            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleOneToFour4));
+            femaleFiveToNine.setText(AppUtil.getLongValue(form.femaleFiveToNine4));
             maleTenToFourteen.setText(AppUtil.getLongValue(form.maleTenToFourteen4));
             femaleTenToFourteen.setText(AppUtil.getLongValue(form.femaleTenToFourteen4));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(form.maleFifteenToNineteen4));
@@ -913,7 +913,7 @@ public class TXPLSVFormActivity extends MenuBar implements View.OnClickListener 
                 + " [ " + (form.maleQuestion3() + form.femaleQuestion3()) + " ]");
 
         btn_question_four.setText(this.getString(R.string.tx_pvls_question_four)
-                + " [ " + (form.maleQuestion3() + form.femaleQuestion4()) + " ]");
+                + " [ " + (form.maleQuestion4() + form.femaleQuestion4()) + " ]");
 
     }
 

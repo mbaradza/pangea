@@ -20,7 +20,7 @@
     <string name="opd">OPD</string>
     <string name="outreach">Outreach</string>
     <string name="maternity">Maternity</string>
-    <string name="anc">ANC</string>
+    <string name="anc">PNC</string>
     <string name="inpatient">Inpatient</string>
     <string name="paediatric">Paediatric</string>
     <string name="pmtct">PMTCT</string>
@@ -34,11 +34,12 @@
     <string name="dsd_indvidual_question_one">1. Number of clients Mobilized for PITC</string>
     <string name="dsd_indvidual_question_two">2. Number of PITC clients receiving GHE talk and offered HIV testing</string>
     <string name="dsd_indvidual_question_three">3. Number Eligible for testing:</string>
-    <string name="dsd_indvidual_question_four">6. First time Individuals Tested</string>
-    <string name="dsd_indvidual_question_five">7.Total Positive First Time Individuals</string>
-    <string name="dsd_indvidual_question_six">8. Total Retested Individuals</string>
-    <string name="dsd_indvidual_question_seven">9. Total Positive Retested Individuals</string>
-    <string name="dsd_indvidual_question_eight">10. Number of newly identified Positives linked to care</string>
+    <string name="dsd_indvidual_question_four">5. Total individuals testested  for the first time and received their results</string>
+    <string name="dsd_indvidual_question_five">6. First time Individuals Tested</string>
+    <string name="dsd_indvidual_question_six">7.Total Positive First Time Individuals</string>
+    <string name="dsd_indvidual_question_seven">8. Total Retested Individuals</string>
+    <string name="dsd_indvidual_question_eight">9. Total Positive Retested Individuals</string>
+    <string name="dsd_indvidual_question_nine">10. Number of newly identified Positives linked to care</string>
 
     <string name="dsd_couple_title">HTC_TST: DSD- Individuals</string>
     <string name="dsd_couple_question_one">1. Couples tested</string>

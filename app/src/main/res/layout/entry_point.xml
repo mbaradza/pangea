@@ -95,31 +95,6 @@
 
                 </TableRow>
 
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/maternity" />
-
-                    <EditText
-                        android:id="@+id/testedMaternity"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-
-                    <EditText
-                        android:id="@+id/positiveTestedMaternity"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
-
-                </TableRow>
-
                 <TableRow
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

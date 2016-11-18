@@ -319,7 +319,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             maleOneToFour.setText(AppUtil.getLongValue(registerForm.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(registerForm.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(registerForm.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleOneToFour1));
+            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(registerForm.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(registerForm.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(registerForm.maleFifteenToNineteen1));
@@ -472,7 +472,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             maleOneToFour.setText(AppUtil.getLongValue(registerForm.maleOneToFour2));
             femaleOneToFour.setText(AppUtil.getLongValue(registerForm.femaleOneToFour2));
             maleFiveToNine.setText(AppUtil.getLongValue(registerForm.maleFiveToNine2));
-            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleOneToFour2));
+            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleFiveToNine2));
             maleTenToFourteen.setText(AppUtil.getLongValue(registerForm.maleTenToFourteen2));
             femaleTenToFourteen.setText(AppUtil.getLongValue(registerForm.femaleTenToFourteen2));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(registerForm.maleFifteenToNineteen2));
@@ -625,7 +625,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             maleOneToFour.setText(AppUtil.getLongValue(registerForm.maleOneToFour3));
             femaleOneToFour.setText(AppUtil.getLongValue(registerForm.femaleOneToFour3));
             maleFiveToNine.setText(AppUtil.getLongValue(registerForm.maleFiveToNine3));
-            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleOneToFour3));
+            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleFiveToNine3));
             maleTenToFourteen.setText(AppUtil.getLongValue(registerForm.maleTenToFourteen3));
             femaleTenToFourteen.setText(AppUtil.getLongValue(registerForm.femaleTenToFourteen3));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(registerForm.maleFifteenToNineteen3));
@@ -778,7 +778,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             maleOneToFour.setText(AppUtil.getLongValue(registerForm.maleOneToFour4));
             femaleOneToFour.setText(AppUtil.getLongValue(registerForm.femaleOneToFour4));
             maleFiveToNine.setText(AppUtil.getLongValue(registerForm.maleFiveToNine4));
-            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleOneToFour4));
+            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleFiveToNine4));
             maleTenToFourteen.setText(AppUtil.getLongValue(registerForm.maleTenToFourteen4));
             femaleTenToFourteen.setText(AppUtil.getLongValue(registerForm.femaleTenToFourteen4));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(registerForm.maleFifteenToNineteen4));
@@ -931,7 +931,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             maleOneToFour.setText(AppUtil.getLongValue(registerForm.maleOneToFour5));
             femaleOneToFour.setText(AppUtil.getLongValue(registerForm.femaleOneToFour5));
             maleFiveToNine.setText(AppUtil.getLongValue(registerForm.maleFiveToNine5));
-            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleOneToFour5));
+            femaleFiveToNine.setText(AppUtil.getLongValue(registerForm.femaleFiveToNine5));
             maleTenToFourteen.setText(AppUtil.getLongValue(registerForm.maleTenToFourteen5));
             femaleTenToFourteen.setText(AppUtil.getLongValue(registerForm.femaleTenToFourteen5));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(registerForm.maleFifteenToNineteen5));
@@ -1161,8 +1161,6 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
         final EditText positiveTestedOPD = (EditText) dialog.findViewById(R.id.positiveTestedOPD);
         final EditText testedOutreach = (EditText) dialog.findViewById(R.id.testedOutreach);
         final EditText positiveTestedOutreach = (EditText) dialog.findViewById(R.id.positiveTestedOutreach);
-        final EditText testedMaternity = (EditText) dialog.findViewById(R.id.testedMaternity);
-        final EditText positiveTestedMaternity = (EditText) dialog.findViewById(R.id.positiveTestedMaternity);
         final EditText testedANC = (EditText) dialog.findViewById(R.id.testedANC);
         final EditText positiveTestedANC = (EditText) dialog.findViewById(R.id.positiveTestedANC);
 
@@ -1186,8 +1184,6 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
             positiveTestedOPD.setText(AppUtil.getLongValue(registerForm.positiveTestedOPD));
             testedOutreach.setText(AppUtil.getLongValue(registerForm.testedOutreach));
             positiveTestedOutreach.setText(AppUtil.getLongValue(registerForm.positiveTestedOutreach));
-            testedMaternity.setText(AppUtil.getLongValue(registerForm.testedMaternity));
-            positiveTestedMaternity.setText(AppUtil.getLongValue(registerForm.positiveTestedMaternity));
             testedANC.setText(AppUtil.getLongValue(registerForm.testedANC));
             positiveTestedANC.setText(AppUtil.getLongValue(registerForm.positiveTestedANC));
 
@@ -1217,8 +1213,6 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 registerForm.positiveTestedOPD = AppUtil.getLongValue(positiveTestedOPD.getText().toString());
                 registerForm.testedOutreach = AppUtil.getLongValue(testedOutreach.getText().toString());
                 registerForm.positiveTestedOutreach = AppUtil.getLongValue(positiveTestedOutreach.getText().toString());
-                registerForm.testedMaternity = AppUtil.getLongValue(testedMaternity.getText().toString());
-                registerForm.positiveTestedMaternity = AppUtil.getLongValue(positiveTestedMaternity.getText().toString());
                 registerForm.testedANC = AppUtil.getLongValue(testedANC.getText().toString());
                 registerForm.positiveTestedANC = AppUtil.getLongValue(positiveTestedANC.getText().toString());
 
@@ -1258,7 +1252,7 @@ public class MonthReportFormActivity extends MenuBar implements View.OnClickList
                 + " [ " + (registerForm.maleQuestion3() + registerForm.femaleQuestion3()) + " ]");
 
         btn_question_four.setText(this.getString(R.string.register_question_four)
-                + " [ " + (registerForm.maleQuestion3() + registerForm.femaleQuestion4()) + " ]");
+                + " [ " + (registerForm.maleQuestion4() + registerForm.femaleQuestion4()) + " ]");
 
         btn_question_five.setText(this.getString(R.string.register_question_five)
                 + " [ " + (registerForm.maleQuestion5() + registerForm.femaleQuestion5()) + " ]");

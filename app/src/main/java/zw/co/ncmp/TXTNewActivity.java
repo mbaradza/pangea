@@ -325,7 +325,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(txtNew.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(txtNew.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(txtNew.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleOneToFour1));
+            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(txtNew.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(txtNew.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(txtNew.maleFifteenToNineteen1));
@@ -478,7 +478,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(txtNew.maleOneToFour2));
             femaleOneToFour.setText(AppUtil.getLongValue(txtNew.femaleOneToFour2));
             maleFiveToNine.setText(AppUtil.getLongValue(txtNew.maleFiveToNine2));
-            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleOneToFour2));
+            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleFiveToNine2));
             maleTenToFourteen.setText(AppUtil.getLongValue(txtNew.maleTenToFourteen2));
             femaleTenToFourteen.setText(AppUtil.getLongValue(txtNew.femaleTenToFourteen2));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(txtNew.maleFifteenToNineteen2));
@@ -631,7 +631,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(txtNew.maleOneToFour3));
             femaleOneToFour.setText(AppUtil.getLongValue(txtNew.femaleOneToFour3));
             maleFiveToNine.setText(AppUtil.getLongValue(txtNew.maleFiveToNine3));
-            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleOneToFour3));
+            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleFiveToNine3));
             maleTenToFourteen.setText(AppUtil.getLongValue(txtNew.maleTenToFourteen3));
             femaleTenToFourteen.setText(AppUtil.getLongValue(txtNew.femaleTenToFourteen3));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(txtNew.maleFifteenToNineteen3));
@@ -784,7 +784,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
             maleOneToFour.setText(AppUtil.getLongValue(txtNew.maleOneToFour4));
             femaleOneToFour.setText(AppUtil.getLongValue(txtNew.femaleOneToFour4));
             maleFiveToNine.setText(AppUtil.getLongValue(txtNew.maleFiveToNine4));
-            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleOneToFour4));
+            femaleFiveToNine.setText(AppUtil.getLongValue(txtNew.femaleFiveToNine4));
             maleTenToFourteen.setText(AppUtil.getLongValue(txtNew.maleTenToFourteen4));
             femaleTenToFourteen.setText(AppUtil.getLongValue(txtNew.femaleTenToFourteen4));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(txtNew.maleFifteenToNineteen4));
@@ -913,7 +913,7 @@ public class TXTNewActivity extends MenuBar implements View.OnClickListener {
                 + " [ " + (txtNew.maleQuestion3() + txtNew.femaleQuestion3()) + " ]");
 
         btn_question_four.setText(this.getString(R.string.txt_new_question_four)
-                + " [ " + (txtNew.maleQuestion3() + txtNew.femaleQuestion4()) + " ]");
+                + " [ " + (txtNew.maleQuestion4() + txtNew.femaleQuestion4()) + " ]");
 
     }
 

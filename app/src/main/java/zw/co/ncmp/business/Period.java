@@ -36,7 +36,7 @@ public class Period extends Model {
     public static List<Period> getAll() {
         return new Select()
                 .from(Period.class)
-                .orderBy("name ASC")
+                .orderBy("name DESC")
                 .execute();
     }
 
