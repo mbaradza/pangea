@@ -211,6 +211,8 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             btn_completed.setVisibility(View.VISIBLE);
         }
 
+        upDateForm();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -264,12 +266,9 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 dsdIndividual.couplesTested = AppUtil.getLongValue(couplesTested.getText().toString());
                 dsdIndividual.couplesPositiveTested = AppUtil.getLongValue(couplesPositiveTested.getText().toString());
                 dsdIndividual.couplesDiscordantTested = AppUtil.getLongValue(couplesDiscordantTested.getText().toString());
+                AppUtil.createShortNotification(DSDIndividualActivity.this, "Saved");
+                btn_submit.setVisibility(View.VISIBLE);
 
-                if (dsdIndividual.getId() == null) {
-                    dsdIndividual.save();
-                    AppUtil.createShortNotification(DSDIndividualActivity.this, "Saved");
-                    btn_submit.setVisibility(View.VISIBLE);
-                }
             } else {
                 return;
             }
@@ -405,7 +404,7 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
             maleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.maleOneToFour1));
             femaleOneToFour.setText(AppUtil.getLongValue(dsdIndividual.femaleOneToFour1));
             maleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.maleFiveToNine1));
-            femaleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.femaleFiveToNine5));
+            femaleFiveToNine.setText(AppUtil.getLongValue(dsdIndividual.femaleFiveToNine1));
             maleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.maleTenToFourteen1));
             femaleTenToFourteen.setText(AppUtil.getLongValue(dsdIndividual.femaleTenToFourteen1));
             maleFifteenToNineteen.setText(AppUtil.getLongValue(dsdIndividual.maleFifteenToNineteen1));

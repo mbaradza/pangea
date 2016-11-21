@@ -517,13 +517,10 @@ public class AppUtil {
         AppUtil.removePrefs(AppUtil.PASSWORD, context);
         AppUtil.removePrefs(AppUtil.WEB_USER_ID, context);
         CaseFileMentor.deleteAll();
-        CaseFileMentee.deleteAll();
         FacilityChallenge.deleteAll();
         MentorVisitReport.deleteAll();
         CaseFile.deleteAll();
         Mentee.deleteAll();
-        Facility.deleteAll();
-        Mentor.deleteAll();
         Qualification.deleteAll();
         Designation.deleteAll();
         MentorShipFocusArea.deleteAll();
@@ -539,8 +536,10 @@ public class AppUtil {
         TXCURRForm.deleteAll();
         TXRETForm.deleteAll();
         TXPVLSForm.deleteAll();
-        Period.deleteAll();
         SupplementaryIndicatorForm.deleteAll();
+        Period.deleteAll();
+        Facility.deleteAll();
+        Mentor.deleteAll();
 
     }
 
