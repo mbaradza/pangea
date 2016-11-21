@@ -356,7 +356,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                        AppUtil.createLongNotification(DSDIndividualActivity.this, "Submitted for Upload to Server");
                         Intent intent = new Intent(DSDIndividualActivity.this, DSDIndiviudalListActivity.class);
                         startActivity(intent);
                         finish();
@@ -1574,5 +1573,6 @@ public class DSDIndividualActivity extends MenuBar implements View.OnClickListen
                 + " [ " + (dsdIndividual.maleQuestion8() + dsdIndividual.femaleQuestion8()) + " ]");
 
     }
+
 }
 
