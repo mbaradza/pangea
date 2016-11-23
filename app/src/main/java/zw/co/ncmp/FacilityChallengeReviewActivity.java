@@ -232,7 +232,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
 
         txt_caseFile_name.setEnabled(false);
         txt_follow_up_date.setEnabled(false);
-        challenge_status.setEnabled(true);
+        challenge_status.setEnabled(false);
         challenge.setEnabled(false);
         action_taken.setEnabled(false);
         action_taken_category.setEnabled(false);
@@ -269,9 +269,9 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
                 i++;
             }
 
-            txt_caseFile_name.setEnabled(true);
             action_taken.setEnabled(true);
             follow_up_date.setEnabled(true);
+            challenge_status.setEnabled(true);
 
             btn_save.setVisibility(View.VISIBLE);
             btn_load.setVisibility(View.GONE);
