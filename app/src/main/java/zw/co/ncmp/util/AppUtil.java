@@ -517,10 +517,11 @@ public class AppUtil {
         AppUtil.removePrefs(AppUtil.PASSWORD, context);
         AppUtil.removePrefs(AppUtil.WEB_USER_ID, context);
         CaseFileMentor.deleteAll();
+        CaseFileMentee.deleteAll();
         FacilityChallenge.deleteAll();
         MentorVisitReport.deleteAll();
-        CaseFile.deleteAll();
         Mentee.deleteAll();
+        CaseFile.deleteAll();
         Qualification.deleteAll();
         Designation.deleteAll();
         MentorShipFocusArea.deleteAll();

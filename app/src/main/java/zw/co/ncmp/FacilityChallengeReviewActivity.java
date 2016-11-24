@@ -242,6 +242,7 @@ public class FacilityChallengeReviewActivity extends MenuBar implements View.OnC
         others.setEnabled(false);
         achievable.setEnabled(false);
         realistic.setEnabled(false);
+        specific.setEnabled(false);
         measurementMethod.setEnabled(false);
         expected_completion_date.setEnabled(false);
 
