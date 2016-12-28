@@ -40,7 +40,7 @@ public class MonthReportForm extends Model {
     public Period period;
 
     @Column(name = "date_created")
-    public Date dateCreated;
+    public Date dateCareated;
 
     @SerializedName("datec")
     @Expose

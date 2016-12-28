@@ -395,10 +395,12 @@ public class RegisterForm extends Model {
     @Column(name = "positiveTestedMaternity")
     public Long positiveTestedMaternity;
 
+    @SerializedName("testedPNC")
     @Expose
     @Column(name = "testedANC")
     public Long testedANC;
 
+    @SerializedName("positiveTestedPNC")
     @Expose
     @Column(name = "positiveTestedANC")
     public Long positiveTestedANC;
