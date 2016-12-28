@@ -370,7 +370,6 @@ public class RegisterForm extends Model {
     @Column(name = "femaleFiftyPlus5")
     public Long femaleFiftyPlus5;
 
-
     @Expose
     @Column(name = "testedOPD")
     public Long testedOPD;
@@ -387,11 +386,9 @@ public class RegisterForm extends Model {
     @Column(name = "positiveTestedOutreach")
     public Long positiveTestedOutreach;
 
-    @Expose
     @Column(name = "testedMaternity")
     public Long testedMaternity;
 
-    @Expose
     @Column(name = "positiveTestedMaternity")
     public Long positiveTestedMaternity;
 
@@ -455,12 +452,10 @@ public class RegisterForm extends Model {
     @Column(name = "positiveTestedVIAC")
     public Long positiveTestedVIAC;
 
-    @SerializedName("testedTbUnit")
     @Expose
     @Column(name = "testedTB")
     public Long testedTB;
 
-    @SerializedName("positiveTestedTbUnit")
     @Expose
     @Column(name = "positiveTestedTB")
     public Long positiveTestedTB;

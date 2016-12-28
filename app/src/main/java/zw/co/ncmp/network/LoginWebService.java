@@ -96,7 +96,6 @@ public class LoginWebService extends AsyncTask<String, Integer, String> {
         client = AppUtil.connectionSettings(client);
         client = AppUtil.getUnsafeOkHttpClient(client);
         client = AppUtil.createAuthenticationData(client, context);
-
         Response response=null;
         try {
             Request request = new Request.Builder()

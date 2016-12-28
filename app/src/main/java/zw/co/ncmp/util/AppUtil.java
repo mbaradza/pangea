@@ -621,7 +621,6 @@ public class AppUtil {
                     .url(httpUrl)
                     .build();
             response = client.newCall(request).execute();
-            //Log.v("----request url----", request.urlString());
             if (AppUtil.responseCount(response) >= 3) {
                 return "authentication_error";
             }

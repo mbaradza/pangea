@@ -40,7 +40,7 @@ public class MonthReportForm extends Model {
     public Period period;
 
     @Column(name = "date_created")
-    public Date dateCareated;
+    public Date dateCreated;
 
     @SerializedName("datec")
     @Expose
@@ -452,12 +452,10 @@ public class MonthReportForm extends Model {
     @Column(name = "positiveTestedVIAC")
     public Long positiveTestedVIAC;
 
-    @SerializedName("testedTbUnit")
     @Expose
     @Column(name = "testedTB")
     public Long testedTB;
 
-    @SerializedName("positiveTestedTbUnit")
     @Expose
     @Column(name = "positiveTestedTB")
     public Long positiveTestedTB;
