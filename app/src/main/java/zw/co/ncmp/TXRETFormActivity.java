@@ -180,11 +180,6 @@ public class TXRETFormActivity extends MenuBar implements View.OnClickListener {
                 form.name = name.getText().toString();
                 form.period = (Period) period.getSelectedItem();
 
-                numeratorPregnant.setText(AppUtil.getLongValue(form.numeratorPregnant));
-                denominatorPregnant.setText(AppUtil.getLongValue(form.denominatorPregnant));
-                denominatorPregnant.setText(AppUtil.getLongValue(form.denominatorPregnant));
-                numeratorBreastFeeding.setText(AppUtil.getLongValue(form.numeratorBreastFeeding));
-                denominatorBreastFeeding.setText(AppUtil.getLongValue(form.denominatorBreastFeeding));
                 form.numeratorPregnant = AppUtil.getLongValue(numeratorPregnant.getText().toString());
                 form.denominatorPregnant = AppUtil.getLongValue(denominatorPregnant.getText().toString());
                 form.numeratorBreastFeeding = AppUtil.getLongValue(numeratorBreastFeeding.getText().toString());
@@ -192,7 +187,6 @@ public class TXRETFormActivity extends MenuBar implements View.OnClickListener {
 
                 form.numerator = AppUtil.getLongValue(numerator.getText().toString());
                 form.denominator = AppUtil.getLongValue(denominator.getText().toString());
-
                 form.dateCreated = AppUtil.getDate(dateCreated.getText().toString());
 
 

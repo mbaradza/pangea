@@ -554,12 +554,12 @@ public class DSDIndividual extends Model {
     @Column(name = "positiveTestedVIAC")
     public Long positiveTestedVIAC;
 
-    @SerializedName("testedTbUnit")
+    @SerializedName("testedTBUnit")
     @Expose
     @Column(name = "testedTB")
     public Long testedTB;
 
-    @SerializedName("positiveTestedTbUnit")
+    @SerializedName("positiveTestedTBUnit")
     @Expose
     @Column(name = "positiveTestedTB")
     public Long positiveTestedTB;
